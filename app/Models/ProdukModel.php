@@ -42,13 +42,14 @@ class ProdukModel extends Model
             // $query = $db->query('select id_produk, harga, stok, gambar, deskripsi, size, nama_admin from produk p left join
             // admin a on p.id_adminFK=a.id_admin, nama_kategori from produk p left join kategori k on p.id_kategoriFK=k.id_kategori');
             // $result = $query->getResultArray();
-        }
+        } else {
         //return $this->where(['slug_produk' => $slug_produk])->first();
         return $this->db->table('produk')
             //->join('admin', 'admin.id_admin=produk.id_adminFK')
             ->join('kategori', 'kategori.id_kategori=produk.id_kategoriFK')
             ->where('slug_produk', $slug_produk)
             ->get()->getResultArray();
+        }
     }
 
     //sudah bisa

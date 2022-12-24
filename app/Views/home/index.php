@@ -18,9 +18,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Keranjang</a>
                 </li>
-                <li class="nav-item">
+                <?php if (logged_in() == false) {
+                    echo '
+                    <li class="nav-item">
                     <a class="nav-link" href="/login"><i class="fa-solid fa-user"></i> Login</a>
-                </li>
+                    </li>
+                    ';
+                } else {
+                    echo '
+                    <li class="nav-item">
+                        <a class="nav-link" href="'.base_url('logout').'"><i class="fa-solid fa-user"></i> Logout</a>
+                    </li>
+                    ';
+                } ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-store"></i>
                         e-commerce
@@ -37,15 +47,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/ongkir/"><i class="fa-solid fa-robot"></i> Biaya Kirim</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin"><i class="fa-solid fa-lock"></i></i> Admin</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('logout'); ?>"><i class="fa-solid fa-user"></i> Logout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Link</a>
-                </li>
+                <?php if (in_groups('admin')) {
+                    echo '
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin"><i class="fa-solid fa-lock"></i></i> Admin</a>
+                    </li>
+                    ';
+                } ?>
             </ul>
             <form class="d-flex pt-2" role="search">
                 <input class="form-control me-2" type="search" placeholder="Cari..." aria-label="Search">
@@ -110,7 +118,7 @@
     </div>
 </div>
 <br><br>
-<br<br><br><br><br>
+<br><br><br><br><br>
     </body>
 
     </html>

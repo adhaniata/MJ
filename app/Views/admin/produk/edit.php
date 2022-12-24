@@ -50,7 +50,7 @@
         <div class="col-8">
             <h3 class="my-3">Form Edit Data Produk</h3>
             <!--menambahkan action berisi method update untuk memproses edit-->
-            <form action="/admin/produk/update/<?= $produk[0]['id_produk']; ?>" method="post" enctype="multipart/form-data">
+            <form action="/admin/produk/update/<?= $produk['id_produk']; ?>" method="post" enctype="multipart/form-data">
                 <!--fitur agar tidak ada pemalsuan, hanya bisa digunakan dihalaman ini saja-->
                 <?= csrf_field(); ?>
                 <!--menambahkan input slug bertype hidden-->

@@ -37,6 +37,28 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+// hak akses untuk admin
+$routes->group('admin', ['filter' => 'role:admin'], function($routes) {
+        $routes->get('/', 'Admin\Home::index');
+
+        $routes->get('produk', 'Admin\Produk::index');
+        $routes->get('produk/create', 'Admin\Produk::create');
+        $routes->post('produk/save', 'Admin\Produk::save');
+        $routes->get('produk/:any', 'Admin\Produk::edit/$1');
+        $routes->get('produk/update/:num', 'Admin\Produk::update/$1');
+
+        $routes->get('ongkir', 'Admin\Ongkir::index');
+        $routes->get('ongkir/create', 'Admin\Ongkir::create');
+        $routes->post('ongkir/save', 'Admin\Ongkir::save');
+        $routes->get('ongkir/:any', 'Admin\Ongkir::edit/$1');
+        $routes->get('ongkir/update/:num', 'Admin\Ongkir::update/$1');
+});
+
+// hak akses untuk user
+// $routes->group('user', ['filter' => 'role:user'], function($routes) {
+//         ...
+// });
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

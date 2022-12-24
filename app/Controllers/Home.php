@@ -10,8 +10,6 @@ class Home extends BaseController
     public function __construct()
     {
         $this->produkModel = new ProdukModel();
-        helper('number');
-        helper('form');
     }
 
     public function index()
