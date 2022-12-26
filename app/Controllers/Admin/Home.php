@@ -10,7 +10,7 @@ class Home extends BaseController
     protected $ProdukModel;
     public function __construct()
     {
-        var_dump(in_groups('user')); die();
+        //var_dump(in_groups('user')); die();
 
         $this->produkModel = new ProdukModel();
     }

@@ -1,0 +1,36 @@
+CRITICAL - 2022-12-25 20:45:06 --> Undefined array key 0
+in APPPATH\Views\home\detail.php on line 60.
+ 1 APPPATH\Views\home\detail.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'APPPATH\\Views\\home\\detail.php', 60)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\home\\detail.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('home/detail', [], true)
+ 5 APPPATH\Controllers\Home.php(33): view('home/detail', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Home->detail('jersey-mizuno-motif-1-merah-size-m')
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2022-12-25 20:46:11 --> Undefined array key "nama_kategori"
+in APPPATH\Views\home\detail.php on line 66.
+ 1 APPPATH\Views\home\detail.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nama_kategori"', 'APPPATH\\Views\\home\\detail.php', 66)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\home\\detail.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('home/detail', [], true)
+ 5 APPPATH\Controllers\Home.php(33): view('home/detail', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Home->detail('jersey-mizuno-motif-1-biru-size-m')
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2022-12-25 20:47:57 --> Undefined array key "gambar"
+in APPPATH\Views\home\detail.php on line 60.
+ 1 APPPATH\Views\home\detail.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "gambar"', 'APPPATH\\Views\\home\\detail.php', 60)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\home\\detail.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('home/detail', [], true)
+ 5 APPPATH\Controllers\Home.php(33): view('home/detail', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Home->detail('jersey-mizuno-motif-1-merah-size-m')
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

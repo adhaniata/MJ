@@ -27,7 +27,7 @@
                 } else {
                     echo '
                     <li class="nav-item">
-                        <a class="nav-link" href="'.base_url('logout').'"><i class="fa-solid fa-user"></i> Logout</a>
+                        <a class="nav-link" href="' . base_url('logout') . '"><i class="fa-solid fa-user"></i> Logout</a>
                     </li>
                     ';
                 } ?>
@@ -109,7 +109,7 @@
                             <p class="card-text"><?= $p['deskripsi']; ?></p>
                             <p><b>Harga :</b></p>
                             <p class="card-text"><?= $p['harga_produk']; ?></p>
-                            <a href="/home/<?= $p['slug_produk']; ?>" class="btn btn-dark">Detail</a>
+                            <a href="/produk/<?= $p['slug_produk']; ?>" class="btn btn-dark">Detail</a>
                         </div>
                     </div>
                 </div>
@@ -119,8 +119,8 @@
 </div>
 <br><br>
 <br><br><br><br><br>
-    </body>
+</body>
 
-    </html>
+</html>
 
-    <?= $this->endSection(); ?>
+<?= $this->endSection(); ?>

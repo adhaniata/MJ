@@ -73,8 +73,10 @@
                             <p><b>Stok :</b></p>
                             <p class="card-text"><?= $produk[0]['stok']; ?></p>
                             <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
-                            <button type="button" class="btn btn-warning">Masukan ke Keranjang</button> <br><br>
-                            <a href="/home" class="btn btn-dark">Kembali Ke Home</a>
+                            <!--<button type="button" class="btn btn-warning">Masukan ke Keranjang</button> <br><br>-->
+                            <!-- ka ini gimana ya biar pas klik keranjang id_produk sama id users yg lagi login bisa ikut?-->
+                            <a href="keranjang/<?= $produk[0]['id_produk']; ?>" class="btn btn-warning">Masukan ke Keranjang</a>
+                            <a href="/" class="btn btn-dark">Kembali Ke Home</a>
 
                         </div>
                     </div>

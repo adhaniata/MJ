@@ -23,4 +23,13 @@ class Home extends BaseController
         return view('home/index', $data);
         //echo view('Layout/footer');
     }
+    public function detail($slug_produk)
+    {
+        //merapihkan dan untuk ditampilkan di view
+        $data = [
+            'title' => 'Detail Produk| MJ Sport Collection',
+            'produk' => $this->produkModel->getProdukAdmin($slug_produk)
+        ];
+        return view('home/detail', $data);
+    }
 }
