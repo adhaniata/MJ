@@ -15,9 +15,21 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Keranjang</a>
-                </li>
+                <?php if (logged_in() == false) {
+                    echo '
+                    <li class="nav-item">
+                    <a class="nav-link disabled" href="keranjang"><i class="fa-solid fa-cart-shopping"></i> Keranjang</a>
+                    </li>
+                    ';
+                } else {
+                    if (in_groups('user')) {
+                        echo '
+                        <li class="nav-item">
+                        <a class="nav-link" href="/user/keranjang"><i class="fa-solid fa-cart-shopping"></i> Keranjang</a>
+                    </li>
+                    ';
+                    }
+                } ?>
                 <?php if (logged_in() == false) {
                     echo '
                     <li class="nav-item">

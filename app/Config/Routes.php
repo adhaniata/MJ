@@ -57,8 +57,9 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
 
 //hak akses untuk user
 $routes->group('user', ['filter' => 'role:user'], function ($routes) {
-    $routes->get('/produk/(:segment)', 'Home::detail/$1');
+    $routes->get('/', 'Home::index');
     $routes->get('keranjang', 'Keranjang::index');
+    //$routes->get('keranjang/:num', 'Keranjang::index/$1');   //niatnya keranjang/id_usernya
 });
 
 /*

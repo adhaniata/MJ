@@ -2,23 +2,25 @@
 
 namespace App\Controllers;
 
-use App\Models\ProdukModel;
+use App\Models\KeranjangModel;
 
 class Keranjang extends BaseController
 {
-    protected $ProdukModel;
+    protected $KeranjangModel;
     public function __construct()
     {
-        $this->produkModel = new ProdukModel();
+        $this->keranjangModel = new KeranjangModel();
     }
 
     public function index()
     {
-        //return view('pages/home');
         $data = [
             'title' => 'Keranjang |MJ Sport Collection',
-            'produk' => $this->produkModel->getProduk()
+            'keranjang' => $this->keranjangModel->getKeranjang()
         ];
         return view('keranjang/index', $data);
+    }
+    public function tambahKeranjang()
+    {
     }
 }

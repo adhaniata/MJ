@@ -16,7 +16,7 @@
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Keranjang</a>
+                    <a class="nav-link" href="keranjang"><i class="fa-solid fa-cart-shopping"></i> Keranjang</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.php"><i class="fa-solid fa-user"></i> Login</a>

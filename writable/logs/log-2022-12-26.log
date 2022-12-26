@@ -1,0 +1,36 @@
+CRITICAL - 2022-12-26 04:07:54 --> Undefined variable $keranjang
+in APPPATH\Views\keranjang\index.php on line 85.
+ 1 APPPATH\Views\keranjang\index.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $keranjang', 'APPPATH\\Views\\keranjang\\index.php', 85)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\keranjang\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('keranjang/index', [], true)
+ 5 APPPATH\Controllers\Keranjang.php(21): view('keranjang/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Keranjang->index()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Keranjang))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2022-12-26 04:09:45 --> Undefined variable $i
+in APPPATH\Views\keranjang\index.php on line 85.
+ 1 APPPATH\Views\keranjang\index.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $i', 'APPPATH\\Views\\keranjang\\index.php', 85)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\keranjang\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('keranjang/index', [], true)
+ 5 APPPATH\Controllers\Keranjang.php(21): view('keranjang/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Keranjang->index()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Keranjang))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2022-12-26 04:14:59 --> Undefined variable $value
+in APPPATH\Views\keranjang\index.php on line 90.
+ 1 APPPATH\Views\keranjang\index.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $value', 'APPPATH\\Views\\keranjang\\index.php', 90)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\keranjang\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('keranjang/index', [], true)
+ 5 APPPATH\Controllers\Keranjang.php(21): view('keranjang/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Keranjang->index()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Keranjang))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
