@@ -4,23 +4,22 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class AddidUserFkKeranjang extends Migration
+class AddSubtotalKeranjang extends Migration
 {
     public function up()
     {
         $this->forge->addColumn('keranjang', [
-            'id_userFK' => [
+            'subtotal_harga' => [
                 'type'           => 'int',
                 'constraint'     => 11,
                 'unsigned'       => true,
-                'after'          => 'id_keranjang',
+                'after'          => 'total_harga',
             ]
         ]);
-        $this->forge->addForeignKey('id_userFK', 'users', 'id', 'CASCADE', 'CASCADE');
     }
 
     public function down()
     {
-        $this->forge->dropColumn('keranjang', 'id_userFK');
+        $this->forge->dropColumn('keranjang', 'subtotal_harga');
     }
 }

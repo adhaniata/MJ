@@ -22,5 +22,14 @@ class Keranjang extends BaseController
     }
     public function tambahKeranjang()
     {
+        $this->keranjangModel->save([
+            'id_userFK' => user_id(),
+            'id_produkFK' => $this->request->getVar('id_produk'),
+            'qty' => 1,
+            'total_harga' => $this->request->getVar('total_harga'),
+            'subtotal_harga' => $this->request->getVar('total_harga') * 1
+        ]);
+
+        return redirect()->to(base_url('/keranjang'));
     }
 }

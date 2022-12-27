@@ -56,10 +56,10 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
 });
 
 //hak akses untuk user
-$routes->group('user', ['filter' => 'role:user'], function ($routes) {
+$routes->group('', ['filter' => 'role:user'], function ($routes) {
     $routes->get('/', 'Home::index');
     $routes->get('keranjang', 'Keranjang::index');
-    //$routes->get('keranjang/:num', 'Keranjang::index/$1');   //niatnya keranjang/id_usernya
+    $routes->post('keranjang/tambah-keranjang', 'Keranjang::tambahKeranjang');   //niatnya keranjang/id_usernya
 });
 
 /*

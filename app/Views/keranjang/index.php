@@ -83,15 +83,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <th scope="row"><?= $i++; ?></th>
-                    <td>buat test aja</td>
-                    <td>buat test aja</td>
-                    <td>buat test aja</td>
-                    <td><input type="number" id="qty" name="qty" value="1" min="1" max="10"></td>
-                    <td>buat test aja</td>
-                    <td><a href="/user/keranjang/" class="btn btn-danger">Hapus</a></td>
-
+                    <?php $subtotal = 0; ?>
                     <?php foreach ($keranjang as $key => $value) : ?>
+                        <?php $subtotal += $value['subtotal_harga']; ?>
                         <tr class="table-light">
                             <th scope="row"><?= $i++; ?></th>
                             <td><?= $value['nama_produk']; ?></td>
@@ -104,7 +98,7 @@
                     <?php endforeach; ?>
                     <tr class="table-info">
                         <th scope="row">Total Harga</th>
-                        <td colspan="5">pake sum ya?</td>
+                        <td colspan="5"><?= $subtotal ?></td>
                         <td><a href="/user/keranjang/" class="btn btn-warning">Checkout</a></td>
                     </tr>
                 </tbody>

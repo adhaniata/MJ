@@ -10,7 +10,7 @@ class KeranjangModel extends Model
     protected $table = 'keranjang';
     protected $primaryKey = 'id_keranjang';
     protected $useTimestamps = true;
-    protected $allowedFields = ['id_userFK', 'id_produkFK', 'qty', 'total_harga'];
+    protected $allowedFields = ['id_userFK', 'id_produkFK', 'qty', 'total_harga', 'subtotal_harga'];
 
 
     protected $db;
