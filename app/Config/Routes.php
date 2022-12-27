@@ -47,18 +47,23 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->post('produk/save', 'Admin\Produk::save');
     $routes->get('produk/:any', 'Admin\Produk::edit/$1');
     $routes->get('produk/update/:num', 'Admin\Produk::update/$1');
+    $routes->get('produk/:segment', 'Admin\Produk::detail/$1');
+    $routes->delete('produk/:num', 'Admin\Produk::delete/$1');
 
     $routes->get('ongkir', 'Admin\Ongkir::index');
     $routes->get('ongkir/create', 'Admin\Ongkir::create');
     $routes->post('ongkir/save', 'Admin\Ongkir::save');
     $routes->get('ongkir/:any', 'Admin\Ongkir::edit/$1');
     $routes->get('ongkir/update/:num', 'Admin\Ongkir::update/$1');
+    //detail & delete
+
 });
 
 //hak akses untuk user
 $routes->group('', ['filter' => 'role:user'], function ($routes) {
     $routes->get('/', 'Home::index');
     $routes->get('keranjang', 'Keranjang::index');
+    $routes->delete('keranjang/:num', 'Keranjang::hapusBarang/$1');
     $routes->post('keranjang/tambah-keranjang', 'Keranjang::tambahKeranjang');   //niatnya keranjang/id_usernya
 });
 

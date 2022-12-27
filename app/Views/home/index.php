@@ -25,7 +25,7 @@
                     if (in_groups('user')) {
                         echo '
                         <li class="nav-item">
-                        <a class="nav-link" href="/user/keranjang"><i class="fa-solid fa-cart-shopping"></i> Keranjang</a>
+                        <a class="nav-link" href="/keranjang"><i class="fa-solid fa-cart-shopping"></i> Keranjang</a>
                     </li>
                     ';
                     }

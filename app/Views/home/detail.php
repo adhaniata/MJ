@@ -16,7 +16,7 @@
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="keranjang"><i class="fa-solid fa-cart-shopping"></i> Keranjang</a>
+                    <a class="nav-link" href="/keranjang"><i class="fa-solid fa-cart-shopping"></i> Keranjang</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.php"><i class="fa-solid fa-user"></i> Login</a>
@@ -76,7 +76,7 @@
                             <!--<button type="button" class="btn btn-warning">Masukan ke Keranjang</button> <br><br>-->
                             <!-- ka ini gimana ya biar pas klik keranjang id_produk sama id users yg lagi login bisa ikut?-->
                             <form action="/keranjang/tambah-keranjang" method="POST">
-                            <?= csrf_field(); ?>
+                                <?= csrf_field(); ?>
                                 <input type="hidden" name="id_produk" value="<?= $produk[0]['id_produk'] ?>">
                                 <input type="hidden" name="total_harga" value="<?= $produk[0]['harga_produk'] ?>">
                                 <button class="btn btn-warning" type="submit">Masukan ke Keranjang</button>

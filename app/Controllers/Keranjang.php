@@ -32,4 +32,11 @@ class Keranjang extends BaseController
 
         return redirect()->to(base_url('/keranjang'));
     }
+    public function hapusBarang($id_keranjang)
+    {
+        //$this->keranjangModel->find($id_keranjang);
+        $this->keranjangModel->delete($id_keranjang);
+        session()->setFlashdata('pesan', 'Keranjang Berhasil di Hapus');
+        return redirect()->to(base_url('/keranjang'));
+    }
 }

@@ -91,9 +91,18 @@
                             <td><?= $value['nama_produk']; ?></td>
                             <td><img src="/img/produk/<?= $value['gambar']; ?>" width="100"> </td>
                             <td><?= $value['harga_produk']; ?></td>
+                            <!--ka kalo misalkan user nambah jumalah barang lalu otomatis harganya sesuai tu gimana ya? -->
                             <td><input type="number" id="qty" name="qty" value="1" min="1" max="<?= $value['stok']; ?>"></td>
                             <td><?= $value['harga_produk'] * $value['qty']; ?></td>
-                            <td><a href="/user/keranjang/" class="btn btn-danger">Hapus</a></td>
+                            <!--<td><a href="/user/keranjang/" class="btn btn-danger">Hapus</a></td>-->
+                            <td>
+                                <form action="keranjang/<?= $value['id_keranjang']; ?>" method="post" class="d-inline">
+                                    <?= csrf_field(); ?>
+                                    <!--agar lebih aman-->
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">Delete</button><br>
+                                </form>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                     <tr class="table-info">
