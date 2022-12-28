@@ -52,24 +52,24 @@
             <div class="card mb-3" style="max-width: 1200px;">
                 <div class="row g-0">
                     <div class="col-md-4" class="align-middle">
-                        <img src="/img/produk/<?= $produk[0]['gambar']; ?>" class="img-fluid rounded-start" width="900" alt=" ...">
+                        <img src="/img/produk/<?= $produk['gambar']; ?>" class="img-fluid rounded-start" width="900" alt=" ...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $produk[0]['nama_produk']; ?></h5>
+                            <h5 class="card-title"><?= $produk['nama_produk']; ?></h5>
                             <p><b>Kategori :</b></p>
-                            <p class="card-text"><?= $produk[0]['nama_kategori']; ?></p>
+                            <p class="card-text"><?= $produk['nama_kategori']; ?></p>
                             <p><b>Deskripsi :</b></p>
-                            <p class="card-text"><?= $produk[0]['deskripsi']; ?></p>
+                            <p class="card-text"><?= $produk['deskripsi']; ?></p>
                             <p><b>Harga :</b></p>
-                            <p class="card-text"><?= $produk[0]['harga_produk']; ?></p>
+                            <p class="card-text"><?= $produk['harga_produk']; ?></p>
                             <p><b>Size :</b></p>
-                            <p class="card-text"><?= $produk[0]['size']; ?></p>
+                            <p class="card-text"><?= $produk['size']; ?></p>
                             <p><b>Stok :</b></p>
-                            <p class="card-text"><?= $produk[0]['stok']; ?></p>
+                            <p class="card-text"><?= $produk['stok']; ?></p>
                             <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
-                            <a href="/admin/produk/edit/<?= $produk[0]['slug_produk']; ?>" class="btn btn-warning">Edit</a>
-                            <form action="/admin/produk/<?= $produk[0]['id_produk']; ?>" method="post" class="d-inline">
+                            <a href="/admin/produk/edit/<?= $produk['slug_produk']; ?>" class="btn btn-warning">Edit</a>
+                            <form action="/admin/produk/delete/<?= $produk['id_produk']; ?>" method="post" class="d-inline">
                                 <?= csrf_field(); ?>
                                 <!--agar lebih aman-->
                                 <input type="hidden" name="_method" value="DELETE">

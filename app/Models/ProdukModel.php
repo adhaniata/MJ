@@ -44,11 +44,16 @@ class ProdukModel extends Model
             // $result = $query->getResultArray();
         } else {
         //return $this->where(['slug_produk' => $slug_produk])->first();
-        return $this->db->table('produk')
-            //->join('admin', 'admin.id_admin=produk.id_adminFK')
-            ->join('kategori', 'kategori.id_kategori=produk.id_kategoriFK')
-            ->where('slug_produk', $slug_produk)
-            ->get()->getResultArray();
+            
+        // untuk ambil banyak data
+        // return $this->db->table('produk')
+        //     //->join('admin', 'admin.id_admin=produk.id_adminFK')
+        //     ->join('kategori', 'kategori.id_kategori=produk.id_kategoriFK')
+        //     ->where('slug_produk', $slug_produk)
+        //     ->get()->getResultArray();
+
+        // untuk ambil 1 baris data
+        return $this->where('slug_produk', $slug_produk)->join('kategori', 'kategori.id_kategori = produk.id_kategoriFK')->first();
         }
     }
 

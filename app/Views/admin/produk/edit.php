@@ -54,18 +54,17 @@
                 <!--fitur agar tidak ada pemalsuan, hanya bisa digunakan dihalaman ini saja-->
                 <?= csrf_field(); ?>
                 <!--menambahkan input slug bertype hidden-->
-                <input type="hidden" name="slug_produk" value="<?= $produk[0]['slug_produk']; ?>">
+                <input type="hidden" name="slug_produk" value="<?= $produk['slug_produk']; ?>">
                 <!--menambahkan input gambar bertype hidden-->
-                <input type="hidden" name="gambarProdukLama" value="<?= $produk[0]['gambar']; ?>">
-
+                <input type="hidden" name="gambarProdukLama" value="<?= $produk['gambar']; ?>">
 
                 <div class="row mb-3">
                     <label for="id_kategoriFK" class="col-sm-2 col-form-label">Kategori Produk</label>
                     <div class="col-sm-10">
-                        <select class="form-select <?= ($validation->hasError('id_kategoriFK')) ? 'is-invalid' : ''; ?>" name="id_kategoriFK" id="id_kategoriFK" aria-label="Default select example" value="<?= (old('id_kategoriFK')) ? old('id_kategoriFK') : $produk[0]['id_kategoriFK'] ?>">
+                        <select class="form-select <?= ($validation->hasError('id_kategoriFK')) ? 'is-invalid' : ''; ?>" name="id_kategoriFK" id="id_kategoriFK" aria-label="Default select example" value="<?= (old('id_kategoriFK')) ? old('id_kategoriFK') : $produk['id_kategoriFK'] ?>">
                             <option selected>Pilih Kategori Produk (WAJIB)</option>
                             <?php foreach ($listKategori as $lk) {
-                                echo '<option value="' . $lk['id_kategori'] . '">' . $lk['nama_kategori'] . '</option>';
+                                echo '<option value="' . $lk['id_kategori'] . '" '.($produk['id_kategoriFK'] == $lk['id_kategori'] ? 'selected':'').'>' . $lk['nama_kategori'] . '</option>';
                             } ?>
                         </select>
                         <div class="invalid-feedback">
@@ -76,7 +75,7 @@
                 <div class="row mb-3">
                     <label for="nama_produk" class="col-sm-2 col-form-label">Nama Produk</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= ($validation->hasError('nama_produk')) ? 'is-invalid' : ''; ?>" id="nama_produk" name="nama_produk" autofocus value="<?= (old('nama_produk')) ? old('nama_produk') : $produk[0]['nama_produk'] ?>">
+                        <input type="text" class="form-control <?= ($validation->hasError('nama_produk')) ? 'is-invalid' : ''; ?>" id="nama_produk" name="nama_produk" autofocus value="<?= (old('nama_produk')) ? old('nama_produk') : $produk['nama_produk'] ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('nama_produk'); ?>
                         </div>
@@ -91,7 +90,7 @@
                 <div class="row mb-3">
                     <label for="harga_produk" class="col-sm-2 col-form-label">Harga (Rupiah)</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= ($validation->hasError('harga_produk')) ? 'is-invalid' : ''; ?>" id="harga_produk" name="harga_produk" value="<?= (old('harga_produk')) ? old('harga_produk') : $produk[0]['harga_produk'] ?>">
+                        <input type="text" class="form-control <?= ($validation->hasError('harga_produk')) ? 'is-invalid' : ''; ?>" id="harga_produk" name="harga_produk" value="<?= (old('harga_produk')) ? old('harga_produk') : $produk['harga_produk'] ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('harga_produk'); ?>
                         </div>
@@ -100,7 +99,7 @@
                 <div class="row mb-3">
                     <label for="stok" class="col-sm-2 col-form-label">Stok</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= ($validation->hasError('stok')) ? 'is-invalid' : ''; ?>" id="stok" name="stok" value="<?= (old('stok')) ? old('stok') : $produk[0]['stok'] ?>">
+                        <input type="text" class="form-control <?= ($validation->hasError('stok')) ? 'is-invalid' : ''; ?>" id="stok" name="stok" value="<?= (old('stok')) ? old('stok') : $produk['stok'] ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('stok'); ?>
                         </div>
@@ -110,14 +109,14 @@
                     <label for="gambarProduk" class="col-sm-2 col-form-label">Gambar</label>
                     <div class="col-sm-10">
                         <div class="mb-3">
-                            <label for="gambarProduk" class="form-label"><?= $produk[0]['gambar']; ?></label>
+                            <label for="gambarProduk" class="form-label"><?= $produk['gambar']; ?></label>
                             <input class="form-control <?= ($validation->hasError('gambarProduk')) ? 'is-invalid' : ''; ?>" type="file" id="gambarProduk" name="gambarProduk" onchange="previewImgProduk()">
                             <br>
                             <div class="invalid-feedback">
                                 <?= $validation->getError('gambarProduk'); ?>
                             </div>
                             <div class="col-sm-2">
-                                <img src="/img/produk/<?= $produk[0]['gambar']; ?>" class="img-thumbnail img-preview">
+                                <img src="/img/produk/<?= $produk['gambar']; ?>" class="img-thumbnail img-preview">
                             </div>
                         </div>
                     </div>
@@ -125,7 +124,7 @@
                 <div class="row mb-3">
                     <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= ($validation->hasError('deskripsi')) ? 'is-invalid' : ''; ?>" id="deskripsi" name="deskripsi" value="<?= (old('deskripsi')) ? old('deskripsi') : $produk[0]['deskripsi'] ?>">
+                        <input type="text" class="form-control <?= ($validation->hasError('deskripsi')) ? 'is-invalid' : ''; ?>" id="deskripsi" name="deskripsi" value="<?= (old('deskripsi')) ? old('deskripsi') : $produk['deskripsi'] ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('deskripsi'); ?>
                         </div>
@@ -134,7 +133,7 @@
                 <div class="row mb-3">
                     <label for="size" class="col-sm-2 col-form-label">Size</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= ($validation->hasError('size')) ? 'is-invalid' : ''; ?>" id="size" name="size" value="<?= (old('size')) ? old('size') : $produk[0]['size'] ?>">
+                        <input type="text" class="form-control <?= ($validation->hasError('size')) ? 'is-invalid' : ''; ?>" id="size" name="size" value="<?= (old('size')) ? old('size') : $produk['size'] ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('size'); ?>
                         </div>

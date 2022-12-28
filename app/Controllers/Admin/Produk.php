@@ -113,41 +113,43 @@ class Produk extends BaseController
             //$validation = \Config\Services::validation();  //kata ka sandika ini gausa karena dah ada di session
             //return redirect()->to(base_url('admin/ongkir/create'))->withInput()->with('validation', $validation); //yang ini katanya sampai di withInput() aja karena data sudah kekirim
             return redirect()->to(base_url('admin/produk/create'))->withInput();
+        } else {
+
+            //dd($this->request->getVar());
+            // dd('test berhasil upload gambar'); //sudah berhasil ternyata
+
+            //ambil gambar
+            $fileGambar = $this->request->getFile('gambarProduk');
+
+            //generate nama gambar random
+            $namaGambar = $fileGambar->getRandomName();
+            //pindahkan ke folder
+            $fileGambar->move('img/produk', $namaGambar);
+
+
+            //pindahkan ke folder tanpa di generete nama gambar random
+            //$fileGambar->move('img/ongkir');
+            //ambil nama file gambar
+            //$namaGambar = $fileGambar->getName();
+
+
+            //untuk savenya
+            //dd($this->request->getVar());
+            $slug_produk = url_title($this->request->getVar('nama_produk'), '-', true);
+            $this->produkModel->save([
+                'id_kategoriFK' => $this->request->getVar('id_kategoriFK'),
+                'nama_produk' => $this->request->getVar('nama_produk'),
+                //'id_adminFK' => $this->request->getVar('id_adminFK'),
+                'slug_produk' => $slug_produk,
+                'harga_produk' => $this->request->getVAr('harga_produk'),
+                'stok' => $this->request->getVAr('stok'),
+                'gambar' => $namaGambar,
+                'deskripsi' => $this->request->getVAr('deskripsi'),
+                'size' => $this->request->getVAr('size')
+            ]);
+            session()->setFlashdata('pesan', 'Data Berhasil ditambahkan');
+            return redirect()->to(base_url('/admin/produk'));
         }
-        //dd($this->request->getVar());
-        // dd('test berhasil upload gambar'); //sudah berhasil ternyata
-
-        //ambil gambar
-        $fileGambar = $this->request->getFile('gambarProduk');
-
-        //generate nama gambar random
-        $namaGambar = $fileGambar->getRandomName();
-        //pindahkan ke folder
-        $fileGambar->move('img/produk', $namaGambar);
-
-
-        //pindahkan ke folder tanpa di generete nama gambar random
-        //$fileGambar->move('img/ongkir');
-        //ambil nama file gambar
-        //$namaGambar = $fileGambar->getName();
-
-
-        //untuk savenya
-        //dd($this->request->getVar());
-        $slug_produk = url_title($this->request->getVar('nama_produk'), '-', true);
-        $this->produkModel->save([
-            'id_kategoriFK' => $this->request->getVar('id_kategoriFK'),
-            'nama_produk' => $this->request->getVar('nama_produk'),
-            //'id_adminFK' => $this->request->getVar('id_adminFK'),
-            'slug_produk' => $slug_produk,
-            'harga_produk' => $this->request->getVAr('harga_produk'),
-            'stok' => $this->request->getVAr('stok'),
-            'gambar' => $namaGambar,
-            'deskripsi' => $this->request->getVAr('deskripsi'),
-            'size' => $this->request->getVAr('size')
-        ]);
-        session()->setFlashdata('pesan', 'Data Berhasil ditambahkan');
-        return redirect()->to(base_url('/admin/produk'));
     }
     public function delete($id)
     {
@@ -164,7 +166,7 @@ class Produk extends BaseController
         //session(); //saya pindahkan session ke basecontroller agar tidak lupa
         helper('form');
         $data = [
-            'title' => 'Form Edit Data Ongkir',
+            'title' => 'Form Edit Data Produk',
             'validation' => \Config\Services::validation(),
             'produk' => $this->produkModel->getProdukAdmin($slug_produk),
             'listKategori' => $this->produkModel->get_listKategori()
@@ -179,7 +181,7 @@ class Produk extends BaseController
 
         //cek produk (berguna untuk menghindari rules required dan is unique)
         $produkLama = $this->produkModel->getProdukAdmin($this->request->getVar('slug_produk'));
-        if ($produkLama[0]['nama_produk'] == $this->request->getVar('nama_produk')) {
+        if ($produkLama['nama_produk'] == $this->request->getVar('nama_produk')) {
             $rule_produk = 'required';
         } else {
             $rule_produk = 'required|is_unique[produk.nama_produk]';
@@ -242,42 +244,40 @@ class Produk extends BaseController
             //$validation = \Config\Services::validation();
             //return redirect()->to(base_url('admin/ongkir/edit/' . $this->request->getVar('slug')))->withInput()->with('validation', $validation);
             return redirect()->to(base_url('admin/produk/edit/' . $this->request->getVar('slug_produk')))->withInput();
-        }
-
-        //dd($this->request->getVar());
-
-
-        //ambil gambar
-        $fileGambar = $this->request->getFile('gambarProduk');
-
-        //apakah tidak ada gambar yang diupload
-        if ($fileGambar->getError() == 4) {
-            $namaGambar = $this->request->getVar('gambarProdukLama');
         } else {
-            //generate nama gambar random
-            $namaGambar = $fileGambar->getRandomName();
-            //pindahkan ke folder
-            $fileGambar->move('img/produk', $namaGambar);
-            //hapus file gambarlama di folder img/ongkir
-            //unlink('img/produk/' . $this->request->getVar('gambarProdukLama'));
+
+            //ambil gambar
+            $fileGambar = $this->request->getFile('gambarProduk');
+
+            //apakah tidak ada gambar yang diupload
+            if ($fileGambar->getError() == 4) {
+                $namaGambar = $this->request->getVar('gambarProdukLama');
+            } else {
+                //generate nama gambar random
+                $namaGambar = $fileGambar->getRandomName();
+                //pindahkan ke folder
+                $fileGambar->move('img/produk', $namaGambar);
+                //hapus file gambarlama di folder img/ongkir
+                //unlink('img/produk/' . $this->request->getVar('gambarProdukLama'));
+            }
+
+            //method savenya
+
+            $slug_produk = url_title($this->request->getVar('nama_produk'), '-', true);
+            $this->produkModel->save([
+                'id_produk' => $id,
+                'id_kategoriFK' => $this->request->getVar('id_kategoriFK'),
+                'nama_produk' => $this->request->getVar('nama_produk'),
+                //'id_adminFK' => $this->request->getVar('id_adminFK'),
+                'slug_produk' => $slug_produk,
+                'harga_produk' => $this->request->getVAr('harga_produk'),
+                'stok' => $this->request->getVAr('stok'),
+                'gambar' => $namaGambar,
+                'deskripsi' => $this->request->getVAr('deskripsi'),
+                'size' => $this->request->getVAr('size')
+            ]);
+            session()->setFlashdata('pesan', 'Data Berhasil ditambahkan');
+            return redirect()->to(base_url('/admin/produk'));
         }
-
-        //method savenya
-
-        $slug_produk = url_title($this->request->getVar('nama_produk'), '-', true);
-        $this->produkModel->save([
-            'id_produk' => $id,
-            'id_kategoriFK' => $this->request->getVar('id_kategoriFK'),
-            'nama_produk' => $this->request->getVar('nama_produk'),
-            //'id_adminFK' => $this->request->getVar('id_adminFK'),
-            'slug_produk' => $slug_produk,
-            'harga_produk' => $this->request->getVAr('harga_produk'),
-            'stok' => $this->request->getVAr('stok'),
-            'gambar' => $namaGambar,
-            'deskripsi' => $this->request->getVAr('deskripsi'),
-            'size' => $this->request->getVAr('size')
-        ]);
-        session()->setFlashdata('pesan', 'Data Berhasil ditambahkan');
-        return redirect()->to(base_url('/admin/produk'));
     }
 }

@@ -92,7 +92,7 @@
                             <td><img src="/img/produk/<?= $value['gambar']; ?>" width="100"> </td>
                             <td><?= $value['harga_produk']; ?></td>
                             <!--ka kalo misalkan user nambah jumalah barang lalu otomatis harganya sesuai tu gimana ya? -->
-                            <td><input type="number" id="qty" name="qty" value="1" min="1" max="<?= $value['stok']; ?>"></td>
+                            <td><input type="number" id="qty" name="qty" value="<?= $value['qty'] ?>" min="1" max="<?= $value['stok']; ?>"></td>
                             <td><?= $value['harga_produk'] * $value['qty']; ?></td>
                             <!--<td><a href="/user/keranjang/" class="btn btn-danger">Hapus</a></td>-->
                             <td>

@@ -39,16 +39,16 @@ $routes->get('/', 'Home::index');
 $routes->get('/produk/(:segment)', 'Home::detail/$1');
 
 // hak akses untuk admin
-$routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
+$routes->group('admin', ['filter' => 'role:admin'], function ($routes){
     $routes->get('/', 'Admin\Home::index');
 
     $routes->get('produk', 'Admin\Produk::index');
     $routes->get('produk/create', 'Admin\Produk::create');
     $routes->post('produk/save', 'Admin\Produk::save');
-    $routes->get('produk/:any', 'Admin\Produk::edit/$1');
-    $routes->get('produk/update/:num', 'Admin\Produk::update/$1');
-    $routes->get('produk/:segment', 'Admin\Produk::detail/$1');
-    $routes->delete('produk/:num', 'Admin\Produk::delete/$1');
+    $routes->get('produk/edit/(:any)', 'Admin\Produk::edit/$1');
+    $routes->get('produk/(:any)', 'Admin\Produk::detail/$1');
+    $routes->post('produk/update/(:num)', 'Admin\Produk::update/$1');
+    $routes->delete('produk/delete/(:num)', 'Admin\Produk::delete/$1');
 
     $routes->get('ongkir', 'Admin\Ongkir::index');
     $routes->get('ongkir/create', 'Admin\Ongkir::create');
@@ -63,7 +63,7 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
 $routes->group('', ['filter' => 'role:user'], function ($routes) {
     $routes->get('/', 'Home::index');
     $routes->get('keranjang', 'Keranjang::index');
-    $routes->delete('keranjang/:num', 'Keranjang::hapusBarang/$1');
+    $routes->delete('keranjang/(:num)', 'Keranjang::hapusBarang/$1');
     $routes->post('keranjang/tambah-keranjang', 'Keranjang::tambahKeranjang');   //niatnya keranjang/id_usernya
 });
 

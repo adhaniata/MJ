@@ -57,28 +57,30 @@
             <div class="card mb-3" style="max-width: 1200px;">
                 <div class="row g-0">
                     <div class="col-md-4" class="align-middle">
-                        <img src="/img/produk/<?= $produk[0]['gambar']; ?>" class="img-fluid rounded-start" width="1000" alt=" ...">
+                        <img src="/img/produk/<?= $produk['gambar']; ?>" class="img-fluid rounded-start" width="1000" alt=" ...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $produk[0]['nama_produk']; ?></h5>
+                            <h5 class="card-title"><?= $produk['nama_produk']; ?></h5>
                             <p><b>Kategori :</b></p>
-                            <p class="card-text"><?= $produk[0]['nama_kategori']; ?></p>
+                            <p class="card-text"><?= $produk['nama_kategori']; ?></p>
                             <p><b>Deskripsi :</b></p>
-                            <p class="card-text"><?= $produk[0]['deskripsi']; ?></p>
+                            <p class="card-text"><?= $produk['deskripsi']; ?></p>
                             <p><b>Harga :</b></p>
-                            <p class="card-text"><?= $produk[0]['harga_produk']; ?></p>
+                            <p class="card-text"><?= $produk['harga_produk']; ?></p>
                             <p><b>Size :</b></p>
-                            <p class="card-text"><?= $produk[0]['size']; ?></p>
+                            <p class="card-text"><?= $produk['size']; ?></p>
                             <p><b>Stok :</b></p>
-                            <p class="card-text"><?= $produk[0]['stok']; ?></p>
+                            <p class="card-text"><?= $produk['stok']; ?></p>
                             <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
                             <!--<button type="button" class="btn btn-warning">Masukan ke Keranjang</button> <br><br>-->
                             <!-- ka ini gimana ya biar pas klik keranjang id_produk sama id users yg lagi login bisa ikut?-->
                             <form action="/keranjang/tambah-keranjang" method="POST">
                                 <?= csrf_field(); ?>
-                                <input type="hidden" name="id_produk" value="<?= $produk[0]['id_produk'] ?>">
-                                <input type="hidden" name="total_harga" value="<?= $produk[0]['harga_produk'] ?>">
+                                <input type="hidden" name="id_produk" value="<?= $produk['id_produk'] ?>">
+                                <input type="hidden" name="total_harga" value="<?= $produk['harga_produk'] ?>">
+                                <label>Qty</label>
+                                <input type="number" name="qty" value="1" min="1" style="width: 50px;">
                                 <button class="btn btn-warning" type="submit">Masukan ke Keranjang</button>
                             </form>
                             <a href="/" class="btn btn-dark">Kembali Ke Home</a>

@@ -90,7 +90,7 @@
                             <p class="card-text"><?= $p['deskripsi']; ?></p>
                             <p><b>Harga :</b></p>
                             <p class="card-text"><?= $p['harga_produk']; ?></p>
-                            <a href="/admin/index/<?= $p['slug_produk']; ?>" class="btn btn-dark">Detail</a>
+                            <a href="/admin/produk/<?= $p['slug_produk']; ?>" class="btn btn-dark">Detail</a>
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
     </div>
 </div>
 <br><br>
-<br<br><br><br><br>
+<br><br><br><br><br>
     </body>
 
     </html>
