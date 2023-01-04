@@ -91,10 +91,12 @@
                             <td><?= $value['nama_produk']; ?></td>
                             <td><img src="/img/produk/<?= $value['gambar']; ?>" width="100"> </td>
                             <td><?= $value['harga_produk']; ?></td>
-                            <!--ka kalo misalkan user nambah jumalah barang lalu otomatis harganya sesuai tu gimana ya? -->
-                            <td><input type="number" id="qty" name="qty" value="<?= $value['qty'] ?>" min="1" max="<?= $value['stok']; ?>"></td>
+                            <td>
+                                <fieldset>
+                                    <input type="number" id="qty" name="qty" value="<?= $value['qty'] ?>" min="1" max="<?= $value['stok']; ?>">
+                                </fieldset>
+                            </td>
                             <td><?= $value['harga_produk'] * $value['qty']; ?></td>
-                            <!--<td><a href="/user/keranjang/" class="btn btn-danger">Hapus</a></td>-->
                             <td>
                                 <form action="keranjang/<?= $value['id_keranjang']; ?>" method="post" class="d-inline">
                                     <?= csrf_field(); ?>
@@ -108,7 +110,7 @@
                     <tr class="table-info">
                         <th scope="row">Total Harga</th>
                         <td colspan="5"><?= $subtotal ?></td>
-                        <td><a href="/user/keranjang/" class="btn btn-warning">Checkout</a></td>
+                        <td><a href="/transaksi" class="btn btn-primary">Checkout</a></td>
                     </tr>
                 </tbody>
             </table>

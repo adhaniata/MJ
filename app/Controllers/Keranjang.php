@@ -48,7 +48,7 @@ class Keranjang extends BaseController
                 return redirect()->to(base_url('/keranjang'));
             } else {
                 session()->setFlashdata('pesan', 'Stok produk kurang');
-                return redirect()->to(base_url('/produk/'.$cek_stok['slug_produk']));
+                return redirect()->to(base_url('/produk/' . $cek_stok['slug_produk']));
             }
         } else {
             // ambil qty yang ada ditable keranjang punyanya user, terus tambahkan dengan qty yang diinputkan
@@ -58,14 +58,14 @@ class Keranjang extends BaseController
             // kondisi jika jumlah qty kecil data jumlah stok yang tersedia
             if ($total_qty <= $cek_stok['stok']) {
                 // update qty yang ada dikeranjang punya user
-                $this->keranjangModel->update($row['id_keranjang'],[
+                $this->keranjangModel->update($row['id_keranjang'], [
                     'qty' => $total_qty,
                     'subtotal_harga' => $total_harga * $total_qty
                 ]);
                 return redirect()->to(base_url('/keranjang'));
             } else {
                 session()->setFlashdata('pesan', 'Stok produk kurang');
-                return redirect()->to(base_url('/produk/'.$cek_stok['slug_produk']));
+                return redirect()->to(base_url('/produk/' . $cek_stok['slug_produk']));
             }
         }
     }

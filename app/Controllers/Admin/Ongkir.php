@@ -161,7 +161,7 @@ class Ongkir extends BaseController
         if ($ongkirLama['kota'] == $this->request->getVar('kota')) {
             $rule_kota = 'required';
         } else {
-            $rule_kota = 'required|is_unique[ongkir.provinsi]';
+            $rule_kota = 'required|is_unique[ongkir.kota]';
         }
 
 

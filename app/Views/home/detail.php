@@ -80,7 +80,7 @@
                                 <input type="hidden" name="id_produk" value="<?= $produk['id_produk'] ?>">
                                 <input type="hidden" name="total_harga" value="<?= $produk['harga_produk'] ?>">
                                 <label>Qty</label>
-                                <input type="number" name="qty" value="1" min="1" style="width: 50px;">
+                                <input type="number" name="qty" value="1" min="1" max="<?= $produk['stok']; ?>" style="width: 50px;">
                                 <button class="btn btn-warning" type="submit">Masukan ke Keranjang</button>
                             </form>
                             <a href="/" class="btn btn-dark">Kembali Ke Home</a>

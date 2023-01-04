@@ -16,7 +16,7 @@
                     <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Keranjang</a>
+                    <a class="nav-link" href="/keranjang"><i class="fa-solid fa-cart-shopping"></i> Keranjang</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.php"><i class="fa-solid fa-user"></i> Login</a>
@@ -71,7 +71,7 @@
                         <tr>
                             <th scope="row"><?= $i++; ?></th>
                             <td><?= $o['id_ongkir']; ?></td>
-                            <td><?= $o['provinsi']; ?></td>
+                            <td><?= $o['kota']; ?></td>
                             <td><?= $o['harga']; ?></td>
                             <td><a href="/ongkir/<?= $o['slug']; ?>" class="btn btn-dark">Detail</a> </td>
                         </tr>

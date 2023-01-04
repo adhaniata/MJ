@@ -61,7 +61,6 @@
                         </div>
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
-
                                 <form>
 
                                     <div class="d-flex align-items-center mb-3 pb-1">
@@ -93,6 +92,7 @@
                                     <div class="pt-1 mb-4">
                                         <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
                                     </div>
+
 
                                     <!--<a class="small text-muted" href="#!">Forgot password?</a>-->
                                     <p class="mb-5 pb-lg-2" style="color: #393f81;">Already have an account? login now <a href="login.php" style="color: #393f81;">Login here</a></p>

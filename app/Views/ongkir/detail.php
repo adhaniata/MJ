@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $ongkir['provinsi']; ?></h5>
+                            <h5 class="card-title"><?= $ongkir['kota']; ?></h5>
                             <p class="card-text">Dikirim dengan J&T Express: Reguler</p>
                             <p class="card-text">Biaya : <?= $ongkir['harga']; ?> Rupiah</p>
                             <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
