@@ -25,7 +25,7 @@
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item" href="/admin/kategori">Kategori</a></li>
                             <li><a class="dropdown-item" href="/admin/produk">Produk</a></li>
-                            <li><a class="dropdown-item" href="#">Transaksi</a></li>
+                            <li><a class="dropdown-item" href="/admin/transaksi">Transaksi</a></li>
                             <li><a class="dropdown-item" href="#">Pendapatan</a></li>
                             <li><a class="dropdown-item" href="/admin/ongkir">Ongkir</a></li>
                             <li><a class="dropdown-item" href="#">Chatbot</a></li>
@@ -43,7 +43,6 @@
         </div>
     </div>
 </nav>
-<br><br>
 <!--isi-->
 <!--slide gambar-->
 <center>

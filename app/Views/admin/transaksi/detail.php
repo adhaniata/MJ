@@ -1,7 +1,6 @@
 <?= $this->extend('Layout/template'); ?>
 <?= $this->section('content'); ?>
 
-<!--navbar-->
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="/img/Artboard 1.png" alt="Bootstrap" width="40" height="34">MJ Sport</a>
@@ -43,48 +42,82 @@
         </div>
     </div>
 </nav>
-<br><br><br>
 
 <!--isi-->
-<!--tabel-->
 <div class="container">
     <div class="row">
         <div class="col">
-            <table class="table">
-                <a href="/admin/ongkir/create" class="btn btn-primary mt-4">Tambah Data Ongkir</a>
-                <h2 class="mt-3 mb-4">Daftar Biaya Pengiriman</h2>
-                <?php if (session()->getFlashdata('pesan')) : ?>
-                    <dif class="alert alert-success" role="alert">
-                        <?= session()->getFlashdata('pesan'); ?>
-                    </dif>
-                <?php endif ?>
+            <h2 class="mt-3">Detail Transaksi</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-md-4 form-label">Nama</label>
+                        <div class="col-md-8">
+                            <input type="text" name="" value="<?= $transaksi['nama'] ?>" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <div class="form-group row">
+                        <label class="col-md-4 form-label">Telp</label>
+                        <div class="col-md-8">
+                            <input type="text" name="" value="<?= $transaksi['telp'] ?>" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-2 mb-2">
+                    <div class="form-group row">
+                        <label class="col-md-4 form-label">Alamat</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" readonly><?= $transaksi['alamat'] ?></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
                 <?php $i = 1; ?>
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">ID Ongkir</th>
-                        <th scope="col">Provinsi</th>
-                        <th scope="col">Harga (Rupiah)</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col">Nama Produk</th>
+                        <th scope="col">Gambar</th>
+                        <th scope="col">Harga</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Jumlah Harga (Rupiah)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($ongkir as $key => $value) : ?>
+                    <?php $subtotal = 0; ?>
+                    <?php foreach ($transaksi_detail as $td): 
+                        $subtotal += $td['subtotal_harga']  ?>
                         <tr>
-                            <th scope="row"><?= $i++; ?></th>
-                            <td><?= $value['id_ongkir']; ?></td>
-                            <td><?= $value['kota']; ?></td>
-                            <td><?= $value['harga']; ?></td>
-                            <td><a href="/admin/ongkir/<?= $value['slug']; ?>" class="btn btn-dark">Detail</a> </td>
+                            <th><?= $i++ ?></th>
+                            <td><?= $td['nama_produk'] ?></td>
+                            <td><img src="/img/produk/<?= $td['gambar']; ?>" width="100"> </td>
+                            <td><?= $td['total_harga'] ?></td>
+                            <td><?= $td['qty'] ?></td>
+                            <td><?= $td['subtotal_harga'] ?></td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endforeach ?>
+                    <tr class="table-info">
+                        <th scope="row" colspan="5">Total Harga</th>
+                        <td><?= $subtotal ?></td>
+                    </tr>
+                    <tr class="table-info">
+                        <th scope="row" colspan="5">Total Ongkir</th>
+                        <td><?= $transaksi['ongkir'] ?></td>
+                    </tr>
+                    <tr class="table-info">
+                        <th scope="row" colspan="5">Total Pembayaran</th>
+                        <td><?= $transaksi['ongkir'] + $subtotal ?></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
-
+<br><br>
+<br><br><br><br><br>
 </body>
 
 </html>

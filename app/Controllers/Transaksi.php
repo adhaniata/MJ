@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 //use App\Models\TransaksiModel;
-use App\Models\{KeranjangModel, ProdukModel, TransaksiModel, OngkirModel};
+use App\Models\{KeranjangModel, ProdukModel, TransaksiModel, OngkirModel, TransaksiDetailModel};
 
 class Transaksi extends BaseController
 {
@@ -14,45 +14,25 @@ class Transaksi extends BaseController
         $this->keranjangModel = new KeranjangModel();
         $this->produkModel = new ProdukModel();
         $this->ongkirModel = new OngkirModel();
+        $this->transaksiDetailModel = new TransaksiDetailModel();
     }
     public function index()
     {
         $data = [
-            'title' => 'Form Pembelian|MJ Sport Collection',
-            'transaksi' => $this->transaksiModel->getTransaksi(),
-            'listKota' => $this->transaksiModel->get_listOngkir(),
-            'keranjang' => $this->keranjangModel->getKeranjang(),
-            'ongkir' => $this->ongkirModel->getOngkir(),
+            'title' => 'Transaksi Saya |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->where('id_userFK', user_id())->get()->getResultArray(),
             'validation' => \Config\Services::validation()
         ];
-        //bingung ka
-        
-        $produk = $this->request->getVar('id_produk');
-        $qty = $this->request->getVar('qty');
-        $total_harga = $this->request->getVar('total_harga');
-
-        $biaya_ongkir = $this->transaksiModel->where(['id_ongkirFK => id_ongkir'])
-
-        // cek keranjang user, apakah ada atau tidak
-        $cek_keranjang = $this->keranjangModel->where(['id_userFK' => user_id(), 'id_produkFK' => $produk]);
-        // ambil qty yang ada ditable keranjang punyanya user, terus tambahkan dengan qty yang diinputkan
-        $row = $cek_keranjang->first();
-        $total_qty = $qty + $row['qty'];
 
         return view('transaksi/index', $data);
     }
+
     public function save()
     {
         //validasi input (sebelum save alangkah lebih baik memvalidaasi)
         if (!$this->validate([
 
             //untuk menampilkan bahasa error yang kita inginkan
-            'id_ongkirFK' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi.'
-                ]
-            ],
             'nama' => [
                 'rules' => 'required',
                 'errors' => [
@@ -70,28 +50,55 @@ class Transaksi extends BaseController
                 'errors' => [
                     'required' => '{field} harus diisi.'
                 ]
-            ],
-            'total_tagihan' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi.'
-                ]
             ]
         ])) {
             //$validation = \Config\Services::validation();  //kata ka sandika ini gausa karena dah ada di session
             //return redirect()->to(base_url('admin/ongkir/create'))->withInput()->with('validation', $validation); //yang ini katanya sampai di withInput() aja karena data sudah kekirim
-            return redirect()->to(base_url('/transaksi'))->withInput();
+            return redirect()->to(base_url('/keranjang/checkout'))->withInput();
         } else {
             //untuk savenya
-            $this->transaksiModel->save([
-                'id_ongkirFK' => $this->request->getVar('id_ongkirFK'),
+            $transaksi = $this->transaksiModel->save([
+                'id_userFK' => user_id(),
+                'ongkir' => $this->request->getVar('ongkos_kirim'),
                 'nama' => $this->request->getVar('nama'),
                 'telp' => $this->request->getVar('telp'),
                 'alamat' => $this->request->getVar('alamat'),
-                'total_tagihan' => $this->request->getVar('total_tagihan')
+                'total_tagihan' => $this->request->getVar('total_tagihan'),
+                'status_pembayaran' => 'MENUNGGU PEMBAYARAN',
             ]);
+
+            // ambil keranjang user
+            $keranjang = $this->keranjangModel->where('id_userFK',user_id())->join('produk', 'produk.id_produk = keranjang.id_produkFK')->get()->getResultArray();
+
+            // masukkan data keranjang ke dalam table transaksi detail
+            foreach ($keranjang as $k) {
+                $transaksi_detail = $this->transaksiDetailModel->save([
+                    'id_transaksiFK' => $this->transaksiModel->getInsertID(),
+                    'id_produkFK' => $k['id_produkFK'],
+                    'total_harga' => $k['total_harga'],
+                    'qty' => $k['qty'],
+                    'subtotal_harga' => $k['subtotal_harga']
+                ]);
+
+                // update stok produk yang sudah terjual
+                $this->produkModel->where('id_produk', $k['id_produkFK'])->decrement('stok', $k['qty']);
+            }
+
+            // delete keranjang user
+            $this->keranjangModel->where('id_userFK', user_id())->delete();
+
             session()->setFlashdata('pesan', 'Data Membuat Pesanan, Silahkan Bayar Sesuai Nominal dan Sertakan Bukti Pembayaran');
-            return redirect()->to(base_url('/keranjang'));
+            return redirect()->to(base_url('/transaksi'));
         }
+    }
+
+    public function detail($id){
+        $data = [
+            'title' => 'Transaksi Detail |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->find($id),
+            'transaksi_detail' => $this->transaksiDetailModel->where('id_transaksiFK', $id)->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK')->get()->getResultArray(),
+        ];
+
+        return view('transaksi/detail', $data);
     }
 }

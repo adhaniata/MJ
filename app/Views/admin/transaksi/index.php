@@ -1,7 +1,7 @@
 <?= $this->extend('Layout/template'); ?>
 <?= $this->section('content'); ?>
 
-<!--navbar-->
+<!--nav-->
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="/img/Artboard 1.png" alt="Bootstrap" width="40" height="34">MJ Sport</a>
@@ -43,41 +43,42 @@
         </div>
     </div>
 </nav>
-<br><br><br>
+
 
 <!--isi-->
 <!--tabel-->
+<br><br>
 <div class="container">
     <div class="row">
         <div class="col">
-            <table class="table">
-                <a href="/admin/ongkir/create" class="btn btn-primary mt-4">Tambah Data Ongkir</a>
-                <h2 class="mt-3 mb-4">Daftar Biaya Pengiriman</h2>
-                <?php if (session()->getFlashdata('pesan')) : ?>
-                    <dif class="alert alert-success" role="alert">
-                        <?= session()->getFlashdata('pesan'); ?>
-                    </dif>
-                <?php endif ?>
+            <h2 class="mt-3">Transaksi</h2>
+            <table class="table table-bordered">
                 <?php $i = 1; ?>
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">ID Ongkir</th>
-                        <th scope="col">Provinsi</th>
-                        <th scope="col">Harga (Rupiah)</th>
+                        <th scope="col">Id Transaksi</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Total Tagihan</th>
+                        <th scope="col">Status Pembayaran</th>
+                        <th scope="col">Tanggal Transaksi</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($ongkir as $key => $value) : ?>
+                    <?php foreach ($transaksi as $t): ?>
                         <tr>
-                            <th scope="row"><?= $i++; ?></th>
-                            <td><?= $value['id_ongkir']; ?></td>
-                            <td><?= $value['kota']; ?></td>
-                            <td><?= $value['harga']; ?></td>
-                            <td><a href="/admin/ongkir/<?= $value['slug']; ?>" class="btn btn-dark">Detail</a> </td>
+                            <th><?= $i++ ?></th>
+                            <td><?= $t['id_transaksi'] ?></td>
+                            <td><?= $t['nama'] ?></td>
+                            <td><?= $t['total_tagihan'] ?></td>
+                            <td><?= $t['status_pembayaran'] ?></td>
+                            <td><?= $t['created_at'] ?></td>
+                            <td>
+                                <a href="/admin/transaksi/<?= $t['id_transaksi'] ?>" class="btn btn-info">Detail</a>
+                            </td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>

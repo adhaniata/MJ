@@ -64,19 +64,27 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('kategori/edit/(:any)', 'Admin\Kategori::edit/$1');
     $routes->post('kategori/update/(:num)', 'Admin\Kategori::update/$1');
     $routes->delete('kategori/delete/(:num)', 'Admin\Kategori::delete/$1');
+
+    $routes->get('transaksi', 'Admin\transaksi::index');
+    $routes->get('transaksi/(:num)', 'Admin\transaksi::detail/$1');
 });
 
 //hak akses untuk user
 $routes->group('', ['filter' => 'role:user'], function ($routes) {
     $routes->get('/', 'Home::index');
     $routes->get('keranjang', 'Keranjang::index');
-    $routes->delete('keranjang/(:num)', 'Keranjang::hapusBarang/$1');
+    $routes->post('keranjang/update/(:num)', 'Keranjang::update/$1');
+    $routes->get('keranjang/delete/(:num)', 'Keranjang::delete/$1');
     $routes->post('keranjang/tambah-keranjang', 'Keranjang::tambahKeranjang');   //niatnya keranjang/id_usernya
+
+    $routes->get('keranjang/checkout', 'Keranjang::checkout');
 
     $routes->get('ongkir', 'Ongkir::index');
     $routes->get('ongkir/(:any)', 'Ongkir::detail/$1');
 
     $routes->get('transaksi', 'Transaksi::index');
+    $routes->post('transaksi/save', 'Transaksi::save');
+    $routes->get('transaksi/(:num)', 'Transaksi::detail/$1');
 });
 
 /*
