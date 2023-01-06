@@ -11,7 +11,7 @@
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                             <div class="card-body p-10 p-lg-5 text-black">
                                 <form action="/transaksi/save" method="post">
-                                <?= csrf_field(); ?>
+                                    <?= csrf_field(); ?>
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <span class="h1 fw-bold mb-0"> <img src="/img/Artboard 1.png" width="70" height="64">MJ Sport</span>
                                     </div>
@@ -130,17 +130,17 @@
             </div>
         </div>
     </div>
-</section><br><br><br><br><br><br><br><br><br><br><br>
+</section><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function() {
         var total_harga = $('#total_harga').text();
-        var ongkir = $('#id_ongkirFK').val();
+        var ongkir = $('#ongkos_kirim').val();
         var hitung = parseInt(total_harga) + parseInt(ongkir);
 
         $('#biaya_pengiriman').text(ongkir);
         $('#total_tagihan').val(hitung);
 
-        $('#id_ongkirFK').on('change', function(){
+        $('#ongkos_kirim').on('change', function() {
             var ongkir = $(this).val();
             var hitung = parseInt(total_harga) + parseInt(ongkir);
 

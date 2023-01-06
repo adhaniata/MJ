@@ -68,7 +68,7 @@ class Transaksi extends BaseController
             ]);
 
             // ambil keranjang user
-            $keranjang = $this->keranjangModel->where('id_userFK',user_id())->join('produk', 'produk.id_produk = keranjang.id_produkFK')->get()->getResultArray();
+            $keranjang = $this->keranjangModel->where('id_userFK', user_id())->join('produk', 'produk.id_produk = keranjang.id_produkFK')->get()->getResultArray();
 
             // masukkan data keranjang ke dalam table transaksi detail
             foreach ($keranjang as $k) {
@@ -92,7 +92,8 @@ class Transaksi extends BaseController
         }
     }
 
-    public function detail($id){
+    public function detail($id)
+    {
         $data = [
             'title' => 'Transaksi Detail |MJ Sport Collection',
             'transaksi' => $this->transaksiModel->find($id),
@@ -100,5 +101,10 @@ class Transaksi extends BaseController
         ];
 
         return view('transaksi/detail', $data);
+    }
+    public function delete($id)
+    {
+        $this->transaksiModel->delete($id);
+        return redirect()->to(base_url('/transaksi'));
     }
 }

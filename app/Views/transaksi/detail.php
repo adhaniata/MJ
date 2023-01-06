@@ -15,11 +15,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mt-2">
+                <div class="col-md-6">
                     <div class="form-group row">
-                        <label class="col-md-4 form-label">Telp</label>
+                        <label class="col-md-4 form-label">No Resi</label>
                         <div class="col-md-8">
-                            <input type="text" name="" value="<?= $transaksi['telp'] ?>" class="form-control" readonly>
+                            <input type="text" name="" value="<?= $transaksi['no_resi'] ?>" class="form-control" readonly>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,32 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 mt-2 mb-2">
+                    <div class="form-group row">
+                        <label class="col-md-4 form-label">Status Pembayaran</label>
+                        <div class="col-md-8">
+                            <input type="text" name="" value="<?= $transaksi['status_pembayaran'] ?>" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-2 mb-2">
+                    <div class="form-group row">
+                        <label class="col-md-4 form-label">Telepon</label>
+                        <div class="col-md-8">
+                            <input type="text" name="" value="<?= $transaksi['telp'] ?>" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-2 mb-2">
+                    <div class="form-group row">
+                        <label class="col-md-4 form-label">Status Pengiriman</label>
+                        <div class="col-md-8">
+                            <input type="text" name="" value="<?= $transaksi['status_pengiriman'] ?>" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <br>
             <table class="table table-bordered">
                 <?php $i = 1; ?>
                 <thead>
@@ -46,7 +71,7 @@
                 </thead>
                 <tbody>
                     <?php $subtotal = 0; ?>
-                    <?php foreach ($transaksi_detail as $td): 
+                    <?php foreach ($transaksi_detail as $td) :
                         $subtotal += $td['subtotal_harga']  ?>
                         <tr>
                             <th><?= $i++ ?></th>

@@ -1,0 +1,36 @@
+CRITICAL - 2023-01-06 07:49:19 --> Undefined variable $produk
+in APPPATH\Views\admin\transaksi\edit.php on line 64.
+ 1 APPPATH\Views\admin\transaksi\edit.php(64): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $produk', 'APPPATH\\Views\\admin\\transaksi\\edit.php', 64)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\transaksi\\edit.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/transaksi/edit', [], true)
+ 5 APPPATH\Controllers\Admin\Transaksi.php(43): view('admin/transaksi/edit', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Transaksi->edit('2')
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Transaksi))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-06 08:37:13 --> Trying to access array offset on value of type null
+in APPPATH\Views\admin\transaksi\konfirmasi.php on line 55.
+ 1 APPPATH\Views\admin\transaksi\konfirmasi.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Views\\admin\\transaksi\\konfirmasi.php', 55)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\transaksi\\konfirmasi.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/transaksi/konfirmasi', [], true)
+ 5 APPPATH\Controllers\Admin\Transaksi.php(94): view('admin/transaksi/konfirmasi', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Transaksi->konfirmasi('4')
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Transaksi))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-06 08:37:44 --> Undefined variable $konfirmasi
+in APPPATH\Views\admin\transaksi\konfirmasi.php on line 55.
+ 1 APPPATH\Views\admin\transaksi\konfirmasi.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $konfirmasi', 'APPPATH\\Views\\admin\\transaksi\\konfirmasi.php', 55)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\transaksi\\konfirmasi.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/transaksi/konfirmasi', [], true)
+ 5 APPPATH\Controllers\Admin\Transaksi.php(94): view('admin/transaksi/konfirmasi', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Transaksi->konfirmasi('4')
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Transaksi))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

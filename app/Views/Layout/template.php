@@ -38,6 +38,18 @@
                 imgPreview.src = e.target.result;
             }
         }
+
+        function previewImgBukti() {
+            const gambarBukti = document.querySelector('#gambarBukti');
+            const gambarBuktiLabel = document.querySelector('.form-label')
+            const imgPreview = document.querySelector('.img-preview');
+            gambarBuktiLabel.textContent = gambarBukti.files[0].name;
+            const fileGambar = new FileReader();
+            fileGambar.readAsDataURL(gambarBukti.files[0]);
+            fileGambar.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
     </script>
 
 <body>

@@ -51,7 +51,12 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2 class="mt-3">Transaksi</h2>
+            <h2>Transaksi</h2>
+            <?php if (session()->getFlashdata('pesan')) : ?>
+                <dif class="alert alert-success" role="alert">
+                    <?= session()->getFlashdata('pesan'); ?>
+                </dif>
+            <?php endif ?>
             <table class="table table-bordered">
                 <?php $i = 1; ?>
                 <thead>
@@ -61,21 +66,27 @@
                         <th scope="col">Nama</th>
                         <th scope="col">Total Tagihan</th>
                         <th scope="col">Status Pembayaran</th>
+                        <th scope="col">No Resi</th>
+                        <th scope="col">Status Pengiriman</th>
                         <th scope="col">Tanggal Transaksi</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($transaksi as $t): ?>
+                    <?php foreach ($transaksi as $t) : ?>
                         <tr>
                             <th><?= $i++ ?></th>
                             <td><?= $t['id_transaksi'] ?></td>
                             <td><?= $t['nama'] ?></td>
                             <td><?= $t['total_tagihan'] ?></td>
                             <td><?= $t['status_pembayaran'] ?></td>
+                            <td><?= $t['no_resi'] ?></td>
+                            <td><?= $t['status_pengiriman'] ?></td>
                             <td><?= $t['created_at'] ?></td>
                             <td>
-                                <a href="/admin/transaksi/<?= $t['id_transaksi'] ?>" class="btn btn-info">Detail</a>
+                                <a href="/admin/transaksi/<?= $t['id_transaksi'] ?>" class="btn btn-info">Detail</a><br><br>
+                                <a href="/admin/transaksi/edit/<?= $t['id_transaksi'] ?>" class="btn btn-warning">Edit</a><br><br>
+                                <a href="/admin/transaksi/konfirmasi/<?= $t['id_transaksi'] ?>" class="btn btn-dark">Konfirmasi Pembayaran</a>
                             </td>
                         </tr>
                     <?php endforeach ?>

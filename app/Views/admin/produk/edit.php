@@ -63,7 +63,6 @@
                     <label for="id_kategoriFK" class="col-sm-2 col-form-label">Kategori Produk</label>
                     <div class="col-sm-10">
                         <select class="form-select <?= ($validation->hasError('id_kategoriFK')) ? 'is-invalid' : ''; ?>" name="id_kategoriFK" id="id_kategoriFK" aria-label="Default select example" value="<?= (old('id_kategoriFK')) ? old('id_kategoriFK') : $produk['id_kategoriFK'] ?>">
-                            <option selected>Pilih Kategori Produk (WAJIB)</option>
                             <?php foreach ($listKategori as $lk) {
                                 echo '<option value="' . $lk['id_kategori'] . '" ' . ($produk['id_kategoriFK'] == $lk['id_kategori'] ? 'selected' : '') . '>' . $lk['nama_kategori'] . '</option>';
                             } ?>

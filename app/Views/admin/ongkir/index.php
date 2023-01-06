@@ -51,7 +51,8 @@
     <div class="row">
         <div class="col">
             <table class="table">
-                <a href="/admin/ongkir/create" class="btn btn-primary mt-4">Tambah Data Ongkir</a>
+                <a href="/admin/ongkir/create" class="btn btn-primary mt-1 mr-1">Tambah Data Ongkir</a>
+                <a href="/admin" class="btn btn-dark ml-1 mt-1">Kembali</a>
                 <h2 class="mt-3 mb-4">Daftar Biaya Pengiriman</h2>
                 <?php if (session()->getFlashdata('pesan')) : ?>
                     <dif class="alert alert-success" role="alert">
