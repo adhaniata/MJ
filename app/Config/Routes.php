@@ -72,6 +72,11 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
 
     $routes->get('transaksi/konfirmasi/(:num)', 'Admin\transaksi::konfirmasi/$1');
     $routes->post('transaksi/konfirmasi/update/(:num)', 'Admin\transaksi::updateKonfirmasi/$1');
+
+    $routes->get('akun/profil', 'Admin\Akun::profil');
+    $routes->post('akun/update-profil', 'Admin\Akun::update_profil');
+    $routes->get('akun/password', 'Admin\Akun::password');
+    $routes->post('akun/update-password', 'Admin\Akun::update_password');
 });
 
 //hak akses untuk user
@@ -93,6 +98,11 @@ $routes->group('', ['filter' => 'role:user'], function ($routes) {
     $routes->get('transaksi/delete/(:num)', 'Transaksi::delete/$1');
     $routes->get('transaksi/konfirmasi/(:num)', 'Konfirmasi::index/$1');
     $routes->post('transaksi/konfirmasi/save', 'Konfirmasi::save');
+
+    $routes->get('akun/profil', 'Akun::profil');
+    $routes->post('akun/update-profil', 'Akun::update_profil');
+    $routes->get('akun/password', 'Akun::password');
+    $routes->post('akun/update-password', 'Akun::update_password');
 });
 
 /*

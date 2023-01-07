@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\{KeranjangModel, ProdukModel, OngkirModel};
+use App\Models\{KeranjangModel, ProdukModel, OngkirModel, UsersModel};
 
 class Keranjang extends BaseController
 {
@@ -12,6 +12,7 @@ class Keranjang extends BaseController
         $this->keranjangModel = new KeranjangModel();
         $this->produkModel = new ProdukModel();
         $this->ongkirModel = new OngkirModel();
+        $this->userModel = new UsersModel();
     }
 
     public function index()
@@ -109,7 +110,8 @@ class Keranjang extends BaseController
             'keranjang' => $this->keranjangModel->where('id_userFK',user_id())->join('produk', 'produk.id_produk = keranjang.id_produkFK')->get()->getResultArray(),
             'count' => $this->keranjangModel->where('id_userFK',user_id())->countAllResults(),
             'ongkir' => $this->ongkirModel->findAll(),
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'user' => $this->userModel->find(user_id())
         ];
         return view('keranjang/checkout', $data);
     }

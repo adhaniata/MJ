@@ -85,13 +85,13 @@
                     <?php if (logged_in() == false) {
                         echo '
                         <li class="nav-item">
-                        <a class="nav-link" href="/login"><i class="fa-solid fa-user"></i> Login</a>
+                        <a class="nav-link" href="/login"><i class="fa-solid fa-sign-in"></i> Login</a>
                         </li>
                         ';
                     } else {
                         echo '
                         <li class="nav-item">
-                            <a class="nav-link" href="' . base_url('logout') . '"><i class="fa-solid fa-user"></i> Logout</a>
+                            <a class="nav-link" href="' . base_url('logout') . '"><i class="fa-solid fa-sign-out"></i> Logout</a>
                         </li>
                         ';
                     } ?>
@@ -114,8 +114,18 @@
                     <?php if (logged_in() == true && in_groups('user')) {
                         echo '
                         <li class="nav-item">
-                        <a class="nav-link" href="/transaksi"><i class="fa-solid"></i> Transaksi Saya</a>
-                        </li>';
+                            <a class="nav-link" href="/transaksi"><i class="fa-solid"></i> Transaksi Saya</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user"></i>
+                                Akun
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/akun/profil">Profil</a></li>
+                                <li><a class="dropdown-item" href="/akun/password">Ubah Password</a></li>
+                            </ul>
+                        </li>
+                        ';
                     } ?>
 
                     <?php if (in_groups('admin')) {

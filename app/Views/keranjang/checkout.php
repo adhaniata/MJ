@@ -20,11 +20,11 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="nama">Nama Lengkap</label>
-                                        <input type="text" id="nama" name="nama" class="form-control" />
+                                        <input type="text" id="nama" name="nama" value="<?= $user['nama'] ?>" class="form-control" />
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="telp">No Telepon Aktif</label>
-                                        <input type="text" id="telp" name="telp" class="form-control" />
+                                        <input type="text" id="telp" name="telp" value="<?= $user['telp'] ?>" class="form-control" />
                                     </div>
 
                                     <div class="form-outline mb-4">
@@ -44,7 +44,7 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="alamat">Alamat Lengkap</label>
-                                        <textarea name="alamat" id="alamat" class="form-control"></textarea>
+                                        <textarea name="alamat" id="alamat" class="form-control"><?= $user['alamat'] ?></textarea>
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="rincian">Detail Tagihan</label>

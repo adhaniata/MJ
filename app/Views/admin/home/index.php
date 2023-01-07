@@ -31,6 +31,15 @@
                             <li><a class="dropdown-item" href="#">Chatbot</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-bars-progress"></i> Akun
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="/admin/akun/profil">Profil</a></li>
+                            <li><a class="dropdown-item" href="/admin/akun/password">Ubah Password</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('logout') ?>"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </li>
