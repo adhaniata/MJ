@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Models\{TransaksiModel, TransaksiDetailModel, KonfirmasiModel};
 use App\Controllers\BaseController;
+use Dompdf\Dompdf;
 
 class Transaksi extends BaseController
 {
@@ -18,7 +19,8 @@ class Transaksi extends BaseController
     {
         $data = [
             'title' => 'Daftar Transaksi |MJ Sport Collection',
-            'transaksi' => $this->transaksiModel->findAll()
+            'transaksi' => $this->transaksiModel->findAll(),
+            'count' => $this->transaksiModel->countAllResults()
         ];
         return view('admin/transaksi/index', $data);
     }
@@ -83,6 +85,13 @@ class Transaksi extends BaseController
             return redirect()->to(base_url('/admin/transaksi'));
         }
     }
+    public function delete($id)
+    {
+        $transaksi = $this->transaksiModel->find($id);
+        $this->transaksiModel->delete($id);
+        session()->setFlashdata('pesan', 'Data Berhasil dihapus');
+        return redirect()->to(base_url('/admin/transaksi'));
+    }
     public function konfirmasi($id)
     {
         helper('form');
@@ -96,6 +105,13 @@ class Transaksi extends BaseController
     public function updateKonfirmasi($id)
     {
         helper('form');
+        $data = [
+            'title' => 'Form Konfirmasi Pembayaran',
+            'validation' => \Config\Services::validation(),
+            'transaksi' => $this->transaksiModel->find($id),
+            'konfirmasi' => $this->konfirmasiModel->find($id)
+        ];
+        return view('admin/transaksi/konfirmasi', $data);
         //validasi input
         if (!$this->validate([
             'validasi' => [
@@ -115,5 +131,49 @@ class Transaksi extends BaseController
             session()->setFlashdata('pesan', 'Data Berhasil Di Ubah');
             return redirect()->to(base_url('/admin/transaksi'));
         }
+    }
+    public function printall()
+    {
+        $data = [
+            'title' => 'Daftar Transaksi |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->findAll(),
+            'count' => $this->transaksiModel->countAllResults()
+        ];
+        return view('admin/transaksi/printall', $data);
+    }
+    public function printdetail($id)
+    {
+        $data = [
+            'title' => 'Transaksi Detail |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->find($id),
+            'transaksi_detail' => $this->transaksiDetailModel->where('id_transaksiFK', $id)->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK')->get()->getResultArray(),
+        ];
+        return view('admin/transaksi/printdetail', $data);
+    }
+    public function exportPDF()
+    {
+        $data = [
+            'title' => 'Daftar Transaksi |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->findAll(),
+            'count' => $this->transaksiModel->countAllResults()
+        ];
+
+        $view = view('admin/transaksi/export-pdf', $data);
+
+        //untuk dompdf
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($view);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream("Laporan Penjualan MJ Sport", array("Attachment" => false));
+    }
+    public function exportExcel()
+    {
     }
 }

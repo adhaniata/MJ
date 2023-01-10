@@ -7,9 +7,13 @@
         <div class="col-8">
             <h2 class="mt-3">Profil</h2>
             <div class="card">
+                <div class="card-header bg-success text-white">
+                    Pastikan Data Profil Anda Terisi dan Benar
+                </div>
                 <div class="card-body">
+                    <img class="rounded-circle mx-auto d-block" src="/img/user.png" width="200px">
                     <form action="/akun/update-profil" method="post">
-                    <?= csrf_field(); ?>
+                        <?= csrf_field(); ?>
                         <div class="form-group row">
                             <label class="col-md-4">Email</label>
                             <div class="col-md-8">

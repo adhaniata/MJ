@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2 class="mt-3">Detail Produk</h2>
+            <h3 class="mt-3">Detail Produk</h3>
             <div class="card mb-3" style="max-width: 1200px;">
                 <div class="row g-0">
                     <div class="col-md-4" class="align-middle">
@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $produk['nama_produk']; ?></h5>
+                            <h5 class="card-title"><b><?= $produk['nama_produk']; ?></b></h5>
                             <p><b>Kategori :</b></p>
                             <p class="card-text"><?= $produk['nama_kategori']; ?></p>
                             <p><b>Deskripsi :</b></p>

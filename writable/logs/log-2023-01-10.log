@@ -1,0 +1,70 @@
+CRITICAL - 2023-01-10 09:53:46 --> Undefined variable $id
+in APPPATH\Controllers\Admin\Transaksi.php on line 148.
+ 1 APPPATH\Controllers\Admin\Transaksi.php(148): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id', 'APPPATH\\Controllers\\Admin\\Transaksi.php', 148)
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Transaksi->printdetail('3')
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Transaksi))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-10 09:54:26 --> Invalid file: admin/transaksi/detail/print.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/transaksi/detail/print.php')
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/transaksi/detail/print', [], true)
+ 3 APPPATH\Controllers\Admin\Transaksi.php(151): view('admin/transaksi/detail/print', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Transaksi->printdetail('3')
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Transaksi))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2023-01-10 10:01:49 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:171
+Stack trace:
+#0 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(171): mysqli->real_connect('localhost', 'root', '', 'tokomj', 3306, '', 0)
+#1 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\Model.php(199): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(true, '1')
+#6 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\myth\auth\src\Authentication\AuthenticationBase.php(130): CodeIgniter\BaseModel->find('1')
+#7 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\myth\auth\src\Authentication\LocalAuthenticator.php(67): Myth\Auth\Authentication\AuthenticationBase->isLoggedIn()
+#8 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\myth\auth\src\Controllers\AuthController.php(107): Myth\Auth\Authentication\LocalAuthenticator->check()
+#9 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\CodeIgniter.php(925): Myth\Auth\Controllers\AuthController->logout()
+#10 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#11 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\skripsi\TokoMJSport\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:215
+Stack trace:
+#0 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\Model.php(199): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\BaseModel.php(525): CodeIgniter\Model->doFind(true, '1')
+#5 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\myth\auth\src\Authentication\AuthenticationBase.php(130): CodeIgniter\BaseModel->find('1')
+#6 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\myth\auth\src\Authentication\LocalAuthenticator.php(67): Myth\Auth\Authentication\AuthenticationBase->isLoggedIn()
+#7 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\myth\auth\src\Controllers\AuthController.php(107): Myth\Auth\Authentication\LocalAuthenticator->check()
+#8 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\CodeIgniter.php(925): Myth\Auth\Controllers\AuthController->logout()
+#9 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#10 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\skripsi\TokoMJSport\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\skripsi\TokoMJSport\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2023-01-10 10:01:49 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+in SYSTEMPATH\Database\BaseConnection.php on line 418.
+ 1 SYSTEMPATH\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `users`.`deleted_at` IS NULL
+AND `users`.`id` = :users.id:', [...], false)
+ 3 SYSTEMPATH\Model.php(199): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(525): CodeIgniter\Model->doFind(true, '1')
+ 5 VENDORPATH\myth\auth\src\Authentication\AuthenticationBase.php(130): CodeIgniter\BaseModel->find('1')
+ 6 VENDORPATH\myth\auth\src\Authentication\LocalAuthenticator.php(67): Myth\Auth\Authentication\AuthenticationBase->isLoggedIn()
+ 7 VENDORPATH\myth\auth\src\Controllers\AuthController.php(107): Myth\Auth\Authentication\LocalAuthenticator->check()
+ 8 SYSTEMPATH\CodeIgniter.php(925): Myth\Auth\Controllers\AuthController->logout()
+ 9 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+10 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

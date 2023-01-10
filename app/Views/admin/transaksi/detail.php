@@ -57,6 +57,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 mt-2 mb-2">
+                    <div class="form-group row">
+                        <label class="col-md-4 form-label">Alamat</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" readonly><?= $transaksi['alamat'] ?></textarea>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-6 mt-2">
                     <div class="form-group row">
                         <label class="col-md-4 form-label">Telp</label>
@@ -67,9 +75,25 @@
                 </div>
                 <div class="col-md-6 mt-2 mb-2">
                     <div class="form-group row">
-                        <label class="col-md-4 form-label">Alamat</label>
+                        <label class="col-md-4 form-label">No Resi</label>
                         <div class="col-md-8">
-                            <textarea class="form-control" readonly><?= $transaksi['alamat'] ?></textarea>
+                            <input type="text" name="" value="<?= $transaksi['no_resi'] ?>" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-2 mb-2">
+                    <div class="form-group row">
+                        <label class="col-md-4 form-label">Status Pembayaran</label>
+                        <div class="col-md-8">
+                            <input type="text" name="" value="<?= $transaksi['status_pembayaran'] ?>" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-2">
+                    <div class="form-group row">
+                        <label class="col-md-4 form-label"></label>
+                        <div class="col-md-8">
+                            <a href="/admin/transaksi/print/<?= $transaksi['id_transaksi'] ?>" class="btn btn-primary me-md-1" target="_blank"><i class="fa-solid fa-print"></i> Print Detail Transaksi</a>
                         </div>
                     </div>
                 </div>
@@ -88,7 +112,7 @@
                 </thead>
                 <tbody>
                     <?php $subtotal = 0; ?>
-                    <?php foreach ($transaksi_detail as $td): 
+                    <?php foreach ($transaksi_detail as $td) :
                         $subtotal += $td['subtotal_harga']  ?>
                         <tr>
                             <th><?= $i++ ?></th>

@@ -95,21 +95,11 @@
                         </li>
                         ';
                     } ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-store"></i>
-                            e-commerce
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="https://www.shopee.co.id/" target="_blank">Shopee</a></li>
-                            <li><a class="dropdown-item" href="https://www.tokopedia.coma/" target="_blank">Tokopedia</a></li>
-                            <li><a class="dropdown-item" href="https://www.lazada.co.id/" target="_blank">Lazada</a></li>
-                        </ul>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa-solid fa-robot"></i> Chatbot</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/ongkir/"><i class="fa-solid fa-robot"></i> Biaya Kirim</a>
+                        <a class="nav-link" href="/ongkir/"><i class="fa-solid fa-truck-fast"></i></i> Biaya Kirim</a>
                     </li>
                     <?php if (logged_in() == true && in_groups('user')) {
                         echo '
@@ -136,10 +126,10 @@
                         ';
                     } ?>
                 </ul>
-                <form class="d-flex pt-2" role="search">
+                <!-- <form class="d-flex pt-2" role="search">
                     <input class="form-control me-2" type="search" placeholder="Cari..." aria-label="Search">
                     <button class="btn btn-outline-light" type="submit">Search</button>
-                </form>
+                </form> -->
             </div>
         </div>
     </nav>
@@ -162,7 +152,8 @@
                         (Except public holiday)<br>
                     </p>
                     <a href="https://wa.me/6281285173625" target="_black" style="color:black"><i class="fa-brands fa-whatsapp"></i> Whatsapp: 081285173625</a> <br>
-                    <a href="#" target="_black" style="color:black"><i class="fa-solid fa-envelope"></i></a> Arifsantoso@gmail.com
+                    <a href="#" target="_black" style="color:black"><i class="fa-solid fa-envelope"></i></a> Arifsantoso@gmail.com <br>
+                    <a href="#" target="_black" style="color:black"><i class="fa-solid fa-store"></i></a> Shopee
                     <p>
 
                     </p>

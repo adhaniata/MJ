@@ -43,14 +43,13 @@
         </div>
     </div>
 </nav>
-<br><br><br>
 
 <!--isi-->
 <!--tabel-->
 <div class="container">
     <div class="row">
         <div class="col">
-            <table class="table">
+            <table class="table table-bordered">
                 <a href="/admin/ongkir/create" class="btn btn-primary mt-1 mr-1">Tambah Data Ongkir</a>
                 <a href="/admin" class="btn btn-dark ml-1 mt-1">Kembali</a>
                 <h2 class="mt-3 mb-4">Daftar Biaya Pengiriman</h2>
@@ -61,7 +60,7 @@
                 <?php endif ?>
                 <?php $i = 1; ?>
                 <thead>
-                    <tr>
+                    <tr class="table-primary">
                         <th scope="col">No</th>
                         <th scope="col">ID Ongkir</th>
                         <th scope="col">Provinsi</th>

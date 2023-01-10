@@ -122,7 +122,7 @@
                                     <?= $validation->getError('gambarBukti'); ?>
                                 </div>
                                 <div class="col-sm-2">
-                                    <img src="/img/produk/produk.png" class="img-thumbnail img-preview">
+                                    <img src="/img/paymentlogo.png" class="img-thumbnail img-preview">
                                 </div>
                             </div>
                         </div>
@@ -136,5 +136,5 @@
         </div>
     </div>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br>
 <?= $this->endSection(); ?>

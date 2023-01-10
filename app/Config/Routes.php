@@ -69,6 +69,11 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('transaksi/(:num)', 'Admin\transaksi::detail/$1');
     $routes->get('transaksi/edit/(:num)', 'Admin\transaksi::edit/$1');
     $routes->post('transaksi/update/(:num)', 'Admin\transaksi::update/$1');
+    $routes->delete('transaksi/delete/(:num)', 'Admin\transaksi::delete/$1');
+    $routes->get('transaksi/printall', 'Admin\transaksi::printall');
+    $routes->get('transaksi/print/(:num)', 'Admin\transaksi::printdetail/$1');
+    $routes->get('transaksi/export-pdf', 'Admin\transaksi::exportPDF');
+    $routes->get('transaksi/export-excel', 'Admin\transaksi::exportExcel');
 
     $routes->get('transaksi/konfirmasi/(:num)', 'Admin\transaksi::konfirmasi/$1');
     $routes->post('transaksi/konfirmasi/update/(:num)', 'Admin\transaksi::updateKonfirmasi/$1');

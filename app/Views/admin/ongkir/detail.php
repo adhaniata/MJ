@@ -43,8 +43,6 @@
         </div>
     </div>
 </nav>
-</nav>
-<br><br><br>
 
 <!--isi-->
 <div class="container">

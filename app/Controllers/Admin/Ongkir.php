@@ -27,6 +27,8 @@ class Ongkir extends BaseController
             'title' => 'Daftar Biaya Kirim|MJ Sport Collection',
             //ongkir' => $ongkir
             'ongkir' => $this->ongkirModel->getOngkir()
+            // 'ongkir' => $this->ongkirModel->paginate(10),
+            // 'pager' => $this->ongkirModel->pager
         ];
         return view('admin/ongkir/index', $data);
     }

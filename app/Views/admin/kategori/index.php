@@ -43,14 +43,13 @@
         </div>
     </div>
 </nav>
-<br><br><br>
 
 <!--isi-->
 <!--tabel-->
 <div class="container">
     <div class="row">
         <div class="col">
-            <table class="table">
+            <table class="table table-bordered">
                 <a href="/admin/kategori/create" class="btn btn-primary mt-4">Tambah Data Kategori</a>
                 <h2 class="mt-3 mb-4">Daftar Kategori Produk</h2>
                 <?php if (session()->getFlashdata('pesan')) : ?>
@@ -60,7 +59,7 @@
                 <?php endif ?>
                 <?php $i = 1; ?>
                 <thead>
-                    <tr>
+                    <tr class="table-primary">
                         <th scope="col">No</th>
                         <th scope="col">ID Kategori</th>
                         <th scope="col">Nama Kategori</th>

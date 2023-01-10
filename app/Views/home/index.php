@@ -27,14 +27,25 @@
 
 <!--produk pajangan-->
 <div class="container">
-    <h3>Kategori Produk</h3>
-    <select class="form-select" aria-label="Default select example">
-        <option selected>ALL</option>
-        <option value="1">Sepatu</option>
-        <option value="2">Pakaian</option>
-        <option value="3">Aksesoris</option>
-    </select><br><br>
+    <div class="input-group">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Cari Produk" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+
     <h2>Produk</h2>
+
+    <div class="input-group">
+        <select class="form-select" name="id_kategoriFK" id="id_kategoriFK" aria-label="Example select with button addon">
+            <option selected>Semua</option>
+            <?php foreach ($listKategori as $lk) {
+                echo '<option value="' . $lk['id_kategori'] . '">' . $lk['nama_kategori'] . '</option>';
+            } ?>
+        </select>
+        <button class="btn btn-outline-dark" type="button">Terapkan Kategori</button>
+    </div></br>
+
     <div class="row row-cols-1 row-cols-md-4 g-4">
         <?php foreach ($produk as $p) : ?>
             <div class="col">

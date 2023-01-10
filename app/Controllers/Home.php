@@ -17,7 +17,8 @@ class Home extends BaseController
         //return view('pages/home');
         $data = [
             'title' => 'Home|MJ Sport Collection',
-            'produk' => $this->produkModel->getProdukAdmin()
+            'produk' => $this->produkModel->getProdukAdmin(),
+            'listKategori' => $this->produkModel->get_listKategori()
         ];
         //echo view('Layout/header', $data);
         return view('home/index', $data);

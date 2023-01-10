@@ -14,10 +14,8 @@
                     (Except public holiday)<br>
                 </p>
                 <a href="https://wa.me/6281285173625" target="_black" style="color:black"><i class="fa-brands fa-whatsapp"></i> Whatsapp: 081285173625</a> <br>
-                <a href="#" target="_black" style="color:black"><i class="fa-solid fa-envelope"></i></a> Arifsantoso@gmail.com
-                <p>
+                <a href="#" target="_blank" style="color:black"><i class="fa-solid fa-envelope"></i></a> Arifsantoso@gmail.com
 
-                </p>
             </div>
             <!--Grid column-->
 
