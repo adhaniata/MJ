@@ -5,10 +5,6 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form action="/transaksi/konfirmasi/save" method="post" enctype="multipart/form-data">
-                <?= csrf_field(); ?>
-                <!--menambahkan input slug bertype hidden-->
-                <input type="hidden" name="id_transaksiFK" value="<?= $transaksi['id_transaksi']; ?>">
                 <div class="d-flex align-items-center mb-3 pb-1">
                     <span class="h1 fw-bold mb-0"> <img src="/img/Artboard 1.png" width="70" height="64">MJ Sport</span>
                 </div>
@@ -110,7 +106,10 @@
                         </tbody>
                     </table>
                 </div>
-                <form>
+
+                <form action="/transaksi/konfirmasi/save" method="post" enctype="multipart/form-data">
+                <?= csrf_field(); ?>
+                <input type="hidden" name="id_transaksi" value="<?= $transaksi['id_transaksi'] ?>">
                     <div class="row mb-3">
                         <label for="gambar" class="col-sm-2 col-form-label">Bukti Transfer</label>
                         <div class="col-sm-10">

@@ -102,9 +102,61 @@ class Transaksi extends BaseController
 
         return view('transaksi/detail', $data);
     }
+
     public function delete($id)
     {
         $this->transaksiModel->delete($id);
         return redirect()->to(base_url('/transaksi'));
+    }
+
+    public function konfirmasi($id){
+        $data = [
+            'title' => 'Konfirmasi Pembayaran|MJ Sport Collection',
+            'validation' => \Config\Services::validation(),
+            'transaksi' => $this->transaksiModel->find($id),
+            'transaksi_detail' => $this->transaksiDetailModel->where('id_transaksiFK', $id)->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK')->get()->getResultArray()
+        ];
+        return view('transaksi/konfirmasi', $data);
+    }
+
+    public function save_konfirmasi(){
+        $id_transaksi = $this->request->getVar('id_transaksi');
+        //validasi input (sebelum save alangkah lebih baik memvalidaasi)
+        if (!$this->validate([
+            'gambarBukti' => [
+                'rules' => 'uploaded[gambarBukti]|max_size[gambarBukti,10240]|is_image[gambarBukti]|mime_in[gambarBukti,image/jpg,image/jpeg,image/png]',
+                //jika wajib upload tambah uploaded[gambar] di rules
+                'errors' => [
+                    'uploaded' => 'Pilih Gambar Terlebih dahulu',
+                    'max_size' => 'Ukuran Gambar Terlalu Besar',
+                    'is_image' => 'Yang Anda Pilih Bukan Gambar',
+                    'mime_in' => 'Yang Anda Pilih Bukan Gambar (Hanya jpg. jpeg. dan png.)'
+                ]
+            ],
+        ])) {
+            return redirect()->to(base_url('/transaksi/konfirmasi/'.$id_transaksi))->withInput();
+        } else {
+            //ambil gambar
+            $fileGambar = $this->request->getFile('gambarBukti');
+
+            //generate nama gambar random
+            $namaGambar = $fileGambar->getRandomName();
+            //pindahkan ke folder
+            $fileGambar->move('img/bukti', $namaGambar);
+
+            // helper('date');
+            // $now = date('Y-m-d H:i:s');
+            //$dnow = "%Y-%M-%d %H:%i";
+
+            //$myTime = Time::today('Asia/Jakarta');
+
+            //untuk savenya
+            $this->transaksiModel->update($id_transaksi, [
+                'bukti_konfirmasi' => $namaGambar,
+                'tgl_konfirmasi' => date('Y-m-d H:i:s')
+            ]);
+            session()->setFlashdata('pesan', 'Konfirmasi Berhasil Ditambahkan, Mohon Menunggu Validasi');
+            return redirect()->to(base_url('/transaksi'));
+        }
     }
 }

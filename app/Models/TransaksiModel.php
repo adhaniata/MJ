@@ -9,7 +9,7 @@ class TransaksiModel extends Model
     protected $table = 'transaksi';
     protected $primaryKey = 'id_transaksi';
     protected $useTimestamps = true;
-    protected $allowedFields = ['id_userFK', 'nama', 'alamat', 'telp', 'ongkir', 'total_tagihan', 'status_pembayaran', 'tgl_transaksi', 'no_resi', 'status_pengiriman'];
+    protected $allowedFields = ['id_userFK', 'nama', 'alamat', 'telp', 'ongkir', 'total_tagihan', 'status_pembayaran', 'tgl_konfirmasi', 'bukti_konfirmasi', 'validasi', 'tgl_transaksi', 'no_resi', 'status_pengiriman'];
 
     public function getTransaksi()
     {

@@ -10,7 +10,7 @@
 
 <body>
     <center>
-        <h3>Laporan Semua Transaksi Penjualan MJ Sport</h3>
+        <h3><?= $ket ?></h3>
     </center>
     <table width="100%" border="1">
         <?php $i = 1; ?>

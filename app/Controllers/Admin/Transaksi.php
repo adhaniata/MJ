@@ -5,6 +5,8 @@ namespace App\Controllers\Admin;
 use App\Models\{TransaksiModel, TransaksiDetailModel, KonfirmasiModel};
 use App\Controllers\BaseController;
 use Dompdf\Dompdf;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Transaksi extends BaseController
 {
@@ -20,7 +22,8 @@ class Transaksi extends BaseController
         $data = [
             'title' => 'Daftar Transaksi |MJ Sport Collection',
             'transaksi' => $this->transaksiModel->findAll(),
-            'count' => $this->transaksiModel->countAllResults()
+            'count' => $this->transaksiModel->countAllResults(),
+            'tahun' => $this->transaksiModel->select('YEAR(created_at) as tahun')->groupBy('tahun')->get()->getResultArray()
         ];
         return view('admin/transaksi/index', $data);
     }
@@ -98,20 +101,13 @@ class Transaksi extends BaseController
         $data = [
             'title' => 'Konfirmasi',
             'validation' => \Config\Services::validation(),
-            'transaksi' => $this->konfirmasiModel->find($id)
+            'transaksi' => $this->transaksiModel->find($id)
         ];
         return view('admin/transaksi/konfirmasi', $data);
     }
-    public function updateKonfirmasi($id)
+    public function updateKonfirmasi()
     {
-        helper('form');
-        $data = [
-            'title' => 'Form Konfirmasi Pembayaran',
-            'validation' => \Config\Services::validation(),
-            'transaksi' => $this->transaksiModel->find($id),
-            'konfirmasi' => $this->konfirmasiModel->find($id)
-        ];
-        return view('admin/transaksi/konfirmasi', $data);
+        $id_transaksi = $this->request->getVar('id_transaksi');
         //validasi input
         if (!$this->validate([
             'validasi' => [
@@ -121,59 +117,117 @@ class Transaksi extends BaseController
                 ]
             ]
         ])) {
-            return redirect()->to(base_url('admin/transaksi/konfirmasi/' . $this->request->getVar('$id')))->withInput();
+            return redirect()->to(base_url('admin/transaksi/konfirmasi/' .$id_transaksi))->withInput();
         } else {
             //method savenya
-            $this->konfirmasiModel->save([
-                'id_konfirmasi' => $id,
+            $this->transaksiModel->update($id_transaksi, [
                 'validasi' => $this->request->getVar('validasi')
             ]);
             session()->setFlashdata('pesan', 'Data Berhasil Di Ubah');
             return redirect()->to(base_url('/admin/transaksi'));
         }
     }
-    public function printall()
+    public function proses()
     {
-        $data = [
-            'title' => 'Daftar Transaksi |MJ Sport Collection',
-            'transaksi' => $this->transaksiModel->findAll(),
-            'count' => $this->transaksiModel->countAllResults()
-        ];
-        return view('admin/transaksi/printall', $data);
+        $filter = $this->request->getVar('filter');
+        $tanggal = $this->request->getVar('tanggal');
+        $bulan = $this->request->getVar('bulan');
+        $tahun = $this->request->getVar('tahun');
+        $type = $this->request->getVar('type');
+
+        // cek filter
+        if ($filter != '') {
+            if ($filter == 'tgl') {
+                $transaksi = $this->transaksiModel->where('created_at', $tanggal)->get()->getResultArray();
+                $ket = 'Laporan Transaksi Penjualan MJ Sport Tanggal '.$tanggal;
+            } else if ($filter == 'bln') {
+                $transaksi = $this->transaksiModel->where('MONTH(created_at)', date('m', strtotime($bulan)), 'YEAR(created_at)', date('Y', strtotime($bulan)))->get()->getResultArray();
+                $ket = 'Laporan Transaksi Penjualan MJ Sport Bulan '.$bulan;
+            } else {
+                $transaksi = $this->transaksiModel->where('YEAR(created_at)', date('Y', strtotime($tahun)))->get()->getResultArray();
+                $ket = 'Laporan Transaksi Penjualan MJ Sport Tahun '.$tahun;
+            }
+        } else {
+            $transaksi = $this->transaksiModel->findAll();
+            $ket = 'Laporan Semua Transaksi Penjualan MJ Sport';
+        }
+
+        // cek type cetak
+        if ($type == 'pdf') {
+            $data = [
+                'title' => 'Daftar Transaksi |MJ Sport Collection',
+                'transaksi' => $transaksi,
+                'count' => $this->transaksiModel->countAllResults(),
+                'ket' => $ket
+            ];
+
+            $html = view('admin/transaksi/export-pdf', $data);
+
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml($html);
+
+            // (Optional) Setup the paper size and orientation
+            $dompdf->setPaper('A4', 'landscape');
+
+            // Render the HTML as PDF
+            $dompdf->render();
+
+            // Output the generated PDF to Browser
+            $dompdf->stream("Laporan Penjualan MJ Sport", array("Attachment" => false));
+        } else {
+            $spreadsheet = new Spreadsheet();
+
+            $spreadsheet->setActiveSheetIndex(0)
+            ->setCellValue('A1', $ket)
+            ->mergeCells('A1:I1')
+            ->setCellValue('A3', 'No')
+            ->setCellValue('B3', 'ID Transaksi')
+            ->setCellValue('C3', 'Nama')
+            ->setCellValue('D3', 'Total Tagihan')
+            ->setCellValue('E3', 'Status Pembayaran')
+            ->setCellValue('F3', 'No Resi')
+            ->setCellValue('G3', 'Status Pengiriman')
+            ->setCellValue('H3', 'Tanggal Transaksi');
+
+            $column = 4;
+
+            $i=1;
+            foreach ($transaksi as $t) {
+                $spreadsheet->setActiveSheetIndex(0)
+                    ->setCellValue('A' . $column, $i++)
+                    ->setCellValue('B' . $column, $t['id_transaksi'])
+                    ->setCellValue('C' . $column, $t['nama'])
+                    ->setCellValue('D' . $column, $t['total_tagihan'])
+                    ->setCellValue('E' . $column, $t['status_pembayaran'])
+                    ->setCellValue('F' . $column, $t['no_resi'])
+                    ->setCellValue('G' . $column, $t['status_pengiriman'])
+                    ->setCellValue('H' . $column, $t['created_at']);
+
+                $column++;
+            }
+
+            $writer = new Xlsx($spreadsheet);
+            $filename = 'Laporan Penjualan MJ Sport';
+
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            header('Content-Disposition: attachment;filename=' . $filename . '.xlsx');
+            header('Cache-Control: max-age=0');
+
+            $writer->save('php://output');
+        }
+
     }
-    public function printdetail($id)
+    public function cari()
     {
+        $cari = $this->request->getVar('cari');
+
         $data = [
-            'title' => 'Transaksi Detail |MJ Sport Collection',
-            'transaksi' => $this->transaksiModel->find($id),
-            'transaksi_detail' => $this->transaksiDetailModel->where('id_transaksiFK', $id)->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK')->get()->getResultArray(),
-        ];
-        return view('admin/transaksi/printdetail', $data);
-    }
-    public function exportPDF()
-    {
-        $data = [
-            'title' => 'Daftar Transaksi |MJ Sport Collection',
-            'transaksi' => $this->transaksiModel->findAll(),
-            'count' => $this->transaksiModel->countAllResults()
+            'title' => 'Hasil Pencarian |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->like('nama', $cari)->get()->getResultArray(),
+            'count' => $this->transaksiModel->countAllResults(),
+            'tahun' => $this->transaksiModel->select('YEAR(created_at) as tahun')->groupBy('tahun')->get()->getResultArray()
         ];
 
-        $view = view('admin/transaksi/export-pdf', $data);
-
-        //untuk dompdf
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml($view);
-
-        // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('A4', 'landscape');
-
-        // Render the HTML as PDF
-        $dompdf->render();
-
-        // Output the generated PDF to Browser
-        $dompdf->stream("Laporan Penjualan MJ Sport", array("Attachment" => false));
-    }
-    public function exportExcel()
-    {
+        return view('admin/transaksi/index', $data);
     }
 }

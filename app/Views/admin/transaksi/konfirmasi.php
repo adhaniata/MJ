@@ -52,7 +52,7 @@
         <div class="col-8">
             <h3 class="my-3">Konfirmasi</h3>
             <!--menambahkan action berisi method update untuk memproses edit-->
-            <form action="/admin/transaksi/konfirmasi/update/<?= $konfirmasi['id_konfirmasi']; ?>" method="post" enctype="multipart/form-data">
+            <form action="/admin/transaksi/konfirmasi/update" method="post" enctype="multipart/form-data">
                 <!--fitur agar tidak ada pemalsuan, hanya bisa digunakan dihalaman ini saja-->
                 <?= csrf_field(); ?>
                 <!--menambahkan input slug bertype hidden-->
@@ -92,13 +92,13 @@
                 <div class="row mb-3">
                     <label for="bukti" class="col-sm-2 col-form-label">Bukti</label>
                     <div class="col-sm-10">
-                        <img src="/img/konfirmasi/<?= $konfirmasi['bukti']; ?>" width="100">
+                        <img src="/img/konfirmasi/<?= $transaksi['bukti_konfirmasi']; ?>" width="100">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="validasi" class="col-sm-2 col-form-label">Validasi</label>
                     <div class="col-sm-10">
-                        <select class="form-select <?= ($validation->hasError('validasi')) ? 'is-invalid' : ''; ?>" name="validasi" id="validasi" aria-label="Default select example" value="<?= (old('validasi')) ? old('validasi') : $konfirmasi['validasi'] ?>">
+                        <select class="form-select <?= ($validation->hasError('validasi')) ? 'is-invalid' : ''; ?>" name="validasi" id="validasi" aria-label="Default select example" value="<?= (old('validasi')) ? old('validasi') : $transaksi['validasi'] ?>">
                             <option value="VALID" selected>VALID</option>
                             <option value="TIDAK VALID">TIDAK VALID</option>
                         </select>

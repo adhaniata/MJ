@@ -70,13 +70,13 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('transaksi/edit/(:num)', 'Admin\transaksi::edit/$1');
     $routes->post('transaksi/update/(:num)', 'Admin\transaksi::update/$1');
     $routes->delete('transaksi/delete/(:num)', 'Admin\transaksi::delete/$1');
-    $routes->get('transaksi/printall', 'Admin\transaksi::printall');
-    $routes->get('transaksi/print/(:num)', 'Admin\transaksi::printdetail/$1');
-    $routes->get('transaksi/export-pdf', 'Admin\transaksi::exportPDF');
-    $routes->get('transaksi/export-excel', 'Admin\transaksi::exportExcel');
-
+    $routes->post('transaksi/proses', 'Admin\transaksi::proses');
+    $routes->get('transaksi/cari', 'Admin\transaksi::cari');
+    // $routes->get('transaksi/print/(:num)', 'Admin\transaksi::printdetail/$1');
+    // $routes->get('transaksi/export-pdf', 'Admin\transaksi::exportPDF');
+    // $routes->get('transaksi/export-excel', 'Admin\transaksi::exportExcel');
     $routes->get('transaksi/konfirmasi/(:num)', 'Admin\transaksi::konfirmasi/$1');
-    $routes->post('transaksi/konfirmasi/update/(:num)', 'Admin\transaksi::updateKonfirmasi/$1');
+    $routes->post('transaksi/konfirmasi/update', 'Admin\transaksi::updateKonfirmasi');
 
     $routes->get('akun/profil', 'Admin\Akun::profil');
     $routes->post('akun/update-profil', 'Admin\Akun::update_profil');
@@ -101,8 +101,8 @@ $routes->group('', ['filter' => 'role:user'], function ($routes) {
     $routes->post('transaksi/save', 'Transaksi::save');
     $routes->get('transaksi/(:num)', 'Transaksi::detail/$1');
     $routes->get('transaksi/delete/(:num)', 'Transaksi::delete/$1');
-    $routes->get('transaksi/konfirmasi/(:num)', 'Konfirmasi::index/$1');
-    $routes->post('transaksi/konfirmasi/save', 'Konfirmasi::save');
+    $routes->get('transaksi/konfirmasi/(:num)', 'Transaksi::konfirmasi/$1');
+    $routes->post('transaksi/konfirmasi/save', 'Transaksi::save_konfirmasi');
 
     $routes->get('akun/profil', 'Akun::profil');
     $routes->post('akun/update-profil', 'Akun::update_profil');
