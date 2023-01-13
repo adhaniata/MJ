@@ -44,6 +44,21 @@
         </div>
     </div>
 </div> <br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2 class="mt-3">Ulasan Produk</h2>
+            <!-- card -->
+            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header">Nama User</div>
+                <div class="card-body">
+                    <h5 class="card-title">Light card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div><br>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>

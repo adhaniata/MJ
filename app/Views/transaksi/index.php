@@ -36,7 +36,7 @@
                             <td>
                                 <a href="/transaksi/<?= $t['id_transaksi'] ?>" class="btn btn-info">Detail</a>
                                 <a href="/transaksi/konfirmasi/<?= $t['id_transaksi'] ?>" class="btn btn-warning">Konfirmasi Pembayaran</a>
-                                <a href="/transaksi/delete/<?= $t['id_transaksi'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">Delete</a>
+                                <a href="/transaksi/delete/<?= $t['id_transaksi'] ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin?');">Batalkan</a>
                             </td>
                         </tr>
                     <?php endforeach ?>

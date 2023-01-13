@@ -26,18 +26,10 @@
                             <li><a class="dropdown-item" href="/admin/kategori">Kategori</a></li>
                             <li><a class="dropdown-item" href="/admin/produk">Produk</a></li>
                             <li><a class="dropdown-item" href="/admin/transaksi">Transaksi</a></li>
-                            <li><a class="dropdown-item" href="#">Pendapatan</a></li>
+                            <li><a class="dropdown-item" href="/admin/pengembalian">Pengembalian</a></li>
+                            <li><a class="dropdown-item" href="/admin/pendapatan">Pendapatan</a></li>
                             <li><a class="dropdown-item" href="/admin/ongkir">Ongkir</a></li>
-                            <li><a class="dropdown-item" href="#">Chatbot</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-bars-progress"></i> Akun
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="/admin/akun/profil">Profil</a></li>
-                            <li><a class="dropdown-item" href="/admin/akun/password">Ubah Password</a></li>
+                            <li><a class="dropdown-item" href="/admin/chatbot">Chatbot</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -52,6 +44,8 @@
         </div>
     </div>
 </nav>
+
+
 <!--isi-->
 <!--slide gambar-->
 <center>

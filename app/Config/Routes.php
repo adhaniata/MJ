@@ -49,6 +49,8 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('produk/(:any)', 'Admin\Produk::detail/$1');
     $routes->post('produk/update/(:num)', 'Admin\Produk::update/$1');
     $routes->delete('produk/delete/(:num)', 'Admin\Produk::delete/$1');
+    $routes->get('produk/cari', 'Admin\Produk::cari');
+    $routes->post('produk/proses', 'Admin\produk::proses');
 
     $routes->get('ongkir', 'Admin\Ongkir::index');
     $routes->get('ongkir/create', 'Admin\Ongkir::create');
@@ -57,6 +59,7 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('ongkir/(:any)', 'Admin\Ongkir::detail/$1');
     $routes->post('ongkir/update/(:num)', 'Admin\Ongkir::update/$1');
     $routes->delete('ongkir/delete/(:num)', 'Admin\Ongkir::delete/$1');
+    $routes->get('ongkir/cari', 'Admin\Ongkir::cari');
 
     $routes->get('kategori', 'Admin\Kategori::index');
     $routes->get('kategori/create', 'Admin\Kategori::create');
@@ -64,6 +67,7 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('kategori/edit/(:any)', 'Admin\Kategori::edit/$1');
     $routes->post('kategori/update/(:num)', 'Admin\Kategori::update/$1');
     $routes->delete('kategori/delete/(:num)', 'Admin\Kategori::delete/$1');
+    $routes->get('kategori/cari', 'Admin\kategori::cari');
 
     $routes->get('transaksi', 'Admin\transaksi::index');
     $routes->get('transaksi/(:num)', 'Admin\transaksi::detail/$1');
@@ -71,6 +75,8 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->post('transaksi/update/(:num)', 'Admin\transaksi::update/$1');
     $routes->delete('transaksi/delete/(:num)', 'Admin\transaksi::delete/$1');
     $routes->post('transaksi/proses', 'Admin\transaksi::proses');
+    $routes->post('transaksi/fillter', 'Admin\transaksi::fillter_tp');
+    $routes->post('transaksi/print/(:num)', 'Admin\transaksi::cetakdetail/$1');
     $routes->get('transaksi/cari', 'Admin\transaksi::cari');
     // $routes->get('transaksi/print/(:num)', 'Admin\transaksi::printdetail/$1');
     // $routes->get('transaksi/export-pdf', 'Admin\transaksi::exportPDF');
@@ -87,6 +93,8 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
 //hak akses untuk user
 $routes->group('', ['filter' => 'role:user'], function ($routes) {
     $routes->get('/', 'Home::index');
+    $routes->get('cari', 'Home::cari');
+    $routes->post('fillter', 'Home::fillter_tp');
     $routes->get('keranjang', 'Keranjang::index');
     $routes->post('keranjang/update/(:num)', 'Keranjang::update/$1');
     $routes->get('keranjang/delete/(:num)', 'Keranjang::delete/$1');
@@ -103,6 +111,9 @@ $routes->group('', ['filter' => 'role:user'], function ($routes) {
     $routes->get('transaksi/delete/(:num)', 'Transaksi::delete/$1');
     $routes->get('transaksi/konfirmasi/(:num)', 'Transaksi::konfirmasi/$1');
     $routes->post('transaksi/konfirmasi/save', 'Transaksi::save_konfirmasi');
+    $routes->get('transaksi/pengembalian/(:num)', 'Transaksi::pengembalian/$1');
+    $routes->get('transaksi/ulasan/(:num)', 'Transaksi::ulasan/$1');
+    $routes->post('transaksi/ulasan/save', 'Ulasan::save');
 
     $routes->get('akun/profil', 'Akun::profil');
     $routes->post('akun/update-profil', 'Akun::update_profil');

@@ -33,4 +33,39 @@ class Home extends BaseController
         ];
         return view('home/detail', $data);
     }
+    public function cari()
+    {
+        $cari = $this->request->getVar('cari');
+
+        $data = [
+            'title' => 'Hasil Pencarian |MJ Sport Collection',
+            'produk' => $this->produkModel->like('nama_produk', $cari)->get()->getResultArray(),
+            'count' => $this->produkModel->countAllResults(),
+            'listKategori' => $this->produkModel->get_listKategori()
+        ];
+
+        return view('home/index', $data);
+    }
+    public function fillter_tp()
+    {
+
+        $filter_tp = $this->request->getVar('filter_tp');
+
+
+        // cek filter
+        if ($filter_tp != '') {
+            $produk_tp = $this->produkModel->where('id_kategoriFK', $filter_tp)->get()->getResultArray();
+        } else {
+            $produk_tp = $this->produkModel->findAll();
+        }
+
+        $data = [
+            'title' => 'Home|MJ Sport Collection',
+            'produk' => $produk_tp,
+            'listKategori' => $this->produkModel->get_listKategori()
+        ];
+        // return view('admin/transaksi/index', $data);
+
+        return view('admin/transaksi/index', $data);
+    }
 }

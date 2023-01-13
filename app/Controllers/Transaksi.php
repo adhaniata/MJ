@@ -105,11 +105,18 @@ class Transaksi extends BaseController
 
     public function delete($id)
     {
+        $transaksi = $this->transaksiModel->find($id);
+        $transaksi_detail = $this->transaksiDetailModel->where('id_transaksiFK', $id)->get()->getResultArray();
+        // masukkan data keranjang ke dalam table transaksi detail
+        foreach ($transaksi_detail as $td) {
+            $this->produkModel->where('id_produk', $td['id_produkFK'])->increment('stok', $td['qty']);
+        }
         $this->transaksiModel->delete($id);
         return redirect()->to(base_url('/transaksi'));
     }
 
-    public function konfirmasi($id){
+    public function konfirmasi($id)
+    {
         $data = [
             'title' => 'Konfirmasi Pembayaran|MJ Sport Collection',
             'validation' => \Config\Services::validation(),
@@ -119,7 +126,8 @@ class Transaksi extends BaseController
         return view('transaksi/konfirmasi', $data);
     }
 
-    public function save_konfirmasi(){
+    public function save_konfirmasi()
+    {
         $id_transaksi = $this->request->getVar('id_transaksi');
         //validasi input (sebelum save alangkah lebih baik memvalidaasi)
         if (!$this->validate([
@@ -134,7 +142,7 @@ class Transaksi extends BaseController
                 ]
             ],
         ])) {
-            return redirect()->to(base_url('/transaksi/konfirmasi/'.$id_transaksi))->withInput();
+            return redirect()->to(base_url('/transaksi/konfirmasi/' . $id_transaksi))->withInput();
         } else {
             //ambil gambar
             $fileGambar = $this->request->getFile('gambarBukti');
@@ -158,5 +166,26 @@ class Transaksi extends BaseController
             session()->setFlashdata('pesan', 'Konfirmasi Berhasil Ditambahkan, Mohon Menunggu Validasi');
             return redirect()->to(base_url('/transaksi'));
         }
+    }
+    public function pengembalian($id)
+    {
+        $data = [
+            'title' => 'Form Pengembalian Barang|MJ Sport Collection',
+            'validation' => \Config\Services::validation(),
+            'transaksi' => $this->transaksiModel->find($id),
+            'transaksi_detail' => $this->transaksiDetailModel->where('id_transaksiFK', $id)->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK')->get()->getResultArray()
+        ];
+        return view('transaksi/pengembalian', $data);
+    }
+    public function ulasan($id)
+    {
+        $data = [
+            'title' => 'Transaksi Detail |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->find($id),
+            'validation' => \Config\Services::validation(),
+            'transaksi_detail' => $this->transaksiDetailModel->where('id_transaksiFK', $id)->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK')->get()->getResultArray(),
+        ];
+
+        return view('transaksi/ulasan', $data);
     }
 }

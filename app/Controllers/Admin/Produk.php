@@ -23,7 +23,8 @@ class Produk extends BaseController
         $data = [
             'title' => 'Produk |MJ Sport Collection',
             //ongkir' => $ongkir
-            'produk' => $this->produkModel->getProdukAdmin()
+            'produk' => $this->produkModel->getProdukAdmin(),
+            'listKategori' => $this->produkModel->get_listKategori()
         ];
         return view('admin/produk/index', $data);
     }
@@ -278,6 +279,99 @@ class Produk extends BaseController
             ]);
             session()->setFlashdata('pesan', 'Data Berhasil ditambahkan');
             return redirect()->to(base_url('/admin/produk'));
+        }
+    }
+    public function cari()
+    {
+        $cari = $this->request->getVar('cari');
+
+        $data = [
+            'title' => 'Hasil Pencarian |MJ Sport Collection',
+            'produk' => $this->produkModel->like('nama_produk', $cari)->get()->getResultArray(),
+            'count' => $this->produkModel->countAllResults()
+        ];
+
+        return view('admin/produk/index', $data);
+    }
+    public function proses()
+    {
+        $filter = $this->request->getVar('filter');
+        $listKategori = $this->produkModel->get_listKategori();
+        // cek filter
+        if ($filter != '') {
+            foreach ($listKategori as $lk) {
+                $produk = $this->produkModel->where('id_kategoriFK', $lk['id_kategori'])->get()->getResultArray();
+                $ket = 'Laporan Produk Penjualan MJ Sport Kategori ' . $lk['nama_kategori'];
+            }
+        } else {
+            $produk = $this->produkModel->findAll();
+            $ket = 'Laporan Semua Produk Penjualan MJ Sport';
+        }
+
+        // cek type cetak
+        if ($type == 'pdf') {
+            $data = [
+                'title' => 'Daftar Produk |MJ Sport Collection',
+                'produk' => $produk,
+                'count' => $this->produkModel->countAllResults(),
+                'ket' => $ket
+            ];
+
+            $html = view('admin/produk/export-pdf', $data);
+
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml($html);
+
+            // (Optional) Setup the paper size and orientation
+            $dompdf->setPaper('A4', 'landscape');
+
+            // Render the HTML as PDF
+            $dompdf->render();
+
+            // Output the generated PDF to Browser
+            $dompdf->stream("Laporan Produk Penjualan MJ Sport", array("Attachment" => false));
+        } else {
+            $spreadsheet = new Spreadsheet();
+
+            $spreadsheet->setActiveSheetIndex(0)
+                ->setCellValue('A1', $ket)
+                ->mergeCells('A1:I1')
+                ->setCellValue('A3', 'No')
+                ->setCellValue('B3', 'ID Produk')
+                ->setCellValue('C3', 'Kategori')
+                ->setCellValue('D3', 'Nama Produk')
+                ->setCellValue('E3', 'Harga (Rupiah)')
+                ->setCellValue('F3', 'Stok')
+                ->setCellValue('G3', 'Gambar')
+                ->setCellValue('H3', 'Deskripsi')
+                ->setCellValue('I3', 'Size');
+
+            $column = 4;
+
+            $i = 1;
+            foreach ($produk as $p) {
+                $spreadsheet->setActiveSheetIndex(0)
+                    ->setCellValue('A' . $column, $i++)
+                    ->setCellValue('B' . $column, $p['id_produk'])
+                    ->setCellValue('C' . $column, $p['nama_kategori'])
+                    ->setCellValue('D' . $column, $p['nama_produk'])
+                    ->setCellValue('E' . $column, $p['harga_produk'])
+                    ->setCellValue('F' . $column, $p['stok'])
+                    ->setCellValue('G' . $column, $p['gambar'])
+                    ->setCellValue('H' . $column, $p['deskripsi'])
+                    ->setCellValue('H' . $column, $p['size']);
+
+                $column++;
+            }
+
+            $writer = new Xlsx($spreadsheet);
+            $filename = 'Laporan Produk Penjualan MJ Sport';
+
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            header('Content-Disposition: attachment;filename=' . $filename . '.xlsx');
+            header('Cache-Control: max-age=0');
+
+            $writer->save('php://output');
         }
     }
 }

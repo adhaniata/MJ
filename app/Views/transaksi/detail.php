@@ -96,6 +96,8 @@
                     </tr>
                 </tbody>
             </table>
+            <a href="/transaksi/ulasan/<?= $transaksi['id_transaksi'] ?>" class="btn btn-primary">Pesanan Sudah Diterima</a>
+            <a href="/transaksi/pengembalian/<?= $transaksi['id_transaksi'] ?>" class="btn btn-warning">Pengembalian Barang</a>
         </div>
     </div>
 </div>

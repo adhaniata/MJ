@@ -27,24 +27,35 @@
 
 <!--produk pajangan-->
 <div class="container">
-    <div class="input-group">
+    <!-- <div class="input-group">
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Cari Produk" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-    </div>
+    </div> -->
+    <form class="row" action="cari" action="get">
+        <?= csrf_field(); ?>
+        <div class="col-4 mt-2">
+            <div class="input-group col-1">
+                <input class="form-control me-2" type="search" placeholder="Masukan Kata Kunci" aria-label="Search" name="cari">
+                <button class="btn btn-outline-dark" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
 
     <h2>Produk</h2>
-
-    <div class="input-group">
-        <select class="form-select" name="id_kategoriFK" id="id_kategoriFK" aria-label="Example select with button addon">
-            <option selected>Semua</option>
-            <?php foreach ($listKategori as $lk) {
-                echo '<option value="' . $lk['id_kategori'] . '">' . $lk['nama_kategori'] . '</option>';
-            } ?>
-        </select>
-        <button class="btn btn-outline-dark" type="button">Terapkan Kategori</button>
-    </div></br>
+    <form action="fillter" method="post">
+        <?= csrf_field(); ?>
+        <div class="input-group">
+            <select class="form-select" name="fillter_tp" id="fillter_tp" aria-label="Example select with button addon">
+                <option selected>Semua</option>
+                <?php foreach ($listKategori as $lk) {
+                    echo '<option value="' . $lk['id_kategori'] . '">' . $lk['nama_kategori'] . '</option>';
+                } ?>
+            </select>
+            <button class="btn btn-outline-dark" type="button">Terapkan Kategori</button>
+        </div>
+    </form></br>
 
     <div class="row row-cols-1 row-cols-md-4 g-4">
         <?php foreach ($produk as $p) : ?>

@@ -110,4 +110,16 @@ class Kategori extends BaseController
         session()->setFlashdata('pesan', 'Data Berhasil diubah');
         return redirect()->to(base_url('/admin/kategori'));
     }
+    public function cari()
+    {
+        $cari = $this->request->getVar('cari');
+
+        $data = [
+            'title' => 'Hasil Pencarian |MJ Sport Collection',
+            'kategori' => $this->kategoriModel->like('nama_kategori', $cari)->get()->getResultArray(),
+            'count' => $this->kategoriModel->countAllResults()
+        ];
+
+        return view('admin/kategori/index', $data);
+    }
 }

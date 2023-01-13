@@ -10,4 +10,10 @@ class UlasanModel extends Model
     protected $primaryKey = 'id_ulasan';
     protected $useTimestamps = true;
     protected $allowedFields = ['id_userFK', 'id_produkFK', 'isi_ulasan'];
+
+    public function getUlasan()
+    {
+        return $this->db->table('ulasan')
+            ->get()->getResultArray();
+    }
 }

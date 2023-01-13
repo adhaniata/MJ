@@ -7,7 +7,8 @@ use Myth\Auth\Password;
 
 class Akun extends BaseController
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->userModel = new UsersModel();
     }
 
@@ -27,7 +28,8 @@ class Akun extends BaseController
         return view('akun/profil', $data);
     }
 
-    public function update_profil(){
+    public function update_profil()
+    {
         $user = $this->userModel->find(user_id());
 
         if (!$this->validate([
@@ -37,12 +39,12 @@ class Akun extends BaseController
                 'errors' => [
                     'required' => '{field} harus diisi.',
                 ]
-            ],'alamat' => [
+            ], 'alamat' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} harus diisi.',
                 ]
-            ],'telp' => [
+            ], 'telp' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} harus diisi.',
@@ -56,11 +58,13 @@ class Akun extends BaseController
                 'alamat' => $this->request->getVar('alamat'),
                 'telp' => $this->request->getVar('telp'),
             ]);
+            session()->setFlashdata('pesan', 'Data Berhasil ditambahkan');
             return redirect()->to(base_url('/akun/profil'));
         }
     }
 
-    public function password(){
+    public function password()
+    {
         $data = [
             'title' => 'Password | MJ Sport Collection',
             'validation' => \Config\Services::validation()
@@ -68,7 +72,8 @@ class Akun extends BaseController
         return view('akun/password', $data);
     }
 
-    public function update_password(){
+    public function update_password()
+    {
         $user = $this->userModel->find(user_id());
         $pass_baru = $this->request->getVar('pass_baru');
         $pass_konf = $this->request->getVar('pass_konf');
@@ -81,7 +86,7 @@ class Akun extends BaseController
                 'errors' => [
                     'required' => '{field} harus diisi.',
                 ]
-            ],'pass_konf' => [
+            ], 'pass_konf' => [
                 'label' => 'Konfirmasi Password',
                 'rules' => 'required|matches[pass_baru]',
                 'errors' => [

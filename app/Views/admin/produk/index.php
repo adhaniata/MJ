@@ -1,7 +1,7 @@
 <?= $this->extend('Layout/template'); ?>
 <?= $this->section('content'); ?>
 
-<!--nav-->
+<!--navbar-->
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="/img/Artboard 1.png" alt="Bootstrap" width="40" height="34">MJ Sport</a>
@@ -23,12 +23,13 @@
                             <i class="fa-solid fa-bars-progress"></i> Manage
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="#">Kategori</a></li>
+                            <li><a class="dropdown-item" href="/admin/kategori">Kategori</a></li>
                             <li><a class="dropdown-item" href="/admin/produk">Produk</a></li>
                             <li><a class="dropdown-item" href="/admin/transaksi">Transaksi</a></li>
-                            <li><a class="dropdown-item" href="#">Pendapatan</a></li>
+                            <li><a class="dropdown-item" href="/admin/pengembalian">Pengembalian</a></li>
+                            <li><a class="dropdown-item" href="/admin/pendapatan">Pendapatan</a></li>
                             <li><a class="dropdown-item" href="/admin/ongkir">Ongkir</a></li>
-                            <li><a class="dropdown-item" href="#">Chatbot</a></li>
+                            <li><a class="dropdown-item" href="/admin/chatbot">Chatbot</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -50,8 +51,54 @@
     <div class="row">
         <div class="col">
             <table class="table table-bordered">
-                <a href="/admin/produk/create" class="btn btn-primary mt-4">Tambah Produk</a>
                 <h2 class="mt-3 mb-4">Produk</h2>
+                <div class="row">
+                    <div class="col">
+                        <a href="/admin/produk/create" class="btn btn-primary mt-4">Tambah Produk</a>
+                        <br>
+                        <form class="row" action="/admin/produk/cari" action="get">
+                            <?= csrf_field(); ?>
+                            <div class="col-10 mt-2">
+                                <div class="input-group col-1">
+                                    <input class="form-control me-2" type="search" placeholder="Masukan Kata Kunci" aria-label="Search" name="cari">
+                                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form><br>
+                    </div>
+                    <div class="col">
+                        <form action="/admin/produk/proses" method="post">
+                            <?= csrf_field(); ?>
+                            <!-- untuk export -->
+                            <h5>Export Data</h5>
+                            <div class="form-group row mt-2">
+                                <label class="col-md-2">Filter</label>
+                                <div class="col-md-10">
+                                    <select class="form-control" id="filter" name="filter">
+                                        <?php foreach ($listKategori as $lk) {
+                                            echo '<option value="' . $lk['id_kategori'] . '">' . $lk['nama_kategori'] . '</option>';
+                                        } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-2">
+                                <label class="col-md-2">Type</label>
+                                <div class="col-md-10">
+                                    <select class="form-control" id="type" name="type">
+                                        <option value="pdf">PDF</option>
+                                        <option value="excel">Excel</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-2">
+                                <div class="col-md-10">
+                                    <button type="submit" class="btn btn-success">Proses</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <br>
                 <?php if (session()->getFlashdata('pesan')) : ?>
                     <dif class="alert alert-success" role="alert">
                         <?= session()->getFlashdata('pesan'); ?>

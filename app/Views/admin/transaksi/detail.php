@@ -1,6 +1,7 @@
 <?= $this->extend('Layout/template'); ?>
 <?= $this->section('content'); ?>
 
+<!--navbar-->
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="/img/Artboard 1.png" alt="Bootstrap" width="40" height="34">MJ Sport</a>
@@ -22,12 +23,13 @@
                             <i class="fa-solid fa-bars-progress"></i> Manage
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="#">Kategori</a></li>
+                            <li><a class="dropdown-item" href="/admin/kategori">Kategori</a></li>
                             <li><a class="dropdown-item" href="/admin/produk">Produk</a></li>
                             <li><a class="dropdown-item" href="/admin/transaksi">Transaksi</a></li>
-                            <li><a class="dropdown-item" href="#">Pendapatan</a></li>
+                            <li><a class="dropdown-item" href="/admin/pengembalian">Pengembalian</a></li>
+                            <li><a class="dropdown-item" href="/admin/pendapatan">Pendapatan</a></li>
                             <li><a class="dropdown-item" href="/admin/ongkir">Ongkir</a></li>
-                            <li><a class="dropdown-item" href="#">Chatbot</a></li>
+                            <li><a class="dropdown-item" href="/admin/chatbot">Chatbot</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -48,6 +50,7 @@
     <div class="row">
         <div class="col">
             <h2 class="mt-3">Detail Transaksi</h2>
+            <br>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group row">
@@ -93,7 +96,9 @@
                     <div class="form-group row">
                         <label class="col-md-4 form-label"></label>
                         <div class="col-md-8">
-                            <a href="/admin/transaksi/print/<?= $transaksi['id_transaksi'] ?>" class="btn btn-primary me-md-1" target="_blank"><i class="fa-solid fa-print"></i> Print Detail Transaksi</a>
+                            <form action="/admin/transaksi/print/<?= $transaksi['id_transaksi'] ?>" method="post">
+                                <button type="submit" class="btn btn-success"><i class="fa-solid fa-print"></i> Cetak Nota</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -137,6 +142,7 @@
                     </tr>
                 </tbody>
             </table>
+            <a href="/admin/transaksi" class="btn btn-dark">Kembali</a>
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 <?= $this->section('content'); ?>
 
 <!--navbar-->
+<!--navbar-->
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="/img/Artboard 1.png" alt="Bootstrap" width="40" height="34">MJ Sport</a>
@@ -23,12 +24,13 @@
                             <i class="fa-solid fa-bars-progress"></i> Manage
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="#">Kategori</a></li>
+                            <li><a class="dropdown-item" href="/admin/kategori">Kategori</a></li>
                             <li><a class="dropdown-item" href="/admin/produk">Produk</a></li>
                             <li><a class="dropdown-item" href="/admin/transaksi">Transaksi</a></li>
-                            <li><a class="dropdown-item" href="#">Pendapatan</a></li>
+                            <li><a class="dropdown-item" href="/admin/pengembalian">Pengembalian</a></li>
+                            <li><a class="dropdown-item" href="/admin/pendapatan">Pendapatan</a></li>
                             <li><a class="dropdown-item" href="/admin/ongkir">Ongkir</a></li>
-                            <li><a class="dropdown-item" href="#">Chatbot</a></li>
+                            <li><a class="dropdown-item" href="/admin/chatbot">Chatbot</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

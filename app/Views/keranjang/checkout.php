@@ -130,7 +130,7 @@
             </div>
         </div>
     </div>
-</section><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</section><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <script type="text/javascript">
     $(document).ready(function() {
         var total_harga = $('#total_harga').text();

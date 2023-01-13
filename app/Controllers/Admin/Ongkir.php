@@ -233,4 +233,16 @@ class Ongkir extends BaseController
         session()->setFlashdata('pesan', 'Data Berhasil diubah');
         return redirect()->to(base_url('/admin/ongkir'));
     }
+    public function cari()
+    {
+        $cari = $this->request->getVar('cari');
+
+        $data = [
+            'title' => 'Hasil Pencarian |MJ Sport Collection',
+            'ongkir' => $this->ongkirModel->like('kota', $cari)->get()->getResultArray(),
+            'count' => $this->ongkirModel->countAllResults()
+        ];
+
+        return view('admin/ongkir/index', $data);
+    }
 }

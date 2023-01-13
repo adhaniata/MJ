@@ -10,6 +10,11 @@
                 <div class="card-header bg-success text-white">
                     Pastikan Data Profil Anda Terisi dan Benar
                 </div>
+                <?php if (session()->getFlashdata('pesan')) : ?>
+                    <dif class="alert alert-success" role="alert">
+                        <?= session()->getFlashdata('pesan'); ?>
+                    </dif>
+                <?php endif ?>
                 <div class="card-body">
                     <img class="rounded-circle mx-auto d-block" src="/img/user.png" width="200px">
                     <form action="/akun/update-profil" method="post">
