@@ -2,8 +2,11 @@
 
 namespace App\Controllers\Admin;
 
-use App\Models\ProdukModel;
+use App\Models\{ProdukModel, KategoriModel};
 use App\Controllers\BaseController;
+use Dompdf\Dompdf;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Produk extends BaseController
 {
@@ -11,6 +14,7 @@ class Produk extends BaseController
     public function __construct()
     {
         $this->produkModel = new ProdukModel();
+        $this->kategoriModel = new KategoriModel();
     }
     public function index()
     {
@@ -296,13 +300,12 @@ class Produk extends BaseController
     public function proses()
     {
         $filter = $this->request->getVar('filter');
-        $listKategori = $this->produkModel->get_listKategori();
+        $type = $this->request->getVar('type');
+        $kategori = $this->kategoriModel->where('id_kategori', $filter)->first();
         // cek filter
         if ($filter != '') {
-            foreach ($listKategori as $lk) {
-                $produk = $this->produkModel->where('id_kategoriFK', $lk['id_kategori'])->get()->getResultArray();
-                $ket = 'Laporan Produk Penjualan MJ Sport Kategori ' . $lk['nama_kategori'];
-            }
+            $produk = $this->produkModel->where('id_kategoriFK', $filter)->join('kategori', 'kategori.id_kategori = produk.id_kategoriFK')->get()->getResultArray();
+            $ket = 'Laporan Produk Penjualan MJ Sport Kategori ' . $kategori['nama_kategori'];
         } else {
             $produk = $this->produkModel->findAll();
             $ket = 'Laporan Semua Produk Penjualan MJ Sport';

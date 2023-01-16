@@ -44,16 +44,16 @@
     </form>
 
     <h2>Produk</h2>
-    <form action="fillter" method="post">
+    <form action="/kategori" method="get">
         <?= csrf_field(); ?>
         <div class="input-group">
             <select class="form-select" name="fillter_tp" id="fillter_tp" aria-label="Example select with button addon">
-                <option selected>Semua</option>
+                <option value="semua">Semua</option>
                 <?php foreach ($listKategori as $lk) {
-                    echo '<option value="' . $lk['id_kategori'] . '">' . $lk['nama_kategori'] . '</option>';
+                    echo '<option value="' . $lk['nama_kategori'] . '">' . $lk['nama_kategori'] . '</option>';
                 } ?>
             </select>
-            <button class="btn btn-outline-dark" type="button">Terapkan Kategori</button>
+            <button class="btn btn-outline-dark" type="submit">Terapkan Kategori</button>
         </div>
     </form></br>
 

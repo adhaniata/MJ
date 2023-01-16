@@ -84,6 +84,9 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('transaksi/konfirmasi/(:num)', 'Admin\transaksi::konfirmasi/$1');
     $routes->post('transaksi/konfirmasi/update', 'Admin\transaksi::updateKonfirmasi');
 
+    $routes->get('pengembalian', 'Admin\Pengembalian::index');
+    $routes->get('pengembalian/(:num)', 'Admin\Pengembalian::detail/$1');
+
     $routes->get('akun/profil', 'Admin\Akun::profil');
     $routes->post('akun/update-profil', 'Admin\Akun::update_profil');
     $routes->get('akun/password', 'Admin\Akun::password');
@@ -99,8 +102,9 @@ $routes->group('', ['filter' => 'role:user'], function ($routes) {
     $routes->post('keranjang/update/(:num)', 'Keranjang::update/$1');
     $routes->get('keranjang/delete/(:num)', 'Keranjang::delete/$1');
     $routes->post('keranjang/tambah-keranjang', 'Keranjang::tambahKeranjang');   //niatnya keranjang/id_usernya
-
     $routes->get('keranjang/checkout', 'Keranjang::checkout');
+
+    $routes->get('kategori', 'Home::kategori');
 
     $routes->get('ongkir', 'Ongkir::index');
     $routes->get('ongkir/(:any)', 'Ongkir::detail/$1');
@@ -112,8 +116,9 @@ $routes->group('', ['filter' => 'role:user'], function ($routes) {
     $routes->get('transaksi/konfirmasi/(:num)', 'Transaksi::konfirmasi/$1');
     $routes->post('transaksi/konfirmasi/save', 'Transaksi::save_konfirmasi');
     $routes->get('transaksi/pengembalian/(:num)', 'Transaksi::pengembalian/$1');
+    $routes->post('transaksi/proses-pengembalian/(:num)', 'Transaksi::proses_pengembalian/$1');
     $routes->get('transaksi/ulasan/(:num)', 'Transaksi::ulasan/$1');
-    $routes->post('transaksi/ulasan/save', 'Ulasan::save');
+    $routes->post('transaksi/ulasan/save/(:num)', 'Ulasan::save/$1');
 
     $routes->get('akun/profil', 'Akun::profil');
     $routes->post('akun/update-profil', 'Akun::update_profil');

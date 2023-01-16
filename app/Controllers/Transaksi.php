@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 //use App\Models\TransaksiModel;
-use App\Models\{KeranjangModel, ProdukModel, TransaksiModel, OngkirModel, TransaksiDetailModel};
+use App\Models\{KeranjangModel, ProdukModel, TransaksiModel, OngkirModel, TransaksiDetailModel, PengembalianModel, UlasanModel};
 
 class Transaksi extends BaseController
 {
@@ -15,6 +15,8 @@ class Transaksi extends BaseController
         $this->produkModel = new ProdukModel();
         $this->ongkirModel = new OngkirModel();
         $this->transaksiDetailModel = new TransaksiDetailModel();
+        $this->pengembalianModel = new PengembalianModel();
+        $this->ulasanModel = new UlasanModel();
     }
     public function index()
     {
@@ -173,9 +175,80 @@ class Transaksi extends BaseController
             'title' => 'Form Pengembalian Barang|MJ Sport Collection',
             'validation' => \Config\Services::validation(),
             'transaksi' => $this->transaksiModel->find($id),
-            'transaksi_detail' => $this->transaksiDetailModel->where('id_transaksiFK', $id)->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK')->get()->getResultArray()
+            'transaksi_detail' => $this->transaksiDetailModel->where('id_transaksiFK', $id)->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK')->get()->getResultArray(),
+            'cek_pengembalian' => $this->pengembalianModel->where('id_transaksiFK', $id)->countAllResults(),
+            'pengembalian' => $this->pengembalianModel->where('id_transaksiFK', $id)->first()
         ];
         return view('transaksi/pengembalian', $data);
+    }
+    public function proses_pengembalian($id){
+        if (!$this->validate([
+            //cara mudah tanpa mengubah bahasa error yang tampil
+            //'provinsi' => 'required|is_unique[ongkir.provinsi]'
+
+            //untuk menampilkan bahasa error yang kita inginkan
+            'alasan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi.'
+                ]
+            ],
+            'gambarPengembalian' => [
+                'rules' => 'uploaded[gambarPengembalian]|max_size[gambarPengembalian,10240]|is_image[gambarPengembalian]|mime_in[gambarPengembalian,image/jpg,image/jpeg,image/png]',
+                //jika wajib upload tambah uploaded[gambar] di rules
+                'errors' => [
+                    'uploaded' => 'Pilih Gambar Terlebih dahulu',
+                    'max_size' => 'Ukuran Gambar Terlalu Besar',
+                    'is_image' => 'Yang Anda Pilih Bukan Gambar',
+                    'mime_in' => 'Yang Anda Pilih Bukan Gambar (Hanya jpg. jpeg. dan png.'
+                ]
+            ],
+            'resi_pengembalian' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi.'
+                ]
+            ],
+            'rek_pengembalian' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi.'
+                ]
+            ],
+        ])) {
+            //$validation = \Config\Services::validation();  //kata ka sandika ini gausa karena dah ada di session
+            //return redirect()->to(base_url('admin/ongkir/create'))->withInput()->with('validation', $validation); //yang ini katanya sampai di withInput() aja karena data sudah kekirim
+            return redirect()->to(base_url('transaksi/pengembalian/'.$id))->withInput();
+        } else {
+
+            //ambil gambar
+            $fileGambar = $this->request->getFile('gambarPengembalian');
+
+            //generate nama gambar random
+            $namaGambar = $fileGambar->getRandomName();
+            //pindahkan ke folder
+            $fileGambar->move('img/pengembalian', $namaGambar);
+
+
+            //pindahkan ke folder tanpa di generete nama gambar random
+            //$fileGambar->move('img/ongkir');
+            //ambil nama file gambar
+            //$namaGambar = $fileGambar->getName();
+
+
+            //untuk savenya
+            //dd($this->request->getVar());
+            $cek = $this->pengembalianModel->save([
+                'id_transaksiFK' => $id,
+                'alasan' => $this->request->getVar('alasan'),
+                'gambar' => $namaGambar,
+                'resi_pengembalian' => $this->request->getVAr('resi_pengembalian'),
+                'rek_pengembalian' => $this->request->getVAr('rek_pengembalian'),
+                'validasi' => $this->request->getVAr('validasi'),
+            ]);
+            session()->setFlashdata('pesan', 'Data Berhasil ditambahkan');
+            return redirect()->to(base_url('/transaksi'));
+        }
     }
     public function ulasan($id)
     {
@@ -184,6 +257,7 @@ class Transaksi extends BaseController
             'transaksi' => $this->transaksiModel->find($id),
             'validation' => \Config\Services::validation(),
             'transaksi_detail' => $this->transaksiDetailModel->where('id_transaksiFK', $id)->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK')->get()->getResultArray(),
+            'cek_ulasan' => $this->ulasanModel->where('id_transaksiFK', $id)->get()->getResultArray()
         ];
 
         return view('transaksi/ulasan', $data);

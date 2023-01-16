@@ -36,7 +36,7 @@
                     <td><?= $value['nama_produk']; ?></td>
                     <td><?= $value['harga_produk']; ?></td>
                     <td><?= $value['stok']; ?></td>
-                    <td><img src="/img/produk/<?= $value['gambar']; ?>" width="100"> </td>
+                    <td><img src="<?= $_SERVER["DOCUMENT_ROOT"].'/img/produk/'.$value['gambar']; ?>" width="100"> </td>
                     <td><?= $value['deskripsi']; ?></td>
                     <td><?= $value['size']; ?></td>
                 </tr>

@@ -46,15 +46,13 @@ class Home extends BaseController
 
         return view('home/index', $data);
     }
-    public function fillter_tp()
+    public function kategori()
     {
-
-        $filter_tp = $this->request->getVar('filter_tp');
-
+        $filter_tp = $this->request->getVar('fillter_tp');
 
         // cek filter
         if ($filter_tp != '') {
-            $produk_tp = $this->produkModel->where('id_kategoriFK', $filter_tp)->get()->getResultArray();
+            $produk_tp = $this->produkModel->where('nama_kategori', $filter_tp)->join('kategori', 'kategori.id_kategori = produk.id_kategoriFK')->get()->getResultArray();
         } else {
             $produk_tp = $this->produkModel->findAll();
         }
@@ -66,6 +64,6 @@ class Home extends BaseController
         ];
         // return view('admin/transaksi/index', $data);
 
-        return view('admin/transaksi/index', $data);
+        return view('home/index', $data);
     }
 }

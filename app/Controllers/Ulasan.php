@@ -25,7 +25,7 @@ class Ulasan extends BaseController
 
         return view('transaksi/ulasan', $data);
     }
-    public function save()
+    public function save($id)
     {
         //validasi input (sebelum save alangkah lebih baik memvalidaasi)
         if (!$this->validate([
@@ -41,10 +41,12 @@ class Ulasan extends BaseController
         }
         //untuk savenya
         $this->ulasanModel->save([
+            'id_userFk' => user_id(),
+            'id_produkFK' => $id,
             'id_transaksiFK' => $this->request->getVar('id_transaksiFK'),
             'isi_ulasan' => $this->request->getVar('isi_ulasan')
         ]);
         session()->setFlashdata('pesan', 'Data Berhasi Ditambahkan, Terimakasih Atas Ulasannya');
-        return redirect()->to(base_url('home/index'));
+        return redirect()->to(base_url('transaksi'));
     }
 }

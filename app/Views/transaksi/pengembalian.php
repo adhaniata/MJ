@@ -10,7 +10,7 @@
                 <h5 class="card-header text-bg-dark">Form Permintaan Pengembalian Barang</h5>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-5">
+                        <div class="col-12">
                             <label class="form-label" for="rincian"><b>Detail Pengembalian Barang dan Dana</b></label>
                             <table class="table table-bordered">
                                 <?php $i = 1; ?>
@@ -52,21 +52,30 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-7">
-                            <label class="form-label" for="alasan">Alasan</label>
-                            <textarea id="alasan" name="alasan" placeholder="Jelaskan Alasan Pengembalian" class="form-control"></textarea><br>
-                            <label class="form-label" for="telp">Gambar</label>
-                            <input class="form-control" type="file" id="gambarPengembalian" name="gambarPengembalian"><br>
-                            <label class="form-label" for="validasi">Validasi</label>
-                            <input type="text" id="validasi" name="validasi" value="Menunggu Validasi" class="form-control" readonly /><br>
-                            <label class="form-label" for="">Alamat Pengembalian</label>
-                            <textarea placeholder="Jl. Penyelesaian Tomang IV No.1, North Meruya, Kembangan, West Jakarta City, Jakarta 11620" class="form-control" readonly></textarea><br>
-                            <label class="form-label" for="no_resi">No Resi Pengembalian (Biaya Ditanggung Pembeli)</label>
-                            <input type="text" id="no_resi" name="no_resi" placeholder="Misal: JD19099210921 (JNT)" class="form-control" /><br>
-                            <label class="form-label" for="telp">Rekening Pengembalian Dana</label>
-                            <input type="text" id="telp" name="telp" placeholder="Misal: 1892380129 (Budi)" class="form-control" /><br>
-                        </div>
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                    <div class="row">
+                        <?php if ($cek_pengembalian == 1): ?>
+                            <label class="form-label"><?= $pengembalian['validasi'] ?></label>
+                        <?php else: ?>
+                            <form action="/transaksi/proses-pengembalian/<?= $transaksi['id_transaksi'] ?>" method="post" enctype="multipart/form-data">
+                            <?= csrf_field(); ?>
+                                <div class="col-12">
+                                    <label class="form-label" for="alasan">Alasan</label>
+                                    <textarea id="alasan" name="alasan" placeholder="Jelaskan Alasan Pengembalian" class="form-control"></textarea><br>
+                                    <label class="form-label" for="telp">Gambar</label>
+                                    <input class="form-control" type="file" id="gambarPengembalian" name="gambarPengembalian"><br>
+                                    <label class="form-label" for="validasi">Validasi</label>
+                                    <input type="text" id="validasi" name="validasi" value="Menunggu Validasi" class="form-control" readonly /><br>
+                                    <label class="form-label" for="">Alamat Pengembalian</label>
+                                    <textarea placeholder="Jl. Penyelesaian Tomang IV No.1, North Meruya, Kembangan, West Jakarta City, Jakarta 11620" class="form-control" readonly><?= $transaksi['alamat'] ?></textarea><br>
+                                    <label class="form-label" for="resi_pengembalian">No Resi Pengembalian (Biaya Ditanggung Pembeli)</label>
+                                    <input type="text" id="resi_pengembalian" name="resi_pengembalian" placeholder="Misal: JD19099210921 (JNT)" class="form-control" /><br>
+                                    <label class="form-label" for="telp">Rekening Pengembalian Dana</label>
+                                    <input type="text" id="rek_pengembalian" name="rek_pengembalian" placeholder="Misal: 1892380129 (Budi)" class="form-control" /><br>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </form>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>
