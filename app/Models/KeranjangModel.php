@@ -22,6 +22,7 @@ class KeranjangModel extends Model
     public function getKeranjang()
     {
         return $this->db->table('keranjang')
+            ->where('id_userFK', user_id())
             ->join('users', 'users.id=keranjang.id_userFK')
             ->join('produk', 'produk.id_produk=keranjang.id_produkFK')
             ->get()->getResultArray();

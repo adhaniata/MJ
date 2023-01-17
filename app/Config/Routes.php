@@ -118,7 +118,7 @@ $routes->group('', ['filter' => 'role:user'], function ($routes) {
     $routes->get('transaksi/pengembalian/(:num)', 'Transaksi::pengembalian/$1');
     $routes->post('transaksi/proses-pengembalian/(:num)', 'Transaksi::proses_pengembalian/$1');
     $routes->get('transaksi/ulasan/(:num)', 'Transaksi::ulasan/$1');
-    $routes->post('transaksi/ulasan/save/(:num)', 'Ulasan::save/$1');
+    $routes->post('transaksi/ulasan/save/(:num)', 'Transaksi::save_ulasan/$1');
 
     $routes->get('akun/profil', 'Akun::profil');
     $routes->post('akun/update-profil', 'Akun::update_profil');

@@ -257,9 +257,31 @@ class Transaksi extends BaseController
             'transaksi' => $this->transaksiModel->find($id),
             'validation' => \Config\Services::validation(),
             'transaksi_detail' => $this->transaksiDetailModel->where('id_transaksiFK', $id)->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK')->get()->getResultArray(),
-            'cek_ulasan' => $this->ulasanModel->where('id_transaksiFK', $id)->get()->getResultArray()
         ];
 
         return view('transaksi/ulasan', $data);
+    }
+
+    public function save_ulasan($id)
+    {
+        //validasi input (sebelum save alangkah lebih baik memvalidaasi)
+        if (!$this->validate([
+            //untuk menampilkan bahasa error yang kita inginkan
+            'isi_ulasan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi.'
+                ]
+            ]
+        ])) {
+            return redirect()->to(base_url('transaksi/ulasan/' . $this->request->getVar('id_transaksiFK')))->withInput();
+        }
+        //untuk savenya
+        $this->transaksiDetailModel->update($id, [
+            'id_userFK' => user_id(),
+            'isi_ulasan' => $this->request->getVar('isi_ulasan')
+        ]);
+        session()->setFlashdata('pesan', 'Data Berhasi Ditambahkan, Terimakasih Atas Ulasannya');
+        return redirect()->to(base_url('transaksi'));
     }
 }

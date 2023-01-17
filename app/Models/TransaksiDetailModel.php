@@ -9,5 +9,5 @@ class TransaksiDetailModel extends Model
     protected $table = 'transaksi_detail';
     protected $primaryKey = 'id_transaksi_detail';
     protected $useTimestamps = true;
-    protected $allowedFields = ['id_transaksiFK', 'id_produkFK', 'total_harga', 'qty', 'subtotal_harga'];
+    protected $allowedFields = ['id_transaksiFK', 'id_produkFK', 'id_userFK', 'total_harga', 'qty', 'subtotal_harga', 'isi_ulasan'];
 }
