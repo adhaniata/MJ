@@ -50,19 +50,20 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="datatable">
+                <h2 class="mt-3 mb-4">Daftar Biaya Pengiriman</h2>
                 <a href="/admin/ongkir/create" class="btn btn-primary mt-1 mr-1">Tambah Data Ongkir</a>
                 <a href="/admin" class="btn btn-dark ml-1 mt-1">Kembali</a>
-                <h2 class="mt-3 mb-4">Daftar Biaya Pengiriman</h2>
-                <form class="row" action="/admin/ongkir/cari" action="get">
-                    <?= csrf_field(); ?>
+                <br><br>
+                <!-- <form class="row" action="/admin/ongkir/cari" action="get">
+                    csrf_field();
                     <div class="col-4 mt-2">
                         <div class="input-group col-1">
                             <input class="form-control me-2" type="search" placeholder="Masukan Kata Kunci" aria-label="Search" name="cari">
                             <button class="btn btn-outline-dark" type="submit">Search</button>
                         </div>
                     </div>
-                </form><br>
+                </form><br> -->
                 <?php if (session()->getFlashdata('pesan')) : ?>
                     <dif class="alert alert-success" role="alert">
                         <?= session()->getFlashdata('pesan'); ?>

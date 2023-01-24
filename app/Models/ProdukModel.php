@@ -43,17 +43,17 @@ class ProdukModel extends Model
             // admin a on p.id_adminFK=a.id_admin, nama_kategori from produk p left join kategori k on p.id_kategoriFK=k.id_kategori');
             // $result = $query->getResultArray();
         } else {
-        //return $this->where(['slug_produk' => $slug_produk])->first();
-            
-        // untuk ambil banyak data
-        // return $this->db->table('produk')
-        //     //->join('admin', 'admin.id_admin=produk.id_adminFK')
-        //     ->join('kategori', 'kategori.id_kategori=produk.id_kategoriFK')
-        //     ->where('slug_produk', $slug_produk)
-        //     ->get()->getResultArray();
+            //return $this->where(['slug_produk' => $slug_produk])->first();
 
-        // untuk ambil 1 baris data
-        return $this->where('slug_produk', $slug_produk)->join('kategori', 'kategori.id_kategori = produk.id_kategoriFK')->first();
+            // untuk ambil banyak data
+            // return $this->db->table('produk')
+            //     //->join('admin', 'admin.id_admin=produk.id_adminFK')
+            //     ->join('kategori', 'kategori.id_kategori=produk.id_kategoriFK')
+            //     ->where('slug_produk', $slug_produk)
+            //     ->get()->getResultArray();
+
+            // untuk ambil 1 baris data
+            return $this->where('slug_produk', $slug_produk)->join('kategori', 'kategori.id_kategori = produk.id_kategoriFK')->first();
         }
     }
 
@@ -80,5 +80,14 @@ class ProdukModel extends Model
         $data = $this->query('SELECT id_kategori, nama_kategori 
         FROM kategori');
         return $data->getResultArray();
+    }
+    public function getCountProdukByKategori()
+    {
+        return $this->db->table('produk')
+            //->select('produk.id_produk, produk.id_kategoriFK, kategori.id_kategori, kategori.nama_kategori')
+            ->select('COUNT(produk.id_produk) AS jumlah, kategori.nama_kategori AS kategori')
+            ->join('kategori', 'produk.id_kategoriFK=kategori.id_kategori')
+            ->groupBy('produk.id_kategoriFK')
+            ->get();
     }
 }

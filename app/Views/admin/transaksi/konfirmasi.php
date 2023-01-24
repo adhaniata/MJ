@@ -93,7 +93,7 @@
                 <div class="row mb-3">
                     <label for="bukti" class="col-sm-2 col-form-label">Bukti</label>
                     <div class="col-sm-10">
-                        <img src="/img/konfirmasi/<?= $transaksi['bukti_konfirmasi']; ?>" width="100">
+                        <img src="/img/konfirmasi/<?= $transaksi['bukti_konfirmasi']; ?>" width="700">
                     </div>
                 </div>
                 <div class="row mb-3">

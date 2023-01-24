@@ -51,22 +51,11 @@
     <div class="row">
         <div class="col">
             <table class="table table-bordered" id="datatable">
-                <h2 class="mt-3 mb-4">Produk</h2>
+                <h2 class="mt-3 mb-1">Produk</h2>
                 <div class="row">
                     <div class="col">
-                        <a href="/admin/produk/create" class="btn btn-primary mt-4">Tambah Produk</a>
+                        <!-- <a href="/admin/produk/create" class="btn btn-primary mt-4">Tambah Produk</a> -->
                         <br>
-                        <!-- <form class="row" action="/admin/produk/cari" action="get">
-                            <?= csrf_field(); ?>
-                            <div class="col-10 mt-2">
-                                <div class="input-group col-1">
-                                    <input class="form-control me-2" type="search" placeholder="Masukan Kata Kunci" aria-label="Search" name="cari">
-                                    <button class="btn btn-outline-dark" type="submit">Search</button>
-                                </div>
-                            </div>
-                        </form><br> -->
-                    </div>
-                    <div class="col">
                         <form action="/admin/produk/proses" method="post">
                             <?= csrf_field(); ?>
                             <!-- untuk export -->
@@ -96,6 +85,19 @@
                                 </div>
                             </div>
                         </form>
+                        <a href="/admin/produk/create" class="btn btn-primary mt-4">Tambah Produk</a>
+                        <!-- <form class="row" action="/admin/produk/cari" action="get">
+                            <?= csrf_field(); ?>
+                            <div class="col-10 mt-2">
+                                <div class="input-group col-1">
+                                    <input class="form-control me-2" type="search" placeholder="Masukan Kata Kunci" aria-label="Search" name="cari">
+                                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form><br> -->
+                    </div>
+                    <div class="col">
+
                     </div>
                 </div>
                 <br>

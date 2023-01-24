@@ -46,7 +46,7 @@
 </nav>
 
 <!--isi-->
-<div class="container">
+<div class="container mt-2">
     <div class="row">
         <div class="col">
             <div class="card">
@@ -97,24 +97,37 @@
                         </div>
                     </div>
                     <div class="row">
-                            <form action="" method="post" enctype="multipart/form-data">
+                        <form action="/admin/pengembalian/update/<?= $pengembalian['id_pengembalian']; ?>" method="post" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
-                                <div class="col-12">
-                                    <label class="form-label" for="alasan">Alasan</label>
-                                    <textarea id="alasan" name="alasan" placeholder="Jelaskan Alasan Pengembalian" class="form-control" readonly><?= $pengembalian['alasan'] ?></textarea><br>
-                                    <label class="form-label" for="telp">Gambar</label><br>
-                                    <img src="/img/pengembalian/<?= $pengembalian['gambar'] ?>" width="900"><br><br>
-                                    <label class="form-label" for="validasi">Validasi</label>
-                                    <input type="text" id="validasi" name="validasi" value="Menunggu Validasi" class="form-control" readonly /><br>
-                                    <label class="form-label" for="">Alamat Pengembalian</label>
-                                    <textarea placeholder="Jl. Penyelesaian Tomang IV No.1, North Meruya, Kembangan, West Jakarta City, Jakarta 11620" class="form-control" readonly><?= $pengembalian['alamat'] ?></textarea><br>
-                                    <label class="form-label" for="resi_pengembalian">No Resi Pengembalian (Biaya Ditanggung Pembeli)</label>
-                                    <input type="text" id="resi_pengembalian" name="resi_pengembalian" placeholder="Misal: JD19099210921 (JNT)" class="form-control" value="<?= $pengembalian['no_resi'] ?>" readonly/><br>
-                                    <label class="form-label" for="telp">Rekening Pengembalian Dana</label>
-                                    <input type="text" id="rek_pengembalian" name="rek_pengembalian" placeholder="Misal: 1892380129 (Budi)" class="form-control" value="<?= $pengembalian['rek_pengembalian'] ?>" readonly/><br>
-                                </div>
-                                <button class="btn btn-primary" type="submit">Submit</button>
-                            </form>
+                            <div class="col-12">
+                                <input type="hidden" id="id_transaksiFK" name="id_transaksiFK" class="form-control" value="<?= $pengembalian['id_transaksiFK'] ?>" />
+                                <label class="form-label" for="alasan">Alasan</label>
+                                <textarea id="alasan" name="alasan" placeholder="Jelaskan Alasan Pengembalian" class="form-control" readonly><?= $pengembalian['alasan'] ?></textarea><br>
+                                <label class="form-label" for="telp">Gambar</label><br>
+                                <img src="/img/pengembalian/<?= $pengembalian['gambar'] ?>" width="900"><br><br>
+                                <label class="form-label" for="validasi">Validasi</label>
+                                <select class="form-select" aria-label="Default select example" id="validasi" name="validasi">
+                                    <option selected>Menunggu Validasi</option>
+                                    <option value="Valid">Valid</option>
+                                    <option value="Tidak Valid">Tidak Valid</option>
+                                </select><br>
+                                <label class="form-label" for="resi_pengembalian">Status Saat Ini</label>
+                                <input type="text" id="status1" name="status1" class="form-control" value="<?= $pengembalian['status'] ?>" readonly /><br>
+                                <label class="form-label" for="validasi">Update Status (Isi Ketika Barang Retur Sudah Sampai)</label>
+                                <select class="form-select" aria-label="Default select example" id="status" name="status">
+                                    <option selected>Pilih Jika Barang Sudah Sampai, Lewati Jika Tidak</option>
+                                    <!-- <option value="Pengiriman Produk Retur">Pengiriman Produk Retur</option> -->
+                                    <option value="Pengembalian Dana Selesai">Pengembalian Dana Selesai</option>
+                                </select><br>
+                                <label class="form-label" for="">Alamat Pengembalian</label>
+                                <textarea placeholder="Jl. Penyelesaian Tomang IV No.1, North Meruya, Kembangan, West Jakarta City, Jakarta 11620" class="form-control" readonly></textarea><br>
+                                <label class="form-label" for="resi_pengembalian">No Resi Pengembalian (Biaya Ditanggung Pembeli)</label>
+                                <input type="text" id="resi_pengembalian" name="resi_pengembalian" placeholder="Belum Diisi" class="form-control" value="<?= $pengembalian['resi_pengembalian'] ?>" readonly /><br>
+                                <label class="form-label" for="telp">Rekening Pengembalian Dana</label>
+                                <input type="text" id="rek_pengembalian" name="rek_pengembalian" placeholder="Belum Diisi" class="form-control" value="<?= $pengembalian['rek_pengembalian'] ?>" readonly /><br>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Update</button>
+                        </form>
                     </div>
                 </div>
             </div>

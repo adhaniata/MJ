@@ -20,6 +20,6 @@ class AddValidasiTransaksi extends Migration
 
     public function down()
     {
-        $this->forge->dropTable('transaksi');
+        //
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Admin;
 
-use App\Models\ProdukModel;
+use App\Models\{ProdukModel, KategoriModel, TransaksiModel, OngkirModel, PengembalianModel};
 use App\Controllers\BaseController;
 
 class Home extends BaseController
@@ -13,20 +13,57 @@ class Home extends BaseController
         //var_dump(in_groups('user')); die();
 
         $this->produkModel = new ProdukModel();
+        $this->kategoriModel = new KategoriModel();
+        $this->transaksiModel = new TransaksiModel();
+        $this->ongkirModel = new OngkirModel();
+        $this->pengembalianModel = new PengembalianModel();
     }
 
     //untuk index
     public function index()
     {
-        //return view('pages/home');
+        // fillter
+
+        $filter_tp = $this->request->getVar('filter_tp');
+        $tanggal_tp = $this->request->getVar('tanggal_tp');
+        $bulan_tp = $this->request->getVar('bulan_tp');
+        $tahun_tp = $this->request->getVar('tahun_tp');
+
+
+        // cek filter
+        if ($filter_tp != '') {
+            if ($filter_tp == 'tgl_tp') {
+                $transaksi_tp = $this->transaksiModel->where('DATE(created_at)', $tanggal_tp)->get()->getResultArray();
+            } else if ($filter_tp == 'bln_tp') {
+                $transaksi_tp = $this->transaksiModel->where('MONTH(created_at)', date('m', strtotime($bulan_tp)), 'YEAR(created_at)', date('Y', strtotime($bulan_tp)))->get()->getResultArray();
+            } else {
+                $transaksi_tp = $this->transaksiModel->where('YEAR(created_at)', date('Y', strtotime($tahun_tp)))->get()->getResultArray();
+            }
+        } else {
+            $transaksi_tp = $this->transaksiModel->findAll();
+        }
         $data = [
             'title' => 'Home|MJ Sport Collection',
             'produk' => $this->produkModel->getProduk(),
-            'listKategori' => $this->produkModel->get_listKategori()
+            'listKategori' => $this->produkModel->get_listKategori(),
+            'produks' => $this->produkModel->findAll(),
+            'kategori' => $this->kategoriModel->findAll(),
+            'transaksi' => $this->transaksiModel->findAll(),
+            'ongkir' => $this->ongkirModel->findAll(),
+            'pengembalian' => $this->pengembalianModel->findAll(),
+            'countProduk' => $this->produkModel->countAllResults(),
+            'countKategori' => $this->kategoriModel->countAllResults(),
+            'countTransaksi' => $this->transaksiModel->countAllResults(),
+            'countOngkir' => $this->ongkirModel->countAllResults(),
+            'countPengembalian' => $this->pengembalianModel->where('validasi', 'Valid')->countAllResults(),
+            //'countProdukByKat' => $this->produkModel->getCountProdukByKategori()->getResultArray(),
+            //'kategori' => $this->kategoriModel->get()->getResultArray(),
+            'transaksi_fillter' => $transaksi_tp,
+            'count' => $this->transaksiModel->countAllResults(),
+            'tahun' => $this->transaksiModel->select('YEAR(created_at) as tahun')->groupBy('tahun')->get()->getResultArray()
+            //'periode' => $this->
         ];
-        //echo view('Layout/header', $data);
         return view('admin/home/index', $data);
-        //echo view('Layout/footer');
     }
     public function detail($slug_admin)
     {
@@ -40,5 +77,39 @@ class Home extends BaseController
         ];
 
         return view('admin/home/detail', $data);
+    }
+    public function fillter_tp()
+    {
+        // coba fillter
+
+        $filter_tp = $this->request->getVar('filter_tp');
+        $tanggal_tp = $this->request->getVar('tanggal_tp');
+        $bulan_tp = $this->request->getVar('bulan_tp');
+        $tahun_tp = $this->request->getVar('tahun_tp');
+
+
+        // cek filter
+        if ($filter_tp != '') {
+            if ($filter_tp == 'tgl_tp') {
+                $transaksi_tp = $this->transaksiModel->where('DATE(created_at)', $tanggal_tp)->get()->getResultArray();
+            } else if ($filter_tp == 'bln_tp') {
+                $transaksi_tp = $this->transaksiModel->where('MONTH(created_at)', date('m', strtotime($bulan_tp)), 'YEAR(created_at)', date('Y', strtotime($bulan_tp)))->get()->getResultArray();
+            } else {
+                $transaksi_tp = $this->transaksiModel->where('YEAR(created_at)', date('Y', strtotime($tahun_tp)))->get()->getResultArray();
+            }
+        } else {
+            $transaksi_tp = $this->transaksiModel->findAll();
+        }
+
+        $data = [
+            'title' => 'Home |MJ Sport Collection',
+            // 'transaksi' => $this->transaksiModel->findAll(),
+            'transaksi' => $transaksi_tp,
+            'count' => $this->transaksiModel->countAllResults(),
+            'tahun' => $this->transaksiModel->select('YEAR(created_at) as tahun')->groupBy('tahun')->get()->getResultArray()
+        ];
+        // return view('admin/transaksi/index', $data);
+
+        return view('admin/home/index', $data);
     }
 }

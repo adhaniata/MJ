@@ -9,5 +9,11 @@ class PengembalianModel extends Model
     protected $table = 'pengembalian';
     protected $primaryKey = 'id_pengembalian';
     protected $useTimestamps = true;
-    protected $allowedFields = ['id_transaksiFK', 'alasan', 'gambar', 'resi_pengembalian', 'rek_pengembalian', 'validasi'];
+    protected $allowedFields = ['id_transaksiFK', 'alasan', 'gambar', 'resi_pengembalian', 'rek_pengembalian', 'validasi', 'status'];
+
+    public function getPengembalian()
+    {
+        return $this->db->table('pengembalian')
+            ->get()->getResultArray();
+    }
 }

@@ -47,31 +47,232 @@
 
 
 <!--isi-->
-<!--slide gambar-->
-<center>
-    <div id="mycarousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="/img/sepatuslide1.png" alt="First slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="/img/sepatuslide3.jpg" alt="Second slide">
+<!-- summary -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <h2>Dashboard</h2>
+            <div class="card text-bg-light mb-3" style="max-width: 1300px;">
+                <!-- <div class="card-header text-bg-dark">
+                    <h4>Summary</h4>
+                </div> -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <!-- card Total Produk-->
+                            <div class="card text-bg-secondary mb-3" style="max-width: 20rem;">
+                                <div class="card-header"><b>Jumlah Kategori</b></div>
+                                <div class="card-body">
+                                    <p class="card-text"><b><?= $countKategori; ?></b></p>
+                                </div>
+                                <div class="card-footer">
+                                    <a class="btn btn-outline-light" href=" /admin/kategori">More Info <i class="fa-solid fa-right-long"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <!-- card Total Transaksi-->
+                            <div class="card text-bg-primary mb-3" style="max-width: 20rem;">
+                                <div class="card-header"><b>Jumlah Produk</b></div>
+                                <div class="card-body">
+                                    <p class="card-text"><b><?= $countProduk; ?></b></p>
+                                </div>
+                                <div class="card-footer">
+                                    <a class="btn btn-outline-light" href=" /admin/produk">More Info <i class="fa-solid fa-right-long"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <!-- card Total Transaksi-->
+                            <div class="card text-bg-success mb-3" style="max-width: 20rem;">
+                                <div class="card-header"><b>Jumlah Transaksi</b></div>
+                                <div class="card-body">
+                                    <p class="card-text"><b><?= $countTransaksi; ?></b></p>
+                                </div>
+                                <div class="card-footer">
+                                    <a class="btn btn-outline-light" href=" /admin/transaksi">More Info <i class="fa-solid fa-right-long"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <!-- card Total Transaksi-->
+                            <div class="card text-bg-danger mb-3" style="max-width: 20rem;">
+                                <div class="card-header"><b>Jumlah Pengembalian</b></div>
+                                <div class="card-body">
+                                    <p class="card-text"><b><?= $countPengembalian; ?></b></p>
+                                </div>
+                                <div class="card-footer">
+                                    <a class="btn btn-outline-light" href=" /admin/pengembalian">More Info <i class="fa-solid fa-right-long"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <!-- card Total Transaksi-->
+                            <div class="card text-bg-warning mb-3" style="max-width: 20rem;">
+                                <div class="card-header"><b>Jumlah Ongkir</b></div>
+                                <div class="card-body">
+                                    <p class="card-text"><b><?= $countOngkir; ?></b></p>
+                                </div>
+                                <div class="card-footer">
+                                    <a class="btn btn-outline-dark" href=" /admin/ongkir">More Info <i class="fa-solid fa-right-long"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <script language="JavaScript" type="text/javascript">
-        $(document).ready(function() {
-            $('#mycarousel').carousel({
-                interval: 3000
-            })
-        });
-    </script>
-    <br><br><br>
-</center>
+</div>
+<!-- chart -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col">
+            <div class="card text-bg-light mb-3" style="max-width: 1300px;">
+                <!-- <div class="card-header text-bg-dark">
+                    <h4>Chart</h4>
+                </div> -->
+                <div class="card-body">
+                    <!-- card Total Produk-->
+                    <!-- <div class="card mb-3" style="max-width: 1300px;">
+                        <div class="card-header text-bg-secondary">Kategori</div>
+                        <div class="card-body text-bg-light">
 
+                        </div>
+                    </div><br> -->
+                    <!-- card Total Pendapatan-->
+                    <div class="card mb-3" style="max-width: 1300px;">
+                        <div class="card-header text-bg-dark">Pendapatan</div>
+                        <div class="card-body text-bg-light">
+                            <h5>Jumlah Pendapatan MASIH BINGUNG</h5>
+                            <form action="/admin/fillter" method="post">
+                                <?= csrf_field(); ?>
+                                <!-- untuk fillter tampilan -->
+                                <h5>Tampilan Data</h5>
+                                <div class="form-group row mt-2">
+                                    <label class="col-md-2">Filter</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="filter_tp" name="filter_tp">
+                                            <option value="">Pilih</option>
+                                            <option value="tgl_tp">Berdasarkan Tanggal</option>
+                                            <option value="bln_tp">Berdasarkan Bulan</option>
+                                            <option value="thn_tp">Berdasarkan Tahun</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2" id="tanggal_tp">
+                                    <label class="col-md-2">Tanggal</label>
+                                    <div class="col-md-10">
+                                        <input type="date" name="tanggal_tp" id="tanggal_tp" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2" id="bulan_tp">
+                                    <label class="col-md-2">Bulan</label>
+                                    <div class="col-md-10">
+                                        <input type="month" name="bulan_tp" id="bulan_tp" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2" id="tahun_tp">
+                                    <label class="col-md-2">Tahun</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="tahun_tp" name="tahun_tp">
+                                            <?php foreach ($tahun as $t) : ?>
+                                                <option value="<?= $t['tahun'] ?>"><?= $t['tahun'] ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2">
+                                    <div class="col-md-10">
+                                        <button type="submit" class="btn btn-primary">Terapkan</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="chart-container" style="position: relative; height:50vh; width:100vw">
+                                <canvas id="pendapatanChart"></canvas>
+                            </div>
+                        </div>
+                    </div><br>
+                    <!-- card Total Kategori dan Produk-->
+                    <div class="card mb-3" style="max-width: 1300px;">
+                        <div class="card-header text-bg-primary">Kategori dan Produk</div>
+                        <div class="card-body text-bg-light">
+                            <h5>Jumlah Produk Berdasarkan Kategori UDAH FIX</h5>
+                            <div class="chart-container" style="position: relative; height:50vh; width:100vw">
+                                <canvas id="produkChart"></canvas>
+                            </div>
+                        </div>
+                    </div><br>
+                    <!-- card Total Transaksi-->
+                    <div class="card mb-3" style="max-width: 1300px;">
+                        <div class="card-header text-bg-success">Transaksi</div>
+                        <div class="card-body text-bg-light">
+                            <form action="/admin/fillter" method="post">
+                                <?= csrf_field(); ?>
+                                <!-- untuk fillter tampilan -->
+                                <h5>Tampilan Data Transaksi MASIH BINGUNG</h5>
+                                <div class="form-group row mt-2">
+                                    <label class="col-md-2">Filter</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="filter_tp" name="filter_tp">
+                                            <option value="">Pilih</option>
+                                            <option value="tgl_tp">Berdasarkan Tanggal</option>
+                                            <option value="bln_tp">Berdasarkan Bulan</option>
+                                            <option value="thn_tp">Berdasarkan Tahun</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2" id="tanggal_tp">
+                                    <label class="col-md-2">Tanggal</label>
+                                    <div class="col-md-10">
+                                        <input type="date" name="tanggal_tp" id="tanggal_tp" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2" id="bulan_tp">
+                                    <label class="col-md-2">Bulan</label>
+                                    <div class="col-md-10">
+                                        <input type="month" name="bulan_tp" id="bulan_tp" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2" id="tahun_tp">
+                                    <label class="col-md-2">Tahun</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="tahun_tp" name="tahun_tp">
+                                            <?php foreach ($tahun as $t) : ?>
+                                                <option value="<?= $t['tahun'] ?>"><?= $t['tahun'] ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2">
+                                    <div class="col-md-10">
+                                        <button type="submit" class="btn btn-primary">Terapkan</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="chart-container" style="position: relative; height:50vh; width:100vw">
+                                <canvas id="transaksiChart"></canvas>
+                            </div>
+                        </div>
+                    </div><br>
+                    <!-- card Total Transaksi-->
+                    <div class="card mb-3" style="max-width: 1300px;">
+                        <div class="card-header text-bg-danger">Pengembalian</div>
+                        <div class="card-body text-bg-light">
+                            <h5>Jumlah Pengembalian MASIH BINGUNG AMBIL PERBULANNYA</h5>
+                            <div class="chart-container" style="position: relative; height:50vh; width:100vw">
+                                <canvas id="pengembalianChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--produk pajangan-->
-<div class="container">
+<div class="container mt-5">
     <div class="input-group">
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Cari Produk" aria-label="Search">
@@ -112,6 +313,254 @@
 </div>
 <br><br>
 <br><br><br><br><br>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.0/chart.min.js" integrity="sha512-qKyIokLnyh6oSnWsc5h21uwMAQtljqMZZT17CIMXuCQNIfFSFF4tJdMOaJHL9fQdJUANid6OB6DRR0zdHrbWAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // untuk Chart
+    <?php
+    foreach ($kategori as $key => $value) {
+        $db = \Config\Database::connect();
+        $data_produk_kategori[] = $db->table('produk')
+            ->where('id_kategoriFK', $value['id_kategori'])
+            ->countAllResults();
+        $label_produk_kategori[] = $value['nama_kategori'];
+    }
+    ?>
+    const ctx = document.getElementById('produkChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: <?= json_encode($label_produk_kategori); ?>,
+            datasets: [{
+                label: 'Jumlah Produk',
+                data: <?= json_encode($data_produk_kategori); ?>,
+                borderWidth: 1,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                ]
+            }, {
+                label: 'Jumlah Produk',
+                data: <?= json_encode($data_produk_kategori); ?>,
+                type: 'pie',
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgb(21, 214, 33)',
+                    'rgb(214, 21, 62 )'
+                ]
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+<script>
+    // untuk Pendapatan
+
+    const pdt = document.getElementById('pendapatanChart');
+
+    new Chart(pdt, {
+        type: 'bar',
+        data: {
+            labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober'],
+            datasets: [{
+                label: 'Jumlah Produk',
+                data: [10, 20, 30, 40, 50, 60, 30, 50, 60, 10],
+                borderWidth: 1,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                ]
+            }, {
+                label: 'Jumlah Produk',
+                data: [10, 20, 30, 40, 50, 60, 30, 50, 60, 10],
+                type: 'line',
+                backgroundColor: [
+                    'rgb(255, 99, 132)'
+                ]
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+<script>
+    // untuk Pengembalian
+    <?php
+    $db = \Config\Database::connect();
+    $data_pengembalian[] = $db->table('pengembalian')
+        ->where('validasi', 'Valid')
+        ->countAllResults();
+    $label_pengembalian = [
+        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+    ];
+
+    ?>
+    const pbl = document.getElementById('pengembalianChart');
+
+    new Chart(pbl, {
+        type: 'bar',
+        data: {
+            labels: <?= json_encode($label_pengembalian); ?>,
+            datasets: [{
+                label: 'Jumlah Pengembalian Bar Chart',
+                data: <?= json_encode($data_pengembalian); ?>,
+                borderWidth: 1,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                ]
+            }, {
+                label: 'Jumlah Pengembalian Line Chart',
+                data: <?= json_encode($data_pengembalian); ?>,
+                type: 'line',
+                backgroundColor: [
+                    'rgb(255, 99, 132)'
+                ]
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+<script>
+    $(function() {
+        $('#bulan_tp').hide();
+        $('#tahun_tp').hide();
+        $('#tanggal_tp').hide();
+
+        $('#filter_tp').on('change', function() {
+            var filter_tp = $(this).val();
+
+            if (filter_tp != '') {
+                if (filter_tp == 'bln_tp') {
+                    $('#bulan_tp').show();
+                    $('#tanggalTp').hide();
+                    $('#tahun_tp').hide();
+                } else if (filter_tp == 'thn_tp') {
+                    $('#tahun_tp').show();
+                    $('#tanggal_tp').hide();
+                    $('#bulan_tp').hide();
+                } else {
+                    $('#tanggal_tp').show();
+                    $('#bulan_tp').hide();
+                    $('#tahun_tp').hide();
+                }
+            } else {
+                $('#tanggal_tp').hide();
+                $('#bulan_tp').hide();
+                $('#tahun_tp').hide();
+            }
+        })
+    })
+    <?php
+    foreach ($transaksi_fillter as $key => $value) {
+        $data_transaksi[] = $transaksi;
+        $label_transaksi[] = $value['created_at'];
+    }
+    ?>
+    const trx = document.getElementById('transaksiChart');
+
+    new Chart(trx, {
+        type: 'line',
+        data: {
+            labels: <?= json_encode($label_transaksi); ?>,
+            datasets: [{
+                label: 'Jumlah Transaksi',
+                data: <?= json_encode($data_transaksi); ?>,
+                borderWidth: 1,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                ]
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
 </body>
 
 </html>

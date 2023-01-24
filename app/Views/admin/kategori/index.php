@@ -50,19 +50,10 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="datatable">
+                <h2 class="mt-3 mb-1">Daftar Kategori Produk</h2>
                 <a href="/admin/kategori/create" class="btn btn-primary mt-4">Tambah Data Kategori</a>
-                <h2 class="mt-3 mb-4">Daftar Kategori Produk</h2>
-                <form class="row" action="/admin/kategori/cari" action="get">
-                    <?= csrf_field(); ?>
-                    <div class="col-4 mt-2">
-                        <div class="input-group col-1">
-                            <input class="form-control me-2" type="search" placeholder="Masukan Kata Kunci" aria-label="Search" name="cari">
-                            <button class="btn btn-outline-dark" type="submit">Search</button>
-                        </div>
-                    </div>
-                </form>
-                <br>
+                <br><br>
                 <?php if (session()->getFlashdata('pesan')) : ?>
                     <dif class="alert alert-success" role="alert">
                         <?= session()->getFlashdata('pesan'); ?>
