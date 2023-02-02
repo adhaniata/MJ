@@ -23,6 +23,7 @@ class Ulasan extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
+
         return view('transaksi/ulasan', $data);
     }
     public function save($id)

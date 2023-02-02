@@ -41,6 +41,7 @@ $routes->get('/produk/(:segment)', 'Home::detail/$1');
 // hak akses untuk admin
 $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('/', 'Admin\Home::index');
+    //$routes->post('/fillter', 'Admin\Home::index');
 
     $routes->get('produk', 'Admin\Produk::index');
     $routes->get('produk/create', 'Admin\Produk::create');
@@ -78,6 +79,10 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->post('transaksi/fillter', 'Admin\transaksi::fillter_tp');
     $routes->post('transaksi/print/(:num)', 'Admin\transaksi::cetakdetail/$1');
     $routes->get('transaksi/cari', 'Admin\transaksi::cari');
+    $routes->get('transaksi/batal', 'Admin\Transaksi::tampilanBatal');
+    $routes->get('transaksi/belum-bayar', 'Admin\Transaksi::tampilanBelumBayar');
+    $routes->get('transaksi/proses', 'Admin\Transaksi::tampilanProses');
+    $routes->get('transaksi/selesai', 'Admin\Transaksi::tampilanSelesai');
     // $routes->get('transaksi/print/(:num)', 'Admin\transaksi::printdetail/$1');
     // $routes->get('transaksi/export-pdf', 'Admin\transaksi::exportPDF');
     // $routes->get('transaksi/export-excel', 'Admin\transaksi::exportExcel');
@@ -86,6 +91,7 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
 
     $routes->get('pengembalian', 'Admin\Pengembalian::index');
     $routes->get('pengembalian/(:num)', 'Admin\Pengembalian::detail/$1');
+    $routes->post('pengembalian/update/(:num)', 'Admin\Pengembalian::update/$1');
 
     $routes->get('akun/profil', 'Admin\Akun::profil');
     $routes->post('akun/update-profil', 'Admin\Akun::update_profil');
@@ -109,7 +115,17 @@ $routes->group('', ['filter' => 'role:user'], function ($routes) {
     $routes->get('ongkir', 'Ongkir::index');
     $routes->get('ongkir/(:any)', 'Ongkir::detail/$1');
 
+    $routes->get('chatbot', 'Chatbot::index');
+
     $routes->get('transaksi', 'Transaksi::index');
+    $routes->get('transaksi/belum-bayar', 'Transaksi::tampilanBelumBayar');
+    $routes->get('transaksi/batal', 'Transaksi::tampilanBatal');
+    $routes->get('transaksi/batal/(:num)', 'Transaksi::batal/$1');
+    $routes->get('transaksi/detail-semua/(:num)', 'Transaksi::detailAll/$1');
+    $routes->get('transaksi/detail-selesai/(:num)', 'Transaksi::detailSelesai/$1');
+    $routes->get('transaksi/proses', 'Transaksi::tampilanProses');
+    $routes->get('transaksi/selesai', 'Transaksi::tampilanSelesai');
+    $routes->get('transaksi/pengembalian', 'Transaksi::tampilanPengembalian');
     $routes->post('transaksi/save', 'Transaksi::save');
     $routes->get('transaksi/(:num)', 'Transaksi::detail/$1');
     $routes->get('transaksi/delete/(:num)', 'Transaksi::delete/$1');
@@ -117,6 +133,7 @@ $routes->group('', ['filter' => 'role:user'], function ($routes) {
     $routes->post('transaksi/konfirmasi/save', 'Transaksi::save_konfirmasi');
     $routes->get('transaksi/pengembalian/(:num)', 'Transaksi::pengembalian/$1');
     $routes->post('transaksi/proses-pengembalian/(:num)', 'Transaksi::proses_pengembalian/$1');
+    $routes->post('transaksi/pengembalian/update/(:num)', 'Transaksi::update_pengembalian/$1');
     $routes->get('transaksi/ulasan/(:num)', 'Transaksi::ulasan/$1');
     $routes->post('transaksi/ulasan/save/(:num)', 'Transaksi::save_ulasan/$1');
 

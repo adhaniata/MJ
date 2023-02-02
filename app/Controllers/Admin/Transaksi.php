@@ -29,6 +29,57 @@ class Transaksi extends BaseController
         return view('admin/transaksi/index', $data);
     }
 
+    public function tampilanBelumBayar()
+    {
+        $data = [
+            'title' => 'Transaksi Belum Di Bayar |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->where('status_pembayaran', 'MENUNGGU PEMBAYARAN')->get()->getResultArray(),
+            'validation' => \Config\Services::validation(),
+            'count' => $this->transaksiModel->countAllResults(),
+            'tahun' => $this->transaksiModel->select('YEAR(created_at) as tahun')->groupBy('tahun')->get()->getResultArray()
+        ];
+
+        return view('admin/transaksi/belumbayar', $data);
+    }
+
+    public function tampilanBatal()
+    {
+        $data = [
+            'title' => 'Transaksi Batal |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->where('status_pengiriman', 'Batal')->get()->getResultArray(),
+            'validation' => \Config\Services::validation(),
+            'count' => $this->transaksiModel->countAllResults(),
+            'tahun' => $this->transaksiModel->select('YEAR(created_at) as tahun')->groupBy('tahun')->get()->getResultArray()
+        ];
+
+        return view('admin/transaksi/batal', $data);
+    }
+
+    public function tampilanProses()
+    {
+        $data = [
+            'title' => 'Transaksi Sedang Di Proses |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->where('validasi', 'VALID')->where('status_pengiriman', 'PROSES PENGIRIMAN')->get()->getResultArray(),
+            'validation' => \Config\Services::validation(),
+            'count' => $this->transaksiModel->countAllResults(),
+            'tahun' => $this->transaksiModel->select('YEAR(created_at) as tahun')->groupBy('tahun')->get()->getResultArray()
+        ];
+
+        return view('admin/transaksi/proses', $data);
+    }
+    public function tampilanSelesai()
+    {
+        $data = [
+            'title' => 'Transaksi Selesai |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->where('status_pengiriman', 'DITERIMA')->get()->getResultArray(),
+            'validation' => \Config\Services::validation(),
+            'count' => $this->transaksiModel->countAllResults(),
+            'tahun' => $this->transaksiModel->select('YEAR(created_at) as tahun')->groupBy('tahun')->get()->getResultArray()
+        ];
+
+        return view('admin/transaksi/selesai', $data);
+    }
+
     public function detail($id)
     {
         $data = [
@@ -52,6 +103,13 @@ class Transaksi extends BaseController
     public function update($id)
     {
         helper('form');
+        //cek no_resi untuk update (berguna untuk menghindari rules required dan is unique)
+        $resiLama = $this->transaksiModel->find($id);
+        if ($resiLama['no_resi'] == $this->request->getVar('no_resi')) {
+            $rule_resi = 'required';
+        } else {
+            $rule_resi = 'required|is_unique[transaksi.no_resi]';
+        }
         //validasi input
         if (!$this->validate([
             //kalau menggunakan ini akan banyak error maka akan dikondisikan
@@ -64,7 +122,7 @@ class Transaksi extends BaseController
                 ]
             ],
             'no_resi' => [
-                'rules' => 'is_unique[transaksi.no_resi]',
+                'rules' => $rule_resi,
                 'errors' => [
                     'required' => '{field} no resi sudah ada.'
                 ]

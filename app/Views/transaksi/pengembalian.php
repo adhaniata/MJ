@@ -54,24 +54,52 @@
                         </div>
                     </div>
                     <div class="row">
-                        <?php if ($cek_pengembalian == 1): ?>
-                            <label class="form-label"><?= $pengembalian['validasi'] ?></label>
-                        <?php else: ?>
+                        <?php if ($cek_pengembalian == 1) : ?>
+                            <?php if ($pengembalian['validasi'] == 'Valid' and $pengembalian['status'] == 'null') : ?>
+                                <label class="form-label"><b>Status Validasi : <?= $pengembalian['validasi'] ?></b></label>
+                                <form action="/transaksi/pengembalian/update/<?= $pengembalian['id_pengembalian'] ?>" method="post" enctype="multipart/form-data">
+                                    <?= csrf_field(); ?>
+                                    <!--menambahkan input bertype hidden-->
+                                    <input type="hidden" name="id_pengembalian" value="<?= $pengembalian['id_pengembalian']; ?>">
+                                    <div class="col-12">
+                                        <label class="form-label" for="">Alamat Pengembalian</label>
+                                        <textarea placeholder="Jl. Penyelesaian Tomang IV No.1, North Meruya, Kembangan, West Jakarta City, Jakarta 11620" class="form-control" readonly><?= $transaksi['alamat'] ?></textarea><br>
+                                        <label class="form-label" for="resi_pengembalian">No Resi Pengembalian (Biaya Ditanggung Pembeli)</label>
+                                        <input type="text" id="resi_pengembalian" name="resi_pengembalian" placeholder="Misal: JD19099210921 (JNT)" class="form-control" /><br>
+                                        <label class="form-label" for="telp">Rekening Pengembalian Dana</label>
+                                        <input type="text" id="rek_pengembalian" name="rek_pengembalian" placeholder="Misal: 1892380129 (Budi)" class="form-control" /><br>
+                                    </div>
+                                    <p>Pastikan Form Diisi Dengan Benar. Pengembalian Dana Akan Dilakukan Setelah Produk Sampai Ke Alamat Tujuan</p>
+                                    <button class="btn btn-primary" type="submit">Update</button>
+                                    <small>Pengisian Form Hanya Diperbolehkan Satu Kali Saja</small>
+                                </form>
+                            <?php elseif ($pengembalian['validasi'] == 'Valid' and $pengembalian['status'] == 'Pengiriman Produk Retur') : ?>
+                                <label class="form-label"><b>Status Pengembalian: <?= $pengembalian['status'] ?></b></label>
+                                <p>Dana Akan Dikembalikan Jika Produk Sudah Sampai. Mohon Menunggu</p>
+                            <?php elseif ($pengembalian['validasi'] == 'Valid' and $pengembalian['status'] == 'Pengembalian Dana Selesai') : ?>
+                                <label class="form-label"><b>Status Pengembalian: <?= $pengembalian['status'] ?></b></label>
+                                <p>Dana Sudah Dikembalikan Ke No Rekening Anda : <?= $pengembalian['rek_pengembalian']; ?>.</p>
+                                <p>Maaf Atas Ketidaknyamanannya. Terimakasih</p>
+                            <?php else : ?>
+                                <label class="form-label"><b>Status Validasi: <?= $pengembalian['validasi'] ?></b></label>
+                            <?php endif ?>
+
+                        <?php else : ?>
                             <form action="/transaksi/proses-pengembalian/<?= $transaksi['id_transaksi'] ?>" method="post" enctype="multipart/form-data">
-                            <?= csrf_field(); ?>
+                                <?= csrf_field(); ?>
                                 <div class="col-12">
                                     <label class="form-label" for="alasan">Alasan</label>
-                                    <textarea id="alasan" name="alasan" placeholder="Jelaskan Alasan Pengembalian" class="form-control"></textarea><br>
-                                    <label class="form-label" for="telp">Gambar</label>
-                                    <input class="form-control" type="file" id="gambarPengembalian" name="gambarPengembalian"><br>
-                                    <label class="form-label" for="validasi">Validasi</label>
+                                    <textarea id="alasan" name="alasan" placeholder="Pastikan Barang Dalam Kondisi Baru (Tag Komplit, Tidak Digunakan, dan Tidak Dicuci). Jelaskan Alasan Pengembalian." class="form-control"></textarea><br>
+                                    <label class="form-label" for="gambar">Gambar</label>
+                                    <input class="form-control" type="file" id="gambar" name="gambar"><br>
+                                    <label class="form-label" for="validasi">Validasi (Permintaan Pengembalian Produk Akan Segera Di Validasi Admin, Mohon Ditunggu)</label>
                                     <input type="text" id="validasi" name="validasi" value="Menunggu Validasi" class="form-control" readonly /><br>
-                                    <label class="form-label" for="">Alamat Pengembalian</label>
+                                    <!-- <label class="form-label" for="">Alamat Pengembalian</label>
                                     <textarea placeholder="Jl. Penyelesaian Tomang IV No.1, North Meruya, Kembangan, West Jakarta City, Jakarta 11620" class="form-control" readonly><?= $transaksi['alamat'] ?></textarea><br>
                                     <label class="form-label" for="resi_pengembalian">No Resi Pengembalian (Biaya Ditanggung Pembeli)</label>
                                     <input type="text" id="resi_pengembalian" name="resi_pengembalian" placeholder="Misal: JD19099210921 (JNT)" class="form-control" /><br>
                                     <label class="form-label" for="telp">Rekening Pengembalian Dana</label>
-                                    <input type="text" id="rek_pengembalian" name="rek_pengembalian" placeholder="Misal: 1892380129 (Budi)" class="form-control" /><br>
+                                    <input type="text" id="rek_pengembalian" name="rek_pengembalian" placeholder="Misal: 1892380129 (Budi)" class="form-control" /><br> -->
                                 </div>
                                 <button class="btn btn-primary" type="submit">Submit</button>
                             </form>

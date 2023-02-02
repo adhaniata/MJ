@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\ProdukModel;
+use App\Models\{ProdukModel, TransaksiDetailModel};
 
 class Home extends BaseController
 {
@@ -10,6 +10,7 @@ class Home extends BaseController
     public function __construct()
     {
         $this->produkModel = new ProdukModel();
+        $this->transaksiDetailModel = new TransaksiDetailModel();
     }
 
     public function index()
@@ -29,7 +30,8 @@ class Home extends BaseController
         //merapihkan dan untuk ditampilkan di view
         $data = [
             'title' => 'Detail Produk| MJ Sport Collection',
-            'produk' => $this->produkModel->getProdukAdmin($slug_produk)
+            'produk' => $this->produkModel->getProdukAdmin($slug_produk),
+            'ulasan' => $this->transaksiDetailModel->getUlasan($slug_produk)
         ];
         return view('home/detail', $data);
     }

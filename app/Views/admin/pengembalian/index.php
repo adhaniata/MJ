@@ -50,9 +50,8 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="datatable">
                 <h2 class="mt-3 mb-4">Daftar Pengembalian Produk</h2>
-                <br>
                 <?php if (session()->getFlashdata('pesan')) : ?>
                     <dif class="alert alert-success" role="alert">
                         <?= session()->getFlashdata('pesan'); ?>
@@ -64,6 +63,9 @@
                         <th scope="col">No</th>
                         <th scope="col">ID Transaksi</th>
                         <th scope="col">Nama User</th>
+                        <th scope="col">No Telepon</th>
+                        <th scope="col">Validasi</th>
+                        <th scope="col">Status Pengembalian</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -73,6 +75,9 @@
                             <th scope="row"><?= $i++; ?></th>
                             <td><?= $value['id_transaksi']; ?></td>
                             <td><?= $value['nama']; ?></td>
+                            <td><?= $value['telp']; ?></td>
+                            <td><?= $value['validasi']; ?></td>
+                            <td><?= $value['status']; ?></td>
                             <td>
                                 <a href="/admin/pengembalian/<?= $value['id_transaksi']; ?>" class="btn btn-dark">Detail</a>
                             </td>

@@ -5,8 +5,10 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h3 class="mt-3">Detail Produk</h3>
-            <div class="card mb-3" style="max-width: 1200px;">
+            <div class="card mb-3 mt-3" style="max-width: 1200px;">
+                <div class="card-header text-bg-dark">
+                    <h4>Detail Produk</h4>
+                </div>
                 <div class="row g-0">
                     <div class="col-md-4" class="align-middle">
                         <img src="/img/produk/<?= $produk['gambar']; ?>" class="img-fluid rounded-start" width="1000" alt=" ...">
@@ -47,15 +49,30 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2 class="mt-3">Ulasan Produk</h2>
-            <!-- card -->
-            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-                <div class="card-header">Nama User</div>
-                <div class="card-body">
-                    <h5 class="card-title">Light card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card text-bg-light mb-3" style="max-width: 1200px;">
+                <div class="card-header text-bg-secondary">
+                    <h4>Ulasan Produk</h4>
                 </div>
-            </div><br>
+                <div class="card-body">
+                    <div class="row">
+                        <?php foreach ($ulasan as $u) : ?>
+                            <div class="col">
+                                <!-- card ulasan-->
+                                <div class="card text-bg-light mb-3" style="max-width: 20rem;">
+                                    <div class="card-header text-bg-light">Oleh <?= $u['nama']; ?></div>
+                                    <div class="card-body">
+
+                                        <p class="card-text"><b><?= $u['isi_ulasan']; ?></b></p>
+                                    </div>
+                                    <div class="card-footer text-muted">
+                                        <?= $u['nama_produk']; ?> | Dibeli pada: <?= $u['tgl_konfirmasi']; ?>
+                                    </div>
+                                </div><br>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

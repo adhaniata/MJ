@@ -1,0 +1,108 @@
+CRITICAL - 2023-01-17 09:05:40 --> Call to undefined method App\Models\PengembalianModel::getUlasan
+in SYSTEMPATH\Model.php on line 807.
+ 1 APPPATH\Controllers\Admin\Pengembalian.php(21): CodeIgniter\Model->__call('getUlasan', [])
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Pengembalian->index()
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Pengembalian))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-17 09:46:00 --> Undefined array key "no_resi"
+in APPPATH\Controllers\Admin\Transaksi.php on line 57.
+ 1 APPPATH\Controllers\Admin\Transaksi.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "no_resi"', 'APPPATH\\Controllers\\Admin\\Transaksi.php', 57)
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Transaksi->update('7')
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Transaksi))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-17 09:49:29 --> Undefined array key "no_resi"
+in APPPATH\Controllers\Admin\Transaksi.php on line 57.
+ 1 APPPATH\Controllers\Admin\Transaksi.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "no_resi"', 'APPPATH\\Controllers\\Admin\\Transaksi.php', 57)
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Transaksi->update('7')
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Transaksi))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-17 10:40:00 --> Undefined array key "pengembalian.validasi"
+in APPPATH\Views\admin\pengembalian\index.php on line 78.
+ 1 APPPATH\Views\admin\pengembalian\index.php(78): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "pengembalian.validasi"', 'APPPATH\\Views\\admin\\pengembalian\\index.php', 78)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\pengembalian\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/pengembalian/index', [], true)
+ 5 APPPATH\Controllers\Admin\Pengembalian.php(23): view('admin/pengembalian/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Pengembalian->index()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Pengembalian))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-17 10:58:09 --> syntax error, unexpected token "and"
+in APPPATH\Views\admin\pengembalian\index.php on line 72.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/pengembalian/index', [], true)
+ 3 APPPATH\Controllers\Admin\Pengembalian.php(23): view('admin/pengembalian/index', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Pengembalian->index()
+ 5 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Pengembalian))
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-17 11:10:38 --> Undefined array key "validasi"
+in APPPATH\Views\admin\pengembalian\index.php on line 78.
+ 1 APPPATH\Views\admin\pengembalian\index.php(78): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "validasi"', 'APPPATH\\Views\\admin\\pengembalian\\index.php', 78)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\pengembalian\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/pengembalian/index', [], true)
+ 5 APPPATH\Controllers\Admin\Pengembalian.php(23): view('admin/pengembalian/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Pengembalian->index()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Pengembalian))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-17 11:18:39 --> foreach() argument must be of type array|object, bool given
+in APPPATH\Views\admin\pengembalian\index.php on line 72.
+ 1 APPPATH\Views\admin\pengembalian\index.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, bool given', 'APPPATH\\Views\\admin\\pengembalian\\index.php', 72)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\pengembalian\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/pengembalian/index', [], true)
+ 5 APPPATH\Controllers\Admin\Pengembalian.php(23): view('admin/pengembalian/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Pengembalian->index()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Pengembalian))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2023-01-17 13:38:59 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:171
+Stack trace:
+#0 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(171): mysqli->real_connect('localhost', 'root', '', 'tokomj', 3306, '', 0)
+#1 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(1361): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#4 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(1380): CodeIgniter\Database\BaseConnection->listTables()
+#5 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(760): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#6 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(168): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CLI\Commands.php(63): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(65): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(51): CodeIgniter\CLI\CommandRunner->index(Array)
+#11 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(918): CodeIgniter\CLI\CommandRunner->_remap('index', Array)
+#12 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(CodeIgniter\CLI\CommandRunner))
+#13 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(345): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CLI\Console.php(48): CodeIgniter\CodeIgniter->run()
+#15 C:\xampp\htdocs\skripsi\Tokomjs\MJ\spark(98): CodeIgniter\CLI\Console->run()
+#16 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:215
+Stack trace:
+#0 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(1361): CodeIgniter\Database\BaseConnection->query('SHOW TABLES FRO...')
+#3 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(1380): CodeIgniter\Database\BaseConnection->listTables()
+#4 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(760): CodeIgniter\Database\BaseConnection->tableExists('migrations')
+#5 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MigrationRunner.php(168): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#7 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CLI\Commands.php(63): CodeIgniter\Commands\Database\Migrate->run(Array)
+#8 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(65): CodeIgniter\CLI\Commands->run('migrate', Array)
+#9 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CLI\CommandRunner.php(51): CodeIgniter\CLI\CommandRunner->index(Array)
+#10 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(918): CodeIgniter\CLI\CommandRunner->_remap('index', Array)
+#11 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(CodeIgniter\CLI\CommandRunner))
+#12 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(345): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CLI\Console.php(48): CodeIgniter\CodeIgniter->run()
+#14 C:\xampp\htdocs\skripsi\Tokomjs\MJ\spark(98): CodeIgniter\CLI\Console->run()
+#15 {main}

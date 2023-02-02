@@ -29,6 +29,60 @@ class Transaksi extends BaseController
         return view('transaksi/index', $data);
     }
 
+    public function tampilanBelumBayar()
+    {
+        $data = [
+            'title' => 'Transaksi Belum Di Bayar |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->where('id_userFK', user_id())->where('status_pembayaran', 'MENUNGGU PEMBAYARAN')->get()->getResultArray(),
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('transaksi/belumbayar', $data);
+    }
+
+    public function tampilanBatal()
+    {
+        $data = [
+            'title' => 'Transaksi Batal |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->where('id_userFK', user_id())->where('status_pengiriman', 'Batal')->get()->getResultArray(),
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('transaksi/batal', $data);
+    }
+
+    public function tampilanProses()
+    {
+        $data = [
+            'title' => 'Transaksi Sedang Di Proses |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->where('id_userFK', user_id())->where('validasi', 'VALID')->where('status_pengiriman', 'PROSES PENGIRIMAN')->get()->getResultArray(),
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('transaksi/proses', $data);
+    }
+    public function tampilanSelesai()
+    {
+        $data = [
+            'title' => 'Transaksi Selesai |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->where('id_userFK', user_id())->where('status_pengiriman', 'DITERIMA')->get()->getResultArray(),
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('transaksi/selesai', $data);
+    }
+    public function tampilanPengembalian()
+    {
+        $data = [
+            'title' => 'Daftar Pengembalian |MJ Sport Collection',
+            // 'transaksi' => $this->transaksiModel->where('id_userFK', user_id())->join('pengembalian', 'pengembalian.id_transaksiFK = transaksi.id_transaksi')->where('pengembalian.validasi', 'Valid')->get()->getResultArray(),
+            'transaksi' => $this->transaksiModel->where('id_userFK', user_id())->join('pengembalian', 'pengembalian.id_transaksiFK = transaksi.id_transaksi')->where('status_pengiriman', 'PENGEMBALIAN')->get()->getResultArray(),
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('transaksi/daftar_pengembalian', $data);
+    }
+
     public function save()
     {
         //validasi input (sebelum save alangkah lebih baik memvalidaasi)
@@ -104,6 +158,27 @@ class Transaksi extends BaseController
 
         return view('transaksi/detail', $data);
     }
+    public function detailAll($id)
+    {
+        $data = [
+            'title' => 'Transaksi Detail |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->find($id),
+            'transaksi_detail' => $this->transaksiDetailModel->where('id_transaksiFK', $id)->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK')->get()->getResultArray(),
+        ];
+
+        return view('transaksi/detail-index', $data);
+    }
+
+    public function detailSelesai($id)
+    {
+        $data = [
+            'title' => 'Transaksi Selesai Detail |MJ Sport Collection',
+            'transaksi' => $this->transaksiModel->find($id),
+            'transaksi_detail' => $this->transaksiDetailModel->where('id_transaksiFK', $id)->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK')->get()->getResultArray(),
+        ];
+
+        return view('transaksi/detail-selesai', $data);
+    }
 
     public function delete($id)
     {
@@ -115,6 +190,23 @@ class Transaksi extends BaseController
         }
         $this->transaksiModel->delete($id);
         return redirect()->to(base_url('/transaksi'));
+    }
+
+    public function batal($id)
+    {
+        $transaksi = $this->transaksiModel->find($id);
+        $transaksi_detail = $this->transaksiDetailModel->where('id_transaksiFK', $id)->get()->getResultArray();
+        // masukkan data keranjang ke dalam table transaksi detail
+        foreach ($transaksi_detail as $td) {
+            $this->produkModel->where('id_produk', $td['id_produkFK'])->increment('stok', $td['qty']);
+        }
+        $this->transaksiModel->save([
+            'id_transaksi' => $id,
+            'status_pengiriman' => 'Batal',
+            'status_pembayaran' => 'Batal',
+        ]);
+        session()->setFlashdata('pesan', 'Pesanan Berhasil Dibatalkan');
+        return redirect()->to(base_url('/transaksi/batal'));
     }
 
     public function konfirmasi($id)
@@ -152,7 +244,7 @@ class Transaksi extends BaseController
             //generate nama gambar random
             $namaGambar = $fileGambar->getRandomName();
             //pindahkan ke folder
-            $fileGambar->move('img/bukti', $namaGambar);
+            $fileGambar->move('img/konfirmasi', $namaGambar);
 
             // helper('date');
             // $now = date('Y-m-d H:i:s');
@@ -181,7 +273,8 @@ class Transaksi extends BaseController
         ];
         return view('transaksi/pengembalian', $data);
     }
-    public function proses_pengembalian($id){
+    public function proses_pengembalian($id)
+    {
         if (!$this->validate([
             //cara mudah tanpa mengubah bahasa error yang tampil
             //'provinsi' => 'required|is_unique[ongkir.provinsi]'
@@ -193,8 +286,8 @@ class Transaksi extends BaseController
                     'required' => '{field} harus diisi.'
                 ]
             ],
-            'gambarPengembalian' => [
-                'rules' => 'uploaded[gambarPengembalian]|max_size[gambarPengembalian,10240]|is_image[gambarPengembalian]|mime_in[gambarPengembalian,image/jpg,image/jpeg,image/png]',
+            'gambar' => [
+                'rules' => 'uploaded[gambar]|max_size[gambar,10240]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
                 //jika wajib upload tambah uploaded[gambar] di rules
                 'errors' => [
                     'uploaded' => 'Pilih Gambar Terlebih dahulu',
@@ -203,26 +296,14 @@ class Transaksi extends BaseController
                     'mime_in' => 'Yang Anda Pilih Bukan Gambar (Hanya jpg. jpeg. dan png.'
                 ]
             ],
-            'resi_pengembalian' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi.'
-                ]
-            ],
-            'rek_pengembalian' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi.'
-                ]
-            ],
         ])) {
             //$validation = \Config\Services::validation();  //kata ka sandika ini gausa karena dah ada di session
             //return redirect()->to(base_url('admin/ongkir/create'))->withInput()->with('validation', $validation); //yang ini katanya sampai di withInput() aja karena data sudah kekirim
-            return redirect()->to(base_url('transaksi/pengembalian/'.$id))->withInput();
+            return redirect()->to(base_url('transaksi/pengembalian/' . $id))->withInput();
         } else {
 
             //ambil gambar
-            $fileGambar = $this->request->getFile('gambarPengembalian');
+            $fileGambar = $this->request->getFile('gambar');
 
             //generate nama gambar random
             $namaGambar = $fileGambar->getRandomName();
@@ -238,13 +319,54 @@ class Transaksi extends BaseController
 
             //untuk savenya
             //dd($this->request->getVar());
-            $cek = $this->pengembalianModel->save([
+            $this->pengembalianModel->save([
                 'id_transaksiFK' => $id,
                 'alasan' => $this->request->getVar('alasan'),
                 'gambar' => $namaGambar,
+                'validasi' => $this->request->getVAr('validasi')
+            ]);
+
+            $this->transaksiModel->save([
+                'id_transaksi' => $id,
+                'status_pengiriman' => 'PENGEMBALIAN',
+            ]);
+
+
+            session()->setFlashdata('pesan', 'Data Berhasil ditambahkan');
+            return redirect()->to(base_url('/transaksi'));
+        }
+    }
+    public function update_pengembalian($id)
+    {
+        if (!$this->validate([
+            //cara mudah tanpa mengubah bahasa error yang tampil
+            //'provinsi' => 'required|is_unique[ongkir.provinsi]'
+
+            //untuk menampilkan bahasa error yang kita inginkan
+            'resi_pengembalian' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi.'
+                ]
+            ],
+            'rek_pengembalian' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi.'
+                ]
+            ],
+        ])) {
+            //$validation = \Config\Services::validation();  //kata ka sandika ini gausa karena dah ada di session
+            //return redirect()->to(base_url('admin/ongkir/create'))->withInput()->with('validation', $validation); //yang ini katanya sampai di withInput() aja karena data sudah kekirim
+            return redirect()->to(base_url('transaksi/pengembalian/' . $id))->withInput();
+        } else {
+            //untuk savenya
+            //dd($this->request->getVar());
+            $this->pengembalianModel->save([
+                'id_pengembalian' => $id,
                 'resi_pengembalian' => $this->request->getVAr('resi_pengembalian'),
                 'rek_pengembalian' => $this->request->getVAr('rek_pengembalian'),
-                'validasi' => $this->request->getVAr('validasi'),
+                'status' => 'Pengiriman Produk Retur',
             ]);
             session()->setFlashdata('pesan', 'Data Berhasil ditambahkan');
             return redirect()->to(base_url('/transaksi'));
@@ -258,6 +380,12 @@ class Transaksi extends BaseController
             'validation' => \Config\Services::validation(),
             'transaksi_detail' => $this->transaksiDetailModel->where('id_transaksiFK', $id)->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK')->get()->getResultArray(),
         ];
+
+        // update status
+        $this->transaksiModel->save([
+            'id_transaksi' => $id,
+            'status_pengiriman' => 'DITERIMA',
+        ]);
 
         return view('transaksi/ulasan', $data);
     }

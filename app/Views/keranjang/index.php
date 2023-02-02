@@ -24,8 +24,8 @@
                     <?php foreach ($keranjang as $key => $value) : ?>
                         <?php $subtotal += $value['subtotal_harga']; ?>
                         <form action="keranjang/update/<?= $value['id_keranjang']; ?>" method="post" class="d-inline">
-                        <?= csrf_field(); ?>
-                        <!--agar lebih aman-->
+                            <?= csrf_field(); ?>
+                            <!--agar lebih aman-->
                             <tr class="table-light">
                                 <th scope="row"><?= $i++; ?></th>
                                 <td><?= $value['nama_produk']; ?></td>

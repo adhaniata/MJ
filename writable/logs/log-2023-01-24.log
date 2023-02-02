@@ -1,0 +1,156 @@
+ERROR - 2023-01-24 08:16:20 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:171
+Stack trace:
+#0 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(171): mysqli->real_connect('localhost', 'root', '', 'tokomj', 3306, '', 0)
+#1 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\skripsi\Tokomjs\MJ\app\Models\ProdukModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\skripsi\Tokomjs\MJ\app\Controllers\Home.php(21): App\Models\ProdukModel->getProdukAdmin()
+#6 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\Home->index()
+#7 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\skripsi\Tokomjs\MJ\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:215
+Stack trace:
+#0 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\skripsi\Tokomjs\MJ\app\Models\ProdukModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\skripsi\Tokomjs\MJ\app\Controllers\Home.php(21): App\Models\ProdukModel->getProdukAdmin()
+#5 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\Home->index()
+#6 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\skripsi\Tokomjs\MJ\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-01-24 08:16:20 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+in SYSTEMPATH\Database\BaseConnection.php on line 418.
+ 1 SYSTEMPATH\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `produk`
+JOIN `kategori` ON `kategori`.`id_kategori`=`produk`.`id_kategoriFK`', [], false)
+ 3 APPPATH\Models\ProdukModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Home.php(21): App\Models\ProdukModel->getProdukAdmin()
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Home->index()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2023-01-24 08:16:24 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:171
+Stack trace:
+#0 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(171): mysqli->real_connect('localhost', 'root', '', 'tokomj', 3306, '', 0)
+#1 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\skripsi\Tokomjs\MJ\app\Models\ProdukModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\skripsi\Tokomjs\MJ\app\Controllers\Home.php(21): App\Models\ProdukModel->getProdukAdmin()
+#6 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\Home->index()
+#7 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\skripsi\Tokomjs\MJ\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:215
+Stack trace:
+#0 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\skripsi\Tokomjs\MJ\app\Models\ProdukModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\skripsi\Tokomjs\MJ\app\Controllers\Home.php(21): App\Models\ProdukModel->getProdukAdmin()
+#5 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(925): App\Controllers\Home->index()
+#6 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\skripsi\Tokomjs\MJ\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-01-24 08:16:24 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+in SYSTEMPATH\Database\BaseConnection.php on line 418.
+ 1 SYSTEMPATH\Database\BaseConnection.php(561): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `produk`
+JOIN `kategori` ON `kategori`.`id_kategori`=`produk`.`id_kategoriFK`', [], false)
+ 3 APPPATH\Models\ProdukModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Home.php(21): App\Models\ProdukModel->getProdukAdmin()
+ 5 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Home->index()
+ 6 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 09:06:50 --> Undefined array key "rek_pengembalian"
+in APPPATH\Views\transaksi\daftar_pengembalian.php on line 63.
+ 1 APPPATH\Views\transaksi\daftar_pengembalian.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "rek_pengembalian"', 'APPPATH\\Views\\transaksi\\daftar_pengembalian.php', 63)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\transaksi\\daftar_pengembalian.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('transaksi/daftar_pengembalian', [], true)
+ 5 APPPATH\Controllers\Transaksi.php(83): view('transaksi/daftar_pengembalian', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Transaksi->tampilanPengembalian()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 09:08:31 --> Call to undefined function App\Controllers\where()
+in APPPATH\Controllers\Transaksi.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Transaksi->tampilanPengembalian()
+ 2 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi))
+ 3 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 10:07:16 --> syntax error, unexpected token "=="
+in APPPATH\Controllers\Admin\Pengembalian.php on line 46.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(260): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH\\Controllers\\Admin\\Pengembalian.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(238): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Admin\\Pengembalian')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Admin\\Pengembalian')
+ 4 SYSTEMPATH\CodeIgniter.php(875): class_exists('\\App\\Controllers\\Admin\\Pengembalian', true)
+ 5 SYSTEMPATH\CodeIgniter.php(467): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 10:07:32 --> Can't use method return value in write context
+in APPPATH\Controllers\Admin\Pengembalian.php on line 46.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-01-24 10:41:39 --> Undefined property: App\Controllers\Admin\Pengembalian::$transaksiModel
+in APPPATH\Controllers\Admin\Pengembalian.php on line 50.
+ 1 APPPATH\Controllers\Admin\Pengembalian.php(50): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Admin\\Pengembalian::$transaksiModel', 'APPPATH\\Controllers\\Admin\\Pengembalian.php', 50)
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Pengembalian->update('1')
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Pengembalian))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 10:43:44 --> Undefined property: App\Controllers\Admin\Pengembalian::$transaksiModel
+in APPPATH\Controllers\Admin\Pengembalian.php on line 50.
+ 1 APPPATH\Controllers\Admin\Pengembalian.php(50): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Admin\\Pengembalian::$transaksiModel', 'APPPATH\\Controllers\\Admin\\Pengembalian.php', 50)
+ 2 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Pengembalian->update('1')
+ 3 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Pengembalian))
+ 4 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 11:08:13 --> Undefined variable $tahun
+in APPPATH\Views\admin\transaksi\belumbayar.php on line 110.
+ 1 APPPATH\Views\admin\transaksi\belumbayar.php(110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tahun', 'APPPATH\\Views\\admin\\transaksi\\belumbayar.php', 110)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\transaksi\\belumbayar.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/transaksi/belumbayar', [], true)
+ 5 APPPATH\Controllers\Admin\Transaksi.php(40): view('admin/transaksi/belumbayar', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Transaksi->tampilanBelumBayar()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Transaksi))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 11:08:36 --> Undefined variable $tahun
+in APPPATH\Views\admin\transaksi\proses.php on line 110.
+ 1 APPPATH\Views\admin\transaksi\proses.php(110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tahun', 'APPPATH\\Views\\admin\\transaksi\\proses.php', 110)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\transaksi\\proses.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/transaksi/proses', [], true)
+ 5 APPPATH\Controllers\Admin\Transaksi.php(62): view('admin/transaksi/proses', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Transaksi->tampilanProses()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Transaksi))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

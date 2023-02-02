@@ -8,12 +8,12 @@
             <h2 class="mt-3">Ulasan</h2>
             <!-- card -->
             <?php foreach ($transaksi_detail as $td) : ?>
-                <?php if ($td['isi_ulasan'] == ''): ?>
+                <?php if ($td['isi_ulasan'] == '') : ?>
                     <div class="card">
-                    <!--menambahkan action berisi method save untuk menyimpan data-->
+                        <!--menambahkan action berisi method save untuk menyimpan data-->
                         <form action="/transaksi/ulasan/save/<?= $td['id_transaksi_detail'] ?>" method="post" enctype="multipart/form-data">
-                                    <!--fitur agar tidak ada pemalsuan, hanya bisa digunakan dihalaman ini saja-->
-                        <?= csrf_field(); ?>
+                            <!--fitur agar tidak ada pemalsuan, hanya bisa digunakan dihalaman ini saja-->
+                            <?= csrf_field(); ?>
                             <h5 class="card-header text-bg-dark">Produk</h5>
                             <div class="card-body">
                                 <div class="row">
