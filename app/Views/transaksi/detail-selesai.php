@@ -96,7 +96,7 @@
                     </tr>
                 </tbody>
             </table>
-            <a href="/transaksi/ulasan-selesai/<?= $transaksi['id_transaksi'] ?>" class="btn btn-primary">Lihat Ulasan</a>
+            <a href="/transaksi/ulasan/<?= $transaksi['id_transaksi'] ?>" class="btn btn-primary">Lihat Ulasan</a>
         </div>
     </div>
 </div>

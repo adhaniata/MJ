@@ -26,7 +26,7 @@ class Home extends BaseController
 
         foreach ($bulan as $b) {
             $namaBulan[] = date('F', strtotime($b['bulan']));
-            $pendapatan = $this->transaksiModel->select('SUM(total_tagihan) as pendapatan')->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->get()->getResultArray();
+            $pendapatan = $this->transaksiModel->select('SUM(total_tagihan) as pendapatan')->where('status_pengiriman', 'DITERIMA')->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->get()->getResultArray();
             $pendapatan_chart[] = $pendapatan[0]['pendapatan'];
             $transaksi_chart[] = $this->transaksiModel->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->countAllResults();
             $pengembalian_chart[] = $this->pengembalianModel->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->countAllResults();
@@ -69,39 +69,5 @@ class Home extends BaseController
         ];
 
         return view('admin/home/detail', $data);
-    }
-    public function fillter_tp()
-    {
-        // coba fillter
-
-        $filter_tp = $this->request->getVar('filter_tp');
-        $tanggal_tp = $this->request->getVar('tanggal_tp');
-        $bulan_tp = $this->request->getVar('bulan_tp');
-        $tahun_tp = $this->request->getVar('tahun_tp');
-
-
-        // cek filter
-        if ($filter_tp != '') {
-            if ($filter_tp == 'tgl_tp') {
-                $transaksi_tp = $this->transaksiModel->where('DATE(created_at)', $tanggal_tp)->get()->getResultArray();
-            } else if ($filter_tp == 'bln_tp') {
-                $transaksi_tp = $this->transaksiModel->where('MONTH(created_at)', date('m', strtotime($bulan_tp)), 'YEAR(created_at)', date('Y', strtotime($bulan_tp)))->get()->getResultArray();
-            } else {
-                $transaksi_tp = $this->transaksiModel->where('YEAR(created_at)', date('Y', strtotime($tahun_tp)))->get()->getResultArray();
-            }
-        } else {
-            $transaksi_tp = $this->transaksiModel->findAll();
-        }
-
-        $data = [
-            'title' => 'Home |MJ Sport Collection',
-            // 'transaksi' => $this->transaksiModel->findAll(),
-            'transaksi' => $transaksi_tp,
-            'count' => $this->transaksiModel->countAllResults(),
-            'tahun' => $this->transaksiModel->select('YEAR(created_at) as tahun')->groupBy('tahun')->get()->getResultArray()
-        ];
-        // return view('admin/transaksi/index', $data);
-
-        return view('admin/home/index', $data);
     }
 }

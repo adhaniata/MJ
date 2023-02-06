@@ -1,0 +1,16 @@
+ERROR - 2023-02-02 17:14:59 --> Email: sendWithMail throwed ErrorException: mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Email\Email.php:1726
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mail(): Failed ...', 'C:\\xampp\\htdocs...', 1726)
+#1 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Email\Email.php(1726): mail('l200190001@stud...', '=?UTF-8?Q?Activ...', 'This is a multi...', 'Date: Thu, 2 Fe...')
+#2 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Email\Email.php(1663): CodeIgniter\Email\Email->sendWithMail()
+#3 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Email\Email.php(1561): CodeIgniter\Email\Email->spoolEmail()
+#4 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\myth\auth\src\Authentication\Activators\EmailActivator.php(32): CodeIgniter\Email\Email->send()
+#5 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\myth\auth\src\Controllers\AuthController.php(185): Myth\Auth\Authentication\Activators\EmailActivator->send(Object(Myth\Auth\Entities\User))
+#6 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(925): Myth\Auth\Controllers\AuthController->attemptRegister()
+#7 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(Myth\Auth\Controllers\AuthController))
+#8 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\skripsi\Tokomjs\MJ\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+ERROR - 2023-02-02 17:14:59 --> Email: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.
+ERROR - 2023-02-02 17:14:59 --> 

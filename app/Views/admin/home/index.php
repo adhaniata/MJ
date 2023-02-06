@@ -18,6 +18,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Dashboard</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/admin/tampilan-produk">Tampilan Produk</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-bars-progress"></i> Manage
@@ -27,7 +30,6 @@
                             <li><a class="dropdown-item" href="/admin/produk">Produk</a></li>
                             <li><a class="dropdown-item" href="/admin/transaksi">Transaksi</a></li>
                             <li><a class="dropdown-item" href="/admin/pengembalian">Pengembalian</a></li>
-                            <li><a class="dropdown-item" href="/admin/pendapatan">Pendapatan</a></li>
                             <li><a class="dropdown-item" href="/admin/ongkir">Ongkir</a></li>
                             <li><a class="dropdown-item" href="/admin/chatbot">Chatbot</a></li>
                         </ul>
@@ -36,10 +38,10 @@
                         <a class="nav-link" href="<?= base_url('logout') ?>"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </li>
                 </ul>
-                <form class="d-flex mt-3" role="search">
+                <!-- <form class="d-flex mt-3" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-success" type="submit">Search</button>
-                </form>
+                </form> -->
             </div>
         </div>
     </div>
@@ -61,9 +63,9 @@
                         <div class="col">
                             <!-- card Total Produk-->
                             <div class="card text-bg-secondary mb-3" style="max-width: 20rem;">
-                                <div class="card-header"><b>Jumlah Kategori</b></div>
                                 <div class="card-body">
-                                    <p class="card-text"><b><?= $countKategori; ?></b></p>
+                                    <h4 class="card-title"><?= $countKategori; ?></h4>
+                                    <h5 class="card-title">Kategori</h5>
                                 </div>
                                 <div class="card-footer">
                                     <a class="btn btn-outline-light" href=" /admin/kategori">More Info <i class="fa-solid fa-right-long"></i></a>
@@ -73,9 +75,9 @@
                         <div class="col">
                             <!-- card Total Transaksi-->
                             <div class="card text-bg-primary mb-3" style="max-width: 20rem;">
-                                <div class="card-header"><b>Jumlah Produk</b></div>
                                 <div class="card-body">
-                                    <p class="card-text"><b><?= $countProduk; ?></b></p>
+                                    <h4 class="card-title"><?= $countProduk; ?></h4>
+                                    <h5 class="card-title">Produk</h5>
                                 </div>
                                 <div class="card-footer">
                                     <a class="btn btn-outline-light" href=" /admin/produk">More Info <i class="fa-solid fa-right-long"></i></a>
@@ -85,9 +87,9 @@
                         <div class="col">
                             <!-- card Total Transaksi-->
                             <div class="card text-bg-success mb-3" style="max-width: 20rem;">
-                                <div class="card-header"><b>Jumlah Transaksi</b></div>
                                 <div class="card-body">
-                                    <p class="card-text"><b><?= $countTransaksi; ?></b></p>
+                                    <h4 class="card-title"><?= $countTransaksi; ?></h4>
+                                    <h5 class="card-title">Transaksi</h5>
                                 </div>
                                 <div class="card-footer">
                                     <a class="btn btn-outline-light" href=" /admin/transaksi">More Info <i class="fa-solid fa-right-long"></i></a>
@@ -97,9 +99,9 @@
                         <div class="col">
                             <!-- card Total Transaksi-->
                             <div class="card text-bg-danger mb-3" style="max-width: 20rem;">
-                                <div class="card-header"><b>Jumlah Pengembalian</b></div>
                                 <div class="card-body">
-                                    <p class="card-text"><b><?= $countPengembalian; ?></b></p>
+                                    <h4 class="card-title"><?= $countPengembalian; ?></h4>
+                                    <h5 class="card-title">Pengembalian</h5>
                                 </div>
                                 <div class="card-footer">
                                     <a class="btn btn-outline-light" href=" /admin/pengembalian">More Info <i class="fa-solid fa-right-long"></i></a>
@@ -109,9 +111,9 @@
                         <div class="col">
                             <!-- card Total Transaksi-->
                             <div class="card text-bg-warning mb-3" style="max-width: 20rem;">
-                                <div class="card-header"><b>Jumlah Ongkir</b></div>
                                 <div class="card-body">
-                                    <p class="card-text"><b><?= $countOngkir; ?></b></p>
+                                    <h4 class="card-title"><?= $countOngkir; ?></h4>
+                                    <h5 class="card-title">Daftar Ongkir</h5>
                                 </div>
                                 <div class="card-footer">
                                     <a class="btn btn-outline-dark" href=" /admin/ongkir">More Info <i class="fa-solid fa-right-long"></i></a>
@@ -144,39 +146,44 @@
                     <div class="card mb-3" style="max-width: 1300px;">
                         <div class="card-header text-bg-dark">Pendapatan</div>
                         <div class="card-body text-bg-light">
-                            <h5>Jumlah Pendapatan</h5>
-                            <div class="chart-container" style="position: relative; height:50vh; width:100vw">
-                                <canvas id="pendapatanChart"></canvas>
-                            </div>
+                            <center>
+                                <div class="chart-container" style="position: relative; height:50vh; width:75vw">
+                                    <canvas id="pendapatanChart"></canvas>
+                                </div>
+                            </center>
                         </div>
                     </div><br>
                     <!-- card Total Kategori dan Produk-->
                     <div class="card mb-3" style="max-width: 1300px;">
                         <div class="card-header text-bg-primary">Kategori dan Produk</div>
                         <div class="card-body text-bg-light">
-                            <h5>Jumlah Produk Berdasarkan Kategori UDAH FIX</h5>
-                            <div class="chart-container" style="position: relative; height:50vh; width:100vw">
-                                <canvas id="produkChart"></canvas>
-                            </div>
+                            <center>
+                                <div class="chart-container" style="position: relative; height:50vh; width:75vw">
+                                    <canvas id="produkChart"></canvas>
+                                </div>
+                            </center>
                         </div>
                     </div><br>
                     <!-- card Total Transaksi-->
                     <div class="card mb-3" style="max-width: 1300px;">
                         <div class="card-header text-bg-success">Transaksi</div>
                         <div class="card-body text-bg-light">
-                            <div class="chart-container" style="position: relative; height:50vh; width:100vw">
-                                <canvas id="transaksiChart"></canvas>
-                            </div>
+                            <center>
+                                <div class="chart-container" style="position: relative; height:50vh; width:75vw">
+                                    <canvas id="transaksiChart"></canvas>
+                                </div>
+                            </center>
                         </div>
                     </div><br>
                     <!-- card Total Transaksi-->
                     <div class="card mb-3" style="max-width: 1300px;">
                         <div class="card-header text-bg-danger">Pengembalian</div>
                         <div class="card-body text-bg-light">
-                            <h5>Jumlah Pengembalian MASIH BINGUNG AMBIL PERBULANNYA</h5>
-                            <div class="chart-container" style="position: relative; height:50vh; width:100vw">
-                                <canvas id="pengembalianChart"></canvas>
-                            </div>
+                            <center>
+                                <div class="chart-container" style="position: relative; height:50vh; width:75vw">
+                                    <canvas id="pengembalianChart"></canvas>
+                                </div>
+                            </center>
                         </div>
                     </div>
                 </div>
@@ -185,46 +192,7 @@
     </div>
 </div>
 
-<!--produk pajangan-->
-<div class="container mt-5">
-    <div class="input-group">
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Cari Produk" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div>
 
-    <h2>Produk</h2>
-
-    <div class="input-group">
-        <select class="form-select" name="id_kategoriFK" id="id_kategoriFK" aria-label="Example select with button addon">
-            <option selected>Semua</option>
-            <?php foreach ($listKategori as $lk) {
-                echo '<option value="' . $lk['id_kategori'] . '">' . $lk['nama_kategori'] . '</option>';
-            } ?>
-        </select>
-        <button class="btn btn-outline-dark" type="button">Terapkan Kategori</button>
-    </div></br>
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-        <?php foreach ($produk as $p) : ?>
-            <div class="col">
-                <div class="card-group">
-                    <div class="card">
-                        <img class="card-img-top" src="/img/produk/<?= $p['gambar']; ?>" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $p['nama_produk']; ?></h5>
-                            <p><b>Deskripsi :</b></p>
-                            <p class="card-text"><?= $p['deskripsi']; ?></p>
-                            <p><b>Harga :</b></p>
-                            <p class="card-text"><?= $p['harga_produk']; ?></p>
-                            <a href="/admin/produk/<?= $p['slug_produk']; ?>" class="btn btn-dark">Detail</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
-</div>
 <br><br>
 <br><br><br><br><br>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.0/chart.min.js" integrity="sha512-qKyIokLnyh6oSnWsc5h21uwMAQtljqMZZT17CIMXuCQNIfFSFF4tJdMOaJHL9fQdJUANid6OB6DRR0zdHrbWAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -312,10 +280,10 @@
                 ]
             }, {
                 label: 'Jumlah Pendapatan',
-                data: [10, 20, 30, 40, 50, 60, 30, 50, 60, 10],
+                data: <?= json_encode($pendapatan) ?>,
                 type: 'line',
                 backgroundColor: [
-                    'rgb(255, 99, 132)'
+                    'rgb(58, 86, 190)'
                 ]
             }]
         },

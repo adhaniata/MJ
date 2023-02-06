@@ -18,6 +18,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Dashboard</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/admin/tampilan-produk">Tampilan Produk</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-bars-progress"></i> Manage
@@ -27,7 +30,6 @@
                             <li><a class="dropdown-item" href="/admin/produk">Produk</a></li>
                             <li><a class="dropdown-item" href="/admin/transaksi">Transaksi</a></li>
                             <li><a class="dropdown-item" href="/admin/pengembalian">Pengembalian</a></li>
-                            <li><a class="dropdown-item" href="/admin/pendapatan">Pendapatan</a></li>
                             <li><a class="dropdown-item" href="/admin/ongkir">Ongkir</a></li>
                             <li><a class="dropdown-item" href="/admin/chatbot">Chatbot</a></li>
                         </ul>

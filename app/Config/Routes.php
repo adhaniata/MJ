@@ -42,6 +42,9 @@ $routes->get('/produk/(:segment)', 'Home::detail/$1');
 $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('/', 'Admin\Home::index');
     //$routes->post('/fillter', 'Admin\Home::index');
+    $routes->get('tampilan-produk', 'Admin\TampilanProduk::index');
+    $routes->get('tampilan-produk/cari', 'Admin\TampilanProduk::cari');
+    $routes->get('tampilan-produk/kategori', 'Admin\TampilanProduk::kategori');
 
     $routes->get('produk', 'Admin\Produk::index');
     $routes->get('produk/create', 'Admin\Produk::create');
@@ -61,6 +64,13 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->post('ongkir/update/(:num)', 'Admin\Ongkir::update/$1');
     $routes->delete('ongkir/delete/(:num)', 'Admin\Ongkir::delete/$1');
     $routes->get('ongkir/cari', 'Admin\Ongkir::cari');
+
+    $routes->get('chatbot', 'Admin\Chatbot::index');
+    $routes->get('chatbot/create', 'Admin\Chatbot::create');
+    $routes->post('chatbot/save', 'Admin\Chatbot::save');
+    $routes->get('chatbot/edit/(:num)', 'Admin\Chatbot::edit/$1');
+    $routes->post('chatbot/update/(:num)', 'Admin\Chatbot::update/$1');
+    $routes->delete('chatbot/delete/(:num)', 'Admin\Chatbot::delete/$1');
 
     $routes->get('kategori', 'Admin\Kategori::index');
     $routes->get('kategori/create', 'Admin\Kategori::create');

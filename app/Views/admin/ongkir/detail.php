@@ -18,6 +18,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Dashboard</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/admin/tampilan-produk">Tampilan Produk</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-bars-progress"></i> Manage
@@ -27,7 +30,6 @@
                             <li><a class="dropdown-item" href="/admin/produk">Produk</a></li>
                             <li><a class="dropdown-item" href="/admin/transaksi">Transaksi</a></li>
                             <li><a class="dropdown-item" href="/admin/pengembalian">Pengembalian</a></li>
-                            <li><a class="dropdown-item" href="/admin/pendapatan">Pendapatan</a></li>
                             <li><a class="dropdown-item" href="/admin/ongkir">Ongkir</a></li>
                             <li><a class="dropdown-item" href="/admin/chatbot">Chatbot</a></li>
                         </ul>
@@ -36,10 +38,10 @@
                         <a class="nav-link" href="<?= base_url('logout') ?>"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </li>
                 </ul>
-                <form class="d-flex mt-3" role="search">
+                <!-- <form class="d-flex mt-3" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-success" type="submit">Search</button>
-                </form>
+                </form> -->
             </div>
         </div>
     </div>
