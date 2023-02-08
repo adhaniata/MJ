@@ -27,13 +27,13 @@ class Chatbot extends BaseController
         $request = \Config\Services::request();
 
         $cek_data = $this->chatbotModel->like('pertanyaan', $request->getVar('pesan'))->get();
-        $apa = $request->getVar('pesan');
 
         $balas = '';
         //jika pertanyaan/data ditemukan, maka tampilkan jawaban
         if ($cek_data->getNumRows() > 0) {
             //hasil query tampung kedalam variable data
-            $data = $cek_data->getResultArray();
+            $data = $cek_data->getRowArray();
+
             //tampung jawaban kedalam variable untuk dikirim kembali keajax
             $balas = $data['jawaban'];
         } else {
