@@ -16,28 +16,27 @@ class Chatbot extends BaseController
     {
         $data = [
             'title' => 'Chatbot |MJ Sport Collection',
-            'chatbot' => $this->chatbotModel->findAll(),
-            // 'bls' => $this->chatbotModel->select('jawaban')->like('pertanyaan', $pesan)->get()->getResultArray(),
         ];
-        //request
-        $request = \Config\Services::request();
-        if ($request->isAJAX()) {
-            // mengambil pesan ajax
-            $pesan = $request->getVar('isi_pesan');
-            $cek_data = $this->chatbotModel->like('pertanyaan', $pesan)->get();
 
-            //jika pertanyaan/data ditemukan, maka tampilkan jawaban
-            if ($cek_data->getNumRows() > 0) {
+        return view('chatbot/index', $data);
+    }
+
+    function kirim(){
+        $request = \Config\Services::request();
+
+        $cek_data = $this->chatbotModel->like('pertanyaan', $request->getVar('pesan'))->get();
+
+        $balas = '';
+        //jika pertanyaan/data ditemukan, maka tampilkan jawaban
+        if ($cek_data->getNumRows() > 0) {
                 //hasil query tampung kedalam variable data
-                $data = $cek_data->getResultArray();
+            $data = $cek_data->getRowArray();
                 //tampung jawaban kedalam variable untuk dikirim kembali keajax
-                $balasan = $data['jawaban'];
-                echo $balasan;
-            } else {
-                echo "Maaf, tidak menemukan jawaban yang kamu maksud. Kamu bisa Menghubungi Kami Melalui WhatsApp <a href='wa.me/6281285173625' target='_blank'> Klik Disini</a>";
-            }
+            $balas = $data['jawaban'];
         } else {
-            return view('chatbot/index', $data);
+            $balas = "Maaf, tidak menemukan jawaban yang kamu maksud. Kamu bisa Menghubungi Kami Melalui WhatsApp <a href='wa.me/6281285173625' target='_blank'> Klik Disini</a>";
         }
+
+        echo json_encode(['result' => $balas]);
     }
 }

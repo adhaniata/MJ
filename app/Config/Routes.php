@@ -37,6 +37,8 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/produk/(:segment)', 'Home::detail/$1');
+$routes->get('/chatbot', 'Chatbot::index');
+$routes->post('/chatbot/kirim', 'Chatbot::kirim');
 
 // hak akses untuk admin
 $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
@@ -124,8 +126,6 @@ $routes->group('', ['filter' => 'role:user'], function ($routes) {
 
     $routes->get('ongkir', 'Ongkir::index');
     $routes->get('ongkir/(:any)', 'Ongkir::detail/$1');
-
-    $routes->get('chatbot', 'Chatbot::index');
 
     $routes->get('transaksi', 'Transaksi::index');
     $routes->get('transaksi/belum-bayar', 'Transaksi::tampilanBelumBayar');

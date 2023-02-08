@@ -6,7 +6,8 @@
 <!--chatbot-->
 <div class="container mt-5">
     <div class="row">
-        <div class="col">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
             <div class="card text-center">
                 <div class="card-header text-bg-dark">
                     Chatbot | MJ Sport
@@ -31,6 +32,7 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4"></div>
     </div>
 </div>
 <br><br>
@@ -56,14 +58,13 @@
             //belum bisa masih error
             //persiapan ajax
             $.ajax({
-                url: 'chatbot',
+                url: '/chatbot/kirim',
                 type: 'POST',
-                data: 'isi_pesan=' + $pesan,
+                data: {pesan:$pesan},
                 dataType: 'json',
-                success: function(result) {
+                success: function(res) {
                     //jika sukses ambil data, tampung kedalam variable balasan
-                    // $balasan = ' <div class="bot-inbox inbox"><div class="icon"><i class="fas fa-user"></i></div><div class="msg-header"><p>' + result + ' </p></div></div>'
-                    $balasan = '<div class="card text-bg-success mb-3" style="max-width: 700px;"><div class="card-header"><i class="fa-brands fa-android"></i> Mr. MJ</div><div class="card-body mb-0"><p>' + result + '</p></div></div>'
+                    $balasan = '<div class="card text-bg-success mb-3" style="max-width: 700px;"><div class="card-header"><i class="fa-brands fa-android"></i> Mr. MJ</div><div class="card-body mb-0"><p>' + res.result + '</p></div></div>'
 
                     //masukan kedalam form chat
                     $(".form").append($balasan);
