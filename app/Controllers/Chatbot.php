@@ -21,17 +21,20 @@ class Chatbot extends BaseController
         return view('chatbot/index', $data);
     }
 
-    function kirim(){
+    function kirim()
+    {
+        $db = \Config\Database::connect();
         $request = \Config\Services::request();
 
         $cek_data = $this->chatbotModel->like('pertanyaan', $request->getVar('pesan'))->get();
+        $apa = $request->getVar('pesan');
 
         $balas = '';
         //jika pertanyaan/data ditemukan, maka tampilkan jawaban
         if ($cek_data->getNumRows() > 0) {
-                //hasil query tampung kedalam variable data
-            $data = $cek_data->getRowArray();
-                //tampung jawaban kedalam variable untuk dikirim kembali keajax
+            //hasil query tampung kedalam variable data
+            $data = $cek_data->getResultArray();
+            //tampung jawaban kedalam variable untuk dikirim kembali keajax
             $balas = $data['jawaban'];
         } else {
             $balas = "Maaf, tidak menemukan jawaban yang kamu maksud. Kamu bisa Menghubungi Kami Melalui WhatsApp <a href='wa.me/6281285173625' target='_blank'> Klik Disini</a>";

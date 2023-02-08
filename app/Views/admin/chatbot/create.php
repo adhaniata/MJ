@@ -61,7 +61,7 @@
                 <div class="row mb-3">
                     <label for="pertanyaan" class="col-sm-2 col-form-label">Kata Kunci</label>
                     <div class="col-sm-10">
-                        <input type="text" placeholder="Masukan Kata Kunci" class="form-control <?= ($validation->hasError('pertanyaan')) ? 'is-invalid' : ''; ?>" id="pertanyaan" name="pertanyaan" autofocus value="<?= old('pertanyaan'); ?>">
+                        <input type="text" placeholder="Kata Kunci 1 Kata Kunci 2 dst..." class="form-control <?= ($validation->hasError('pertanyaan')) ? 'is-invalid' : ''; ?>" id="pertanyaan" name="pertanyaan" autofocus value="<?= old('pertanyaan'); ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('pertanyaan'); ?>
                         </div>

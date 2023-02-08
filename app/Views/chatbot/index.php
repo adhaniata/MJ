@@ -6,14 +6,29 @@
 <!--chatbot-->
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4"></div> -->
+        <div class="col">
             <div class="card text-center">
                 <div class="card-header text-bg-dark">
-                    Chatbot | MJ Sport
+                    Chatbot
                 </div>
                 <div class="card-body">
                     <div class="form">
+                        <div class="card text-bg-success mb-3" style="max-width: 700px; float:left;">
+                            <div class="card-body mb-0">
+                                <div class="row">
+                                    <div class="col-1">
+                                        <img src="/img/rbt2.png" width="30px" class="rounded-circle">
+                                    </div>
+                                    <div class="col-11">
+                                        <p>Hai Ada Yang Bisa Saya Bantu?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br>
+                    <!-- dessign lama -->
+                    <!-- <div class="form">
                         <div class="card text-bg-success mb-3" style="max-width: 650px;">
                             <div class="card-header">
                                 <i class="fa-brands fa-android"></i> Mr. MJ
@@ -22,7 +37,25 @@
                                 <p>Hai Ada Yang Bisa Saya Bantu?</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+
+                    <!-- design you baru -->
+                    <!-- <div class="row">
+                        <div class="col-11">
+                            <div class="form">
+                                <div class="card text-bg-success mb-3" style="max-width: 650px; float:right;">
+                                    <div class="card-body mb-0">
+                                        <p>Hai Ada Yang Bisa Saya Bantu?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <img src="/img/rbt.png" width="85px" class="rounded-circle">
+                        </div>
+                    </div> -->
+
+
                 </div>
                 <div class="card-footer text-muted">
                     <div class="input-group mb-3">
@@ -32,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4"></div>
+        <!-- <div class="col-md-4"></div> -->
     </div>
 </div>
 <br><br>
@@ -49,7 +82,8 @@
             $pesan = $("#text-pesan").val();
             //tampung pesan ke variabel msg
             // $msg = '<div class="card text-bg-success mb-3" style="max-width: 700px;"><div class="card-header"><i class="fa-brands fa-android"></i> Mr. MJ</div><div class="card-body mb-0"><p>' + $pesan + '</p></div></div>'
-            $msg = '<div class="card text-bg-secondary mb-3" style="max-width: 700px; float:right;"><div class="card-header"><i class="fa-solid fa-user"></i> You </div><div class="card-body mb-0"><p>' + $pesan + '</p></div></div>'
+            $msg = '<br><br><div class="card text-bg-secondary mb-3" style="min-width: 250px; max-width: 700px; float:right;"><div class="card-body mb-0"><div class="row"><div class="col-9"><p>' + $pesan + '</p></div><div class="col-3"><img src="/img/user.png" width="30px" class="rounded-circle"></div></div></div></div><br><br><br><br><br>'
+            // $msg = '<div class="card text-bg-secondary mb-3" style="max-width: 650px; float:right;"><div class="card-body mb-0"><p>' + $pesan + '<img src="/img/user.png" width="30px" class="rounded-circle"></p></div></div></div><br><br><br>'
             //memasukan ke form chat
             $(".form").append($msg);
             //kosongkan inputan pesan
@@ -60,17 +94,18 @@
             $.ajax({
                 url: '/chatbot/kirim',
                 type: 'POST',
-                data: {pesan:$pesan},
+                data: {
+                    pesan: $pesan
+                },
                 dataType: 'json',
                 success: function(res) {
                     //jika sukses ambil data, tampung kedalam variable balasan
-                    $balasan = '<div class="card text-bg-success mb-3" style="max-width: 700px;"><div class="card-header"><i class="fa-brands fa-android"></i> Mr. MJ</div><div class="card-body mb-0"><p>' + res.result + '</p></div></div>'
+                    // $balasan = '<div class="card text-bg-success mb-3" style="max-width: 700px;"><div class="card-header"><i class="fa-brands fa-android"></i> Mr. MJ</div><div class="card-body mb-0"><p>' + res.result + '</p></div></div>'
+                    // $balasan = '<br><div class="card text-bg-success mb-3" style="max-width: 700px; float:left;"><div class="card-body mb-0"><p><img src="/img/rbt2.png" width="30px" class="rounded-circle">' + res.result + '</p></div></div></div><br>'
+                    $balasan = '<br><div class="card text-bg-success mb-3" style="max-width: 700px; float:left;"><div class="card-body mb-0"><div class="row"><div class="col-1"><img src="/img/rbt2.png" width="30px" class="rounded-circle"></div><div class="col-11"><p>' + res.result + '</p></div></div></div></div><br><br><br>'
 
                     //masukan kedalam form chat
                     $(".form").append($balasan);
-
-                    // buat form otomatis scroll kebawah jika ada pesan baru
-                    $(".form").scrollTop($(".form")[0].scrollHeight);
 
                 }
             })

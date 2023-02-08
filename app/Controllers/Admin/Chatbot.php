@@ -55,7 +55,7 @@ class Chatbot extends BaseController
         }
 
         //untuk savenya
-        $pertanyaan = url_title($this->request->getVar('pertanyaan'), '|', true);
+        $pertanyaan = url_title($this->request->getVar('pertanyaan'), ' | ', true);
         $this->chatbotModel->save([
             'pertanyaan' => $pertanyaan,
             'jawaban' => $this->request->getVar('jawaban')
@@ -107,8 +107,8 @@ class Chatbot extends BaseController
             return redirect()->to(base_url('admin/chatbot/edit/' . $this->request->getVar('id_chatbot')))->withInput();
         }
 
-        //method savenya
-        $pertanyaan = url_title($this->request->getVar('pertanyaan'), '|', true);
+        //method savenya strtolower($this->request->getVar('pertanyaan'))
+        $pertanyaan = url_title($this->request->getVar('pertanyaan'), ' | ', true);
         $this->chatbotModel->save([
             'id_chatbot' => $id,
             'pertanyaan' => $pertanyaan,
