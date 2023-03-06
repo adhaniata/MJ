@@ -16,7 +16,8 @@
                     </dif>
                 <?php endif ?>
                 <div class="card-body">
-                    <img class="rounded-circle mx-auto d-block" src="/img/user.png" width="200px">
+                    <img class="rounded-circle mx-auto d-block" src="/img/user2.png" width="200px">
+                    <br>
                     <form action="/akun/update-profil" method="post">
                         <?= csrf_field(); ?>
                         <div class="form-group row">

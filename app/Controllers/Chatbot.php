@@ -16,6 +16,7 @@ class Chatbot extends BaseController
     {
         $data = [
             'title' => 'Chatbot |MJ Sport Collection',
+            'chatbot' => $this->chatbotModel->findAll(),
         ];
 
         return view('chatbot/index', $data);
@@ -37,7 +38,7 @@ class Chatbot extends BaseController
             //tampung jawaban kedalam variable untuk dikirim kembali keajax
             $balas = $data['jawaban'];
         } else {
-            $balas = "Maaf, tidak menemukan jawaban yang kamu maksud. Kamu bisa Menghubungi Kami Melalui WhatsApp <a href='wa.me/6281285173625' target='_blank'> Klik Disini</a>";
+            $balas = "Maaf, tidak menemukan jawaban yang kamu maksud. Kamu bisa Menghubungi Kami Melalui WhatsApp <a href='http://wa.me/6281285173625' target='_blank'> Klik Disini</a>";
         }
 
         echo json_encode(['result' => $balas]);

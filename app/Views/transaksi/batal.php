@@ -47,6 +47,7 @@
                                 <th scope="col">Total Tagihan</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Tanggal Transaksi</th>
+                                <th scope="col">Validasi Pembayaran</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -58,6 +59,7 @@
                                     <td><?= $t['total_tagihan'] ?></td>
                                     <td><?= $t['status_pengiriman'] ?></td>
                                     <td><?= $t['created_at'] ?></td>
+                                    <td><?= $t['validasi'] ?></td>
                                     <td>
                                         <a href="/transaksi/detail-semua/<?= $t['id_transaksi'] ?>" class="btn btn-dark">Detail</a>
                                     </td>

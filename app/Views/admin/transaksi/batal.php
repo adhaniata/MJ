@@ -91,7 +91,7 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Total Tagihan</th>
                             <th scope="col">Status Pembayaran</th>
-                            <th scope="col">No Resi</th>
+                            <th scope="col">Validasi Pembayaran</th>
                             <th scope="col">Status Pengiriman</th>
                             <th scope="col">Tanggal Transaksi</th>
                             <th scope="col">Konfirmasi Pembayaran</th>
@@ -106,12 +106,12 @@
                                 <td><?= $t['nama'] ?></td>
                                 <td><?= $t['total_tagihan'] ?></td>
                                 <td><?= $t['status_pembayaran'] ?></td>
-                                <td><?= $t['no_resi'] ?></td>
+                                <td><?= $t['validasi'] ?></td>
                                 <td><?= $t['status_pengiriman'] ?></td>
                                 <td><?= $t['created_at'] ?></td>
                                 <td> <a href="/admin/transaksi/konfirmasi/<?= $t['id_transaksi'] ?>" class="btn btn-dark mt-1">Konfirmasi</a></td>
                                 <td>
-                                    <a href="/admin/transaksi/<?= $t['id_transaksi'] ?>" class="btn btn-info me-md-1">Detail</a>
+                                    <a href="/admin/transaksi/<?= $t['id_transaksi'] ?>" class="btn btn-info me-md-mb-1">Detail</a>
                                     <a href="/admin/transaksi/edit/<?= $t['id_transaksi'] ?>" class="btn btn-warning mt-ml-1">Edit</a>
                                     <form action="/admin/transaksi/delete/<?= $t['id_transaksi']; ?>" method="post" class="d-inline">
                                         <?= csrf_field(); ?>

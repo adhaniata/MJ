@@ -116,9 +116,10 @@
                     <label for="status_pengiriman" class="col-sm-2 col-form-label">Status Pengiriman</label>
                     <div class="col-sm-10">
                         <select class="form-select <?= ($validation->hasError('status_pengiriman')) ? 'is-invalid' : ''; ?>" name="status_pengiriman" id="status_pengiriman" aria-label="Default select example" value="<?= (old('status_pengiriman')) ? old('status_pengiriman') : $transaksi['status_pengiriman'] ?>">
-                            <option value="SEDANG DIKEMAS" selected>SEDANG DIKEMAS</option>
+                            <!-- <option value="SEDANG DIKEMAS" selected>SEDANG DIKEMAS</option> -->
                             <option value="PROSES PENGIRIMAN">PROSES PENGIRIMAN</option>
                             <option value="DITERIMA">DITERIMA</option>
+                            <option value="Batal">BATAL</option>
                         </select>
                         <div class="invalid-feedback">
                             <?= $validation->getError('status_pengiriman'); ?>

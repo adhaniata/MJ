@@ -46,7 +46,7 @@ class Transaksi extends BaseController
     {
         $data = [
             'title' => 'Transaksi Batal |MJ Sport Collection',
-            'transaksi' => $this->transaksiModel->where('status_pengiriman', 'Batal')->get()->getResultArray(),
+            'transaksi' => $this->transaksiModel->where('status_pengiriman', 'Batal')->orWhere('status_pembayaran', 'Batal')->get()->getResultArray(),
             'validation' => \Config\Services::validation(),
             'count' => $this->transaksiModel->countAllResults(),
             'tahun' => $this->transaksiModel->select('YEAR(created_at) as tahun')->groupBy('tahun')->get()->getResultArray()
@@ -124,7 +124,7 @@ class Transaksi extends BaseController
             'no_resi' => [
                 'rules' => $rule_resi,
                 'errors' => [
-                    'required' => '{field} no resi sudah ada.'
+                    'required' => '{field} sudah ada.'
                 ]
             ],
             'status_pengiriman' => [
@@ -134,7 +134,7 @@ class Transaksi extends BaseController
                 ]
             ]
         ])) {
-            return redirect()->to(base_url('admin/transaksi/edit/' . $this->request->getVar('$id')))->withInput();
+            return redirect()->to(base_url('admin/transaksi/edit/' . $this->request->getVar('id_transaksi')))->withInput();
         } else {
             //method savenya
             $this->transaksiModel->save([
@@ -144,7 +144,7 @@ class Transaksi extends BaseController
                 'status_pengiriman' => $this->request->getVar('status_pengiriman')
             ]);
             session()->setFlashdata('pesan', 'Data Berhasil ditambahkan');
-            return redirect()->to(base_url('/admin/transaksi'));
+            return redirect()->to(base_url('admin/transaksi'));
         }
     }
     public function delete($id)
@@ -178,12 +178,24 @@ class Transaksi extends BaseController
         ])) {
             return redirect()->to(base_url('admin/transaksi/konfirmasi/' . $id_transaksi))->withInput();
         } else {
-            //method savenya
-            $this->transaksiModel->update($id_transaksi, [
-                'validasi' => $this->request->getVar('validasi')
-            ]);
-            session()->setFlashdata('pesan', 'Data Berhasil Di Ubah');
-            return redirect()->to(base_url('/admin/transaksi'));
+            if ($this->request->getVar('validasi') == 'VALID') {
+                //method savenya jika pembayaran valid
+                $this->transaksiModel->update($id_transaksi, [
+                    'validasi' => $this->request->getVar('validasi')
+                ]);
+                session()->setFlashdata('pesan', 'Data Berhasil Di Ubah');
+                return redirect()->to(base_url('/admin/transaksi'));
+            } else {
+                //method savenya jika pembayaran tidak valid
+                $this->transaksiModel->update($id_transaksi, [
+                    'validasi' => $this->request->getVar('validasi'),
+                    'status_pembayaran' => 'Batal',
+                    'status_pengiriman' => 'Batal',
+                    'status_pembayaran' => 'Batal',
+                ]);
+                session()->setFlashdata('pesan', 'Data Berhasil Di Ubah');
+                return redirect()->to(base_url('/admin/transaksi'));
+            }
         }
     }
     public function cetakdetail($id)

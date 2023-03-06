@@ -1,0 +1,24 @@
+CRITICAL - 2023-03-05 11:25:11 --> Undefined array key "nama_kategori"
+in APPPATH\Views\admin\home\index.php on line 268.
+ 1 APPPATH\Views\admin\home\index.php(268): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nama_kategori"', 'APPPATH\\Views\\admin\\home\\index.php', 268)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\home\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 5 APPPATH\Controllers\Admin\Home.php(58): view('admin/home/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-05 11:31:22 --> Undefined variable $stok_produk
+in APPPATH\Views\admin\home\index.php on line 313.
+ 1 APPPATH\Views\admin\home\index.php(313): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $stok_produk', 'APPPATH\\Views\\admin\\home\\index.php', 313)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\home\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1135): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 5 APPPATH\Controllers\Admin\Home.php(58): view('admin/home/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(925): App\Controllers\Admin\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(480): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(349): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

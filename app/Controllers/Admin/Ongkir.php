@@ -75,9 +75,10 @@ class Ongkir extends BaseController
                 ]
             ],
             'harga' => [
-                'rules' => 'required',
+                'rules' => 'required|numeric',
                 'errors' => [
-                    'required' => '{field} harus diisi.'
+                    'required' => '{field} harus diisi.',
+                    'numeric' => '{field} harus berisi angka bukan huruf.'
                 ]
             ],
             'gambarOngkir' => [
@@ -180,9 +181,10 @@ class Ongkir extends BaseController
                 ]
             ],
             'harga' => [
-                'rules' => 'required',
+                'rules' => 'required|numeric',
                 'errors' => [
-                    'required' => '{field} harus diisi.'
+                    'required' => '{field} harus diisi.',
+                    'numeric' => '{field} harus berisi angka bukan huruf'
                 ]
             ],
             'gambarOngkir' => [

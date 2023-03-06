@@ -154,12 +154,23 @@
                         </div>
                     </div><br>
                     <!-- card Total Kategori dan Produk-->
-                    <div class="card mb-3" style="max-width: 1300px;">
+                    <!-- <div class="card mb-3" style="max-width: 1300px;">
                         <div class="card-header text-bg-primary">Kategori dan Produk</div>
                         <div class="card-body text-bg-light">
                             <center>
                                 <div class="chart-container" style="position: relative; height:50vh; width:75vw">
                                     <canvas id="produkChart"></canvas>
+                                </div>
+                            </center>
+                        </div>
+                    </div><br> -->
+                    <!-- card stok Produk-->
+                    <div class="card mb-3" style="max-width: 1300px;">
+                        <div class="card-header text-bg-primary">Stok Produk</div>
+                        <div class="card-body text-bg-light">
+                            <center>
+                                <div class="chart-container" style="position: relative; height:50vh; width:75vw">
+                                    <canvas id="stokproduksChart"></canvas>
                                 </div>
                             </center>
                         </div>
@@ -198,7 +209,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.0/chart.min.js" integrity="sha512-qKyIokLnyh6oSnWsc5h21uwMAQtljqMZZT17CIMXuCQNIfFSFF4tJdMOaJHL9fQdJUANid6OB6DRR0zdHrbWAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
+<!-- <script>
     // untuk Chart
     <?php
     foreach ($kategori as $key => $value) {
@@ -218,6 +229,54 @@
             datasets: [{
                 label: 'Jumlah Produk',
                 data: <?= json_encode($data_produk_kategori); ?>,
+                borderWidth: 1,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                ]
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script> -->
+<script>
+    // untuk Chart
+    <?php
+    foreach ($produks as $key => $value) {
+        $db = \Config\Database::connect();
+        $stok_produks[] = $value['stok'];
+        $label_produks[] = $value['nama_produk'];
+    }
+    ?>
+
+    const spd = document.getElementById('stokproduksChart');
+    new Chart(spd, {
+        type: 'bar',
+        data: {
+            labels: <?= json_encode($label_produks); ?>,
+            datasets: [{
+                label: 'Jumlah Produk',
+                data: <?= json_encode($stok_produks); ?>,
                 borderWidth: 1,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',

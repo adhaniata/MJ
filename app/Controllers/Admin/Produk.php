@@ -81,15 +81,17 @@ class Produk extends BaseController
                 ]
             ],
             'harga_produk' => [
-                'rules' => 'required',
+                'rules' => 'required|numeric',
                 'errors' => [
-                    'required' => '{field} harus diisi.'
+                    'required' => '{field} harus diisi.',
+                    'numeric' => '{field} harus berisi angka bukan huruf'
                 ]
             ],
             'stok' => [
-                'rules' => 'required',
+                'rules' => 'required|numeric',
                 'errors' => [
-                    'required' => '{field} harus diisi.'
+                    'required' => '{field} harus diisi.',
+                    'numeric' => '{field} harus berisi angka bukan huruf'
                 ]
             ],
             'gambarProduk' => [
@@ -212,15 +214,17 @@ class Produk extends BaseController
                 ]
             ],
             'harga_produk' => [
-                'rules' => 'required',
+                'rules' => 'required|numeric',
                 'errors' => [
-                    'required' => '{field} harus diisi.'
+                    'required' => '{field} harus diisi.',
+                    'numeric' => '{field} harus berisi angka bukan huruf'
                 ]
             ],
             'stok' => [
-                'rules' => 'required',
+                'rules' => 'required|numeric',
                 'errors' => [
-                    'required' => '{field} harus diisi.'
+                    'required' => '{field} harus diisi.',
+                    'numeric' => '{field} harus berisi angka bukan huruf'
                 ]
             ],
             'gambarProduk' => [

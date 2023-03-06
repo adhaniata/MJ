@@ -98,7 +98,7 @@
                         <img src="/img/konfirmasi/<?= $transaksi['bukti_konfirmasi']; ?>" width="700">
                     </div>
                 </div>
-                <div class="row mb-3">
+                <!-- <div class="row mb-3">
                     <label for="validasi" class="col-sm-2 col-form-label">Validasi</label>
                     <div class="col-sm-10">
                         <select class="form-select <?= ($validation->hasError('validasi')) ? 'is-invalid' : ''; ?>" name="validasi" id="validasi" aria-label="Default select example" value="<?= (old('validasi')) ? old('validasi') : $transaksi['validasi'] ?>">
@@ -109,7 +109,28 @@
                             <?= $validation->getError('validasi'); ?>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                <?php if (!$transaksi['validasi'] == '') : ?>
+                    <div class="row mb-3">
+                        <label for="validasi" class="col-sm-2 col-form-label">Validasi</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="validasi" value="<?= $transaksi['validasi'] ?>" class="form-control" readonly>
+                        </div>
+                    </div>
+                <?php else : ?>
+                    <div class="row mb-3">
+                        <label for="validasi" class="col-sm-2 col-form-label">Validasi</label>
+                        <div class="col-sm-10">
+                            <select class="form-select <?= ($validation->hasError('validasi')) ? 'is-invalid' : ''; ?>" name="validasi" id="validasi" aria-label="Default select example" value="<?= (old('validasi')) ? old('validasi') : $transaksi['validasi'] ?>">
+                                <option value="VALID" selected>VALID</option>
+                                <option value="TIDAK VALID">TIDAK VALID</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('validasi'); ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ?>
                 <a href="/admin/transaksi" class="btn btn-dark">Kembali</a>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
