@@ -28,7 +28,16 @@ class Home extends BaseController
 
         foreach ($bulan as $b) {
             $namaBulan[] = date('F', strtotime($b['bulan']));
-            $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga - produk.modal_produk) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
+            // ori
+            // $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga - produk.modal_produk) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
+            //     ->where('transaksi.status_pengiriman', 'DITERIMA')
+            //     ->where('MONTH(transaksi_detail.created_at)', date('m', strtotime($b['bulan'])))
+            //     ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
+            //     ->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK', 'left')
+            //     ->get()->getResultArray();
+
+            // pendapatannya sudah termasuk balik modal
+            $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
                 ->where('transaksi.status_pengiriman', 'DITERIMA')
                 ->where('MONTH(transaksi_detail.created_at)', date('m', strtotime($b['bulan'])))
                 ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
@@ -39,6 +48,20 @@ class Home extends BaseController
             $pengeluaran_chart[] = $produk[0]['pengeluaran'];
             $transaksi_chart[] = $this->transaksiModel->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->countAllResults();
             $pengembalian_chart[] = $this->pengembalianModel->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->countAllResults();
+        }
+
+        // membuat chart stok produk dari berbagai kategori masih error
+        $jeniskat = $this->produkModel->select('produk.id_kategoriFK as jeniskat')->join('kategori', 'kategori.id_kategori = produk.id_kategoriFK')->orderBy('id_kategoriFK ASC')->groupBy('id_kategoriFK')->get()->getResultArray();
+        foreach ($jeniskat as $j) {
+            // $namaKategori[] = $j['nama_kategori'];
+
+            $stokperkat = $this->produkModel->select('kategori.nama_kategori, produk.nama_produk, produk.stok',)
+                ->where('kategori.id_kategori', 'produk.id_kategoriFK')
+                ->join('kategori', 'kategori.id_kategori = produk.id_kategoriFK', 'left')
+                ->get()->getResultArray();
+
+            $stoknya_chart[] = $stokperkat[0]['stok'];
+            $nama_stokpr[] = $stokperkat[0]['nama_produk'];
         }
 
         $data = [
@@ -63,6 +86,11 @@ class Home extends BaseController
             'pengeluaran' => $pengeluaran_chart,
             'transaksi_chart' => $transaksi_chart,
             'pengembalian_chart' => $pengembalian_chart,
+            'stok_chart' => $stokperkat,
+            'namaKategori' => $namaKategori,
+            'stoknya' => $stoknya_chart,
+            'namaProduk' => $nama_stokpr,
+
         ];
 
         return view('admin/home/index', $data);

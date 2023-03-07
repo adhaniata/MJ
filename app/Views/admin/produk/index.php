@@ -116,6 +116,7 @@
                         <th scope="col">Kategori</th>
                         <th scope="col">Nama Produk</th>
                         <th scope="col">Harga (Rp)</th>
+                        <th scope="col">Modal (Rp)</th>
                         <th scope="col">Stok</th>
                         <th scope="col">Gambar</th>
                         <th scope="col">Deskripsi</th>
@@ -131,6 +132,7 @@
                             <td><?= $value['nama_kategori']; ?></td>
                             <td><?= $value['nama_produk']; ?></td>
                             <td><?= $value['harga_produk']; ?></td>
+                            <td><?= $value['modal_produk']; ?></td>
                             <td><?= $value['stok']; ?></td>
                             <td><img src="/img/produk/<?= $value['gambar']; ?>" width="100"> </td>
                             <td><?= $value['deskripsi']; ?></td>

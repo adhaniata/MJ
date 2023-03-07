@@ -16,7 +16,7 @@ class Auth extends BaseConfig
      *
      * @var string
      */
-    public $defaultUserGroup = 'user';
+    public $defaultUserGroup;
 
     /**
      * --------------------------------------------------------------------
@@ -186,8 +186,7 @@ class Auth extends BaseConfig
      *
      * @var string|null Name of the ActivatorInterface class
      */
-    // public $requireActivation = 'Myth\Auth\Authentication\Activators\EmailActivator';
-    public $requireActivation = NULL;
+    public $requireActivation = 'Myth\Auth\Authentication\Activators\EmailActivator';
 
     /**
      * --------------------------------------------------------------------
@@ -200,7 +199,6 @@ class Auth extends BaseConfig
      * @var string|null Name of the ResetterInterface class
      */
     public $activeResetter = 'Myth\Auth\Authentication\Resetters\EmailResetter';
-    // public $activeResetter = false;
 
     /**
      * --------------------------------------------------------------------

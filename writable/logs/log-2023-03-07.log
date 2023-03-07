@@ -1,0 +1,132 @@
+ERROR - 2023-03-07 16:31:05 --> mysqli_sql_exception: Unknown column 'produk.modal_produk' in 'field list' in C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT (SUM((tr...', 0)
+#1 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT (SUM((tr...')
+#2 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT (SUM((tr...')
+#3 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT (SUM((tr...', Array, false)
+#4 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\skripsi\Tokomjs\MJ\app\Controllers\Admin\Home.php(36): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+#7 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+#8 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\skripsi\Tokomjs\MJ\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2023-03-07 16:31:05 --> Unknown column 'produk.modal_produk' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT (SUM((transaksi_detail.total_harga - produk.modal_produk) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran
+FROM `transaksi_detail`
+LEFT JOIN `transaksi` ON `transaksi`.`id_transaksi` = `transaksi_detail`.`id_transaksiFK`
+LEFT JOIN `produk` ON `produk`.`id_produk` = `transaksi_detail`.`id_produkFK`
+WHERE `transaksi`.`status_pengiriman` = :transaksi.status_pengiriman:
+AND MONTH(transaksi_detail.created_at) = :MONTH(transaksi_detail.created_at):', [...], false)
+ 2 SYSTEMPATH\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Admin\Home.php(36): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-07 16:31:56 --> Call to a member function getStatusCode() on null
+in ROOTPATH\spark on line 100.
+
+CRITICAL - 2023-03-07 16:50:19 --> Array to string conversion
+in APPPATH\Views\admin\home\index.php on line 221.
+ 1 APPPATH\Views\admin\home\index.php(221): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Views\\admin\\home\\index.php', 221)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\home\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 5 APPPATH\Controllers\Admin\Home.php(77): view('admin/home/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-07 16:52:33 --> Undefined array key "stok"
+in APPPATH\Views\admin\home\index.php on line 219.
+ 1 APPPATH\Views\admin\home\index.php(219): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "stok"', 'APPPATH\\Views\\admin\\home\\index.php', 219)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\home\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 5 APPPATH\Controllers\Admin\Home.php(77): view('admin/home/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-07 16:53:45 --> Undefined array key "stok"
+in APPPATH\Views\admin\home\index.php on line 220.
+ 1 APPPATH\Views\admin\home\index.php(220): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "stok"', 'APPPATH\\Views\\admin\\home\\index.php', 220)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\home\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 5 APPPATH\Controllers\Admin\Home.php(77): view('admin/home/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-07 16:54:46 --> Undefined array key "stok"
+in APPPATH\Views\admin\home\index.php on line 220.
+ 1 APPPATH\Views\admin\home\index.php(220): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "stok"', 'APPPATH\\Views\\admin\\home\\index.php', 220)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\home\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 5 APPPATH\Controllers\Admin\Home.php(77): view('admin/home/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-07 16:57:13 --> Undefined array key "nama_produk"
+in APPPATH\Views\admin\home\index.php on line 222.
+ 1 APPPATH\Views\admin\home\index.php(222): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nama_produk"', 'APPPATH\\Views\\admin\\home\\index.php', 222)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\home\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 5 APPPATH\Controllers\Admin\Home.php(77): view('admin/home/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-07 17:41:40 --> Undefined array key "nama_kategori"
+in APPPATH\Controllers\Admin\Home.php on line 56.
+ 1 APPPATH\Controllers\Admin\Home.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nama_kategori"', 'APPPATH\\Controllers\\Admin\\Home.php', 56)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-07 17:46:39 --> Undefined array key "nama_kategori"
+in APPPATH\Controllers\Admin\Home.php on line 56.
+ 1 APPPATH\Controllers\Admin\Home.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nama_kategori"', 'APPPATH\\Controllers\\Admin\\Home.php', 56)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-07 17:47:18 --> Undefined array key "nama_kategori"
+in APPPATH\Controllers\Admin\Home.php on line 56.
+ 1 APPPATH\Controllers\Admin\Home.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nama_kategori"', 'APPPATH\\Controllers\\Admin\\Home.php', 56)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-07 17:48:31 --> Undefined array key "nama_kategori"
+in APPPATH\Controllers\Admin\Home.php on line 56.
+ 1 APPPATH\Controllers\Admin\Home.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nama_kategori"', 'APPPATH\\Controllers\\Admin\\Home.php', 56)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-07 17:48:38 --> Undefined array key 0
+in APPPATH\Controllers\Admin\Home.php on line 63.
+ 1 APPPATH\Controllers\Admin\Home.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'APPPATH\\Controllers\\Admin\\Home.php', 63)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

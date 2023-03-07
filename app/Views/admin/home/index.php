@@ -155,16 +155,20 @@
                         </div>
                     </div><br>
                     <!-- card Total Kategori dan Produk-->
-                    <!-- <div class="card mb-3" style="max-width: 1300px;">
-                        <div class="card-header text-bg-primary">Kategori dan Produk</div>
+                    <div class="card mb-3" style="max-width: 1300px;">
+                        <div class="card-header text-bg-primary">Kategori dan Stok Produk</div>
                         <div class="card-body text-bg-light">
                             <center>
-                                <div class="chart-container" style="position: relative; height:50vh; width:75vw">
-                                    <canvas id="produkChart"></canvas>
-                                </div>
+                                <?php $i = 1 ?>
+                                <?php foreach ($namaKategori as $key => $value) : ?>
+                                    <div class="chart-container" style="position: relative; height:50vh; width:75vw">
+                                        <h4><?= $value['nama_kategori']; ?></h4>
+                                        <canvas id="produkChart<?= $i++; ?>"></canvas>
+                                    </div>
+                                <?php endforeach; ?>
                             </center>
                         </div>
-                    </div><br> -->
+                    </div><br>
                     <!-- card stok Produk-->
                     <div class="card mb-3" style="max-width: 1300px;">
                         <div class="card-header text-bg-primary">Stok Produk</div>
@@ -217,7 +221,8 @@
         $db = \Config\Database::connect();
         $data_produk_kategori[] = $db->table('produk')
             ->where('id_kategoriFK', $value['id_kategori'])
-            ->countAllResults();
+            // ->countAllResults();
+            ->$value['stok'];
         $label_produk_kategori[] = $value['nama_kategori'];
     }
     ?>
@@ -261,7 +266,50 @@
     });
 </script> -->
 <script>
-    // untuk Chart
+    // untuk semua stok barang per kategori
+    <?php $i = 1 ?>
+    <?php foreach ($namaKategori as $key => $value) : ?>
+        const sbk = document.getElementById('produkChart<?= $i++; ?>');
+        new Chart(sbk, {
+            type: 'bar',
+            data: {
+                labels: <?= json_encode($namaProduk); ?>,
+                datasets: [{
+                    label: 'Jumlah Stok',
+                    data: <?= json_encode($stoknya) ?>,
+                    borderWidth: 1,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(201, 203, 207, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(153, 102, 255)',
+                        'rgb(201, 203, 207)'
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    <?php endforeach; ?>
+</script>
+<script>
+    // untuk Chart stok produk
     <?php
     foreach ($produks as $key => $value) {
         $db = \Config\Database::connect();
