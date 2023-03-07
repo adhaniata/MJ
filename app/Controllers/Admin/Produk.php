@@ -80,6 +80,13 @@ class Produk extends BaseController
                     'is_unique' => '{field} sudah terdaftar.'
                 ]
             ],
+            'modal_produk' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => '{field} harus diisi.',
+                    'numeric' => '{field} harus berisi angka bukan huruf'
+                ]
+            ],
             'harga_produk' => [
                 'rules' => 'required|numeric',
                 'errors' => [
@@ -148,6 +155,7 @@ class Produk extends BaseController
                 'nama_produk' => $this->request->getVar('nama_produk'),
                 //'id_adminFK' => $this->request->getVar('id_adminFK'),
                 'slug_produk' => $slug_produk,
+                'modal_produk' => $this->request->getVAr('modal_produk'),
                 'harga_produk' => $this->request->getVAr('harga_produk'),
                 'stok' => $this->request->getVAr('stok'),
                 'gambar' => $namaGambar,
@@ -207,10 +215,17 @@ class Produk extends BaseController
                 ]
             ],
             'nama_produk' => [
-                'rules' => $rule_produk,
+                'rules' => 'required',
                 'errors' => [
                     'required' => '{field} harus diisi.',
                     'is_unique' => '{field} sudah terdaftar.'
+                ]
+            ],
+            'modal_produk' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => '{field} harus diisi.',
+                    'numeric' => '{field} harus berisi angka bukan huruf'
                 ]
             ],
             'harga_produk' => [
@@ -228,10 +243,9 @@ class Produk extends BaseController
                 ]
             ],
             'gambarProduk' => [
-                'rules' => 'uploaded[gambarProduk]|max_size[gambarProduk,10240]|is_image[gambarProduk]|mime_in[gambarProduk,image/jpg,image/jpeg,image/png]',
+                'rules' => 'max_size[gambarProduk,10240]|is_image[gambarProduk]|mime_in[gambarProduk,image/jpg,image/jpeg,image/png]',
                 //jika wajib upload tambah uploaded[gambar] di rules
                 'errors' => [
-                    'uploaded' => 'Pilih Gambar Terlebih dahulu',
                     'max_size' => 'Ukuran Gambar Terlalu Besar',
                     'is_image' => 'Yang Anda Pilih Bukan Gambar',
                     'mime_in' => 'Yang Anda Pilih Bukan Gambar berformat jpg, jpeg, dan png'
@@ -271,7 +285,6 @@ class Produk extends BaseController
             }
 
             //method savenya
-
             $slug_produk = url_title($this->request->getVar('nama_produk'), '-', true);
             $this->produkModel->save([
                 'id_produk' => $id,
@@ -279,6 +292,7 @@ class Produk extends BaseController
                 'nama_produk' => $this->request->getVar('nama_produk'),
                 //'id_adminFK' => $this->request->getVar('id_adminFK'),
                 'slug_produk' => $slug_produk,
+                'modal_produk' => $this->request->getVAr('modal_produk'),
                 'harga_produk' => $this->request->getVAr('harga_produk'),
                 'stok' => $this->request->getVAr('stok'),
                 'gambar' => $namaGambar,

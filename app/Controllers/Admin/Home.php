@@ -2,8 +2,9 @@
 
 namespace App\Controllers\Admin;
 
-use App\Models\{ProdukModel, KategoriModel, TransaksiModel, OngkirModel, PengembalianModel};
+use App\Models\{ProdukModel, KategoriModel, TransaksiModel, OngkirModel, PengembalianModel, TransaksiDetailModel};
 use App\Controllers\BaseController;
+use App\Database\Migrations\TransaksiDetail;
 
 class Home extends BaseController
 {
@@ -17,6 +18,7 @@ class Home extends BaseController
         $this->transaksiModel = new TransaksiModel();
         $this->ongkirModel = new OngkirModel();
         $this->pengembalianModel = new PengembalianModel();
+        $this->transaksiDetailModel = new TransaksiDetailModel();
     }
 
     //untuk index
@@ -26,8 +28,15 @@ class Home extends BaseController
 
         foreach ($bulan as $b) {
             $namaBulan[] = date('F', strtotime($b['bulan']));
-            $pendapatan = $this->transaksiModel->select('SUM(total_tagihan) as pendapatan')->where('status_pengiriman', 'DITERIMA')->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->get()->getResultArray();
-            $pendapatan_chart[] = $pendapatan[0]['pendapatan'];
+            $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga - produk.modal_produk) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
+                ->where('transaksi.status_pengiriman', 'DITERIMA')
+                ->where('MONTH(transaksi_detail.created_at)', date('m', strtotime($b['bulan'])))
+                ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
+                ->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK', 'left')
+                ->get()->getResultArray();
+            // $pendapatan = $this->transaksiModel->select('SUM(total_tagihan) as pendapatan')->where('status_pengiriman', 'DITERIMA')->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->get()->getResultArray();
+            $pendapatan_chart[] = $produk[0]['pendapatan'];
+            $pengeluaran_chart[] = $produk[0]['pengeluaran'];
             $transaksi_chart[] = $this->transaksiModel->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->countAllResults();
             $pengembalian_chart[] = $this->pengembalianModel->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->countAllResults();
         }
@@ -51,6 +60,7 @@ class Home extends BaseController
             'count' => $this->transaksiModel->countAllResults(),
             'namaBulan' => $namaBulan,
             'pendapatan' => $pendapatan_chart,
+            'pengeluaran' => $pengeluaran_chart,
             'transaksi_chart' => $transaksi_chart,
             'pengembalian_chart' => $pengembalian_chart,
         ];
