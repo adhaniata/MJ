@@ -43,7 +43,6 @@ $routes->post('/chatbot/kirim', 'Chatbot::kirim');
 // hak akses untuk admin
 $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('/', 'Admin\Home::index');
-    //$routes->post('/fillter', 'Admin\Home::index');
     $routes->get('tampilan-produk', 'Admin\TampilanProduk::index');
     $routes->get('tampilan-produk/cari', 'Admin\TampilanProduk::cari');
     $routes->get('tampilan-produk/kategori', 'Admin\TampilanProduk::kategori');

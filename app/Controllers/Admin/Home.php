@@ -24,44 +24,225 @@ class Home extends BaseController
     //untuk index
     public function index()
     {
+        $type = $this->request->getVar('type');
+
         $bulan = $this->transaksiModel->select('created_at as bulan')->orderBy('created_at ASC')->groupBy('MONTH(created_at)')->get()->getResultArray();
-
-        foreach ($bulan as $b) {
-            $namaBulan[] = date('F', strtotime($b['bulan']));
-            // ori
-            // $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga - produk.modal_produk) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
-            //     ->where('transaksi.status_pengiriman', 'DITERIMA')
-            //     ->where('MONTH(transaksi_detail.created_at)', date('m', strtotime($b['bulan'])))
-            //     ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
-            //     ->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK', 'left')
-            //     ->get()->getResultArray();
-
-            // pendapatannya sudah termasuk balik modal
-            $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
-                ->where('transaksi.status_pengiriman', 'DITERIMA')
-                ->where('MONTH(transaksi_detail.created_at)', date('m', strtotime($b['bulan'])))
-                ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
-                ->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK', 'left')
-                ->get()->getResultArray();
-            // $pendapatan = $this->transaksiModel->select('SUM(total_tagihan) as pendapatan')->where('status_pengiriman', 'DITERIMA')->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->get()->getResultArray();
-            $pendapatan_chart[] = $produk[0]['pendapatan'];
-            $pengeluaran_chart[] = $produk[0]['pengeluaran'];
-            $transaksi_chart[] = $this->transaksiModel->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->countAllResults();
-            $pengembalian_chart[] = $this->pengembalianModel->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->countAllResults();
-        }
+        $bulan_pengembalian = $this->pengembalianModel->select('created_at as bulan')->orderBy('created_at ASC')->groupBy('MONTH(created_at)')->get()->getResultArray();
 
         // membuat chart stok produk dari berbagai kategori masih error
-        $jeniskat = $this->produkModel->select('produk.id_kategoriFK as jeniskat')->join('kategori', 'kategori.id_kategori = produk.id_kategoriFK')->orderBy('id_kategoriFK ASC')->groupBy('id_kategoriFK')->get()->getResultArray();
-        foreach ($jeniskat as $j) {
+        $kategori = $this->produkModel->select('produk.id_kategoriFK as jeniskat')->join('kategori', 'kategori.id_kategori = produk.id_kategoriFK')->orderBy('id_kategoriFK ASC')->groupBy('id_kategoriFK')->get()->getResultArray();
+        // var_dump($kategori);
+        // die;
+        foreach ($kategori as $kat) {
             // $namaKategori[] = $j['nama_kategori'];
 
-            $stokperkat = $this->produkModel->select('kategori.nama_kategori, produk.nama_produk, produk.stok',)
-                ->where('kategori.id_kategori', 'produk.id_kategoriFK')
-                ->join('kategori', 'kategori.id_kategori = produk.id_kategoriFK', 'left')
+            $katProduk = $this->produkModel->select('SUM(stok) as total_stok, kategori.nama_kategori')
+                ->where('id_kategoriFK', $kat['jeniskat'])
+                ->join('kategori', 'kategori.id_kategori = produk.id_kategoriFK')
                 ->get()->getResultArray();
 
-            $stoknya_chart[] = $stokperkat[0]['stok'];
-            $nama_stokpr[] = $stokperkat[0]['nama_produk'];
+            $total_stok[] = $katProduk[0]['total_stok'];
+            $namaKategori[] = $katProduk[0]['nama_kategori'];
+        }
+
+        // filter
+        $filter = $this->request->getVar('filter');
+
+        if ($type == '' || $type == NULL) {
+            // bulan untuk pendapatan dan pengeluaran
+            foreach ($bulan as $bln_pen_peng) {
+                $namaBulanPendapatan[] = date('F', strtotime($bln_pen_peng['bulan']));
+                // ori
+                // $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga - produk.modal_produk) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
+                //     ->where('transaksi.status_pengiriman', 'DITERIMA')
+                //     ->where('MONTH(transaksi_detail.created_at)', date('m', strtotime($b['bulan'])))
+                //     ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
+                //     ->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK', 'left')
+                //     ->get()->getResultArray();
+
+                // pendapatannya sudah termasuk balik modal
+                $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
+                    ->where('transaksi.status_pengiriman', 'DITERIMA')
+                    ->where('MONTH(transaksi_detail.created_at)', date('m', strtotime($bln_pen_peng['bulan'])))
+                    ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
+                    ->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK', 'left')
+                    ->get()->getResultArray();
+                // $pendapatan = $this->transaksiModel->select('SUM(total_tagihan) as pendapatan')->where('status_pengiriman', 'DITERIMA')->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->get()->getResultArray();
+                $pendapatan_chart[] = $produk[0]['pendapatan'];
+                $pengeluaran_chart[] = $produk[0]['pengeluaran'];
+            }
+
+            // bulan untuk transaksi
+            foreach ($bulan as $bln_trans) {
+                $namaBulanTransaksi[] = date('F', strtotime($bln_trans['bulan']));
+                $transaksi_chart[] = $this->transaksiModel->where('MONTH(created_at)', date('m', strtotime($bln_trans['bulan'])))->countAllResults();
+            }
+
+            // bulan untuk pengemalian
+            foreach ($bulan_pengembalian as $bln_pengembalian) {
+                $namaBulanPengembalian[] = date('F', strtotime($bln_pengembalian['bulan']));
+                $pengembalian_chart[] = $this->pengembalianModel->where('MONTH(created_at)', date('m', strtotime($bln_pengembalian['bulan'])))->countAllResults();
+            }
+        } else if ($type == 'pendapatan') {
+            // bulan untuk transaksi
+            foreach ($bulan as $bln_trans) {
+                $namaBulanTransaksi[] = date('F', strtotime($bln_trans['bulan']));
+                $transaksi_chart[] = $this->transaksiModel->where('MONTH(created_at)', date('m', strtotime($bln_trans['bulan'])))->countAllResults();
+            }
+
+            // bulan untuk pengemalian
+            foreach ($bulan_pengembalian as $bln_pengembalian) {
+                $namaBulanPengembalian[] = date('F', strtotime($bln_pengembalian['bulan']));
+                $pengembalian_chart[] = $this->pengembalianModel->where('MONTH(created_at)', date('m', strtotime($bln_pengembalian['bulan'])))->countAllResults();
+            }
+
+            if ($filter == 'tanggal') {
+                $tanggal = $this->request->getVar('tanggal');
+                $namaBulanPendapatan[] = date('d F, Y', strtotime($tanggal));
+
+                $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
+                    ->where('transaksi.status_pengiriman', 'DITERIMA')
+                    ->where('DATE(transaksi_detail.created_at)', $tanggal)
+                    ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
+                    ->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK', 'left')
+                    ->get()->getResultArray();
+                // $pendapatan = $this->transaksiModel->select('SUM(total_tagihan) as pendapatan')->where('status_pengiriman', 'DITERIMA')->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->get()->getResultArray();
+                $pendapatan_chart[] = $produk[0]['pendapatan'];
+                $pengeluaran_chart[] = $produk[0]['pengeluaran'];
+            } else if ($filter == 'bulan') {
+                $bulan = $this->request->getVar('bulan');
+                $namaBulanPendapatan[] = date('F, Y', strtotime($bulan));
+
+                $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
+                    ->where('transaksi.status_pengiriman', 'DITERIMA')
+                    ->where('MONTH(transaksi_detail.created_at)', date('m', strtotime($bulan)))
+                    ->where('YEAR(transaksi_detail.created_at)', date('Y', strtotime($bulan)))
+                    ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
+                    ->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK', 'left')
+                    ->get()->getResultArray();
+                // $pendapatan = $this->transaksiModel->select('SUM(total_tagihan) as pendapatan')->where('status_pengiriman', 'DITERIMA')->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->get()->getResultArray();
+                $pendapatan_chart[] = $produk[0]['pendapatan'];
+                $pengeluaran_chart[] = $produk[0]['pengeluaran'];
+            } else {
+                $tahun = $this->request->getVar('tahun');
+                $namaBulanPendapatan[] = $tahun;
+
+                $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
+                    ->where('transaksi.status_pengiriman', 'DITERIMA')
+                    ->where('YEAR(transaksi_detail.created_at)', $tahun)
+                    ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
+                    ->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK', 'left')
+                    ->get()->getResultArray();
+                // $pendapatan = $this->transaksiModel->select('SUM(total_tagihan) as pendapatan')->where('status_pengiriman', 'DITERIMA')->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->get()->getResultArray();
+                $pendapatan_chart[] = $produk[0]['pendapatan'];
+                $pengeluaran_chart[] = $produk[0]['pengeluaran'];
+            }
+        } else if ($type == 'transaksi') {
+            // bulan untuk pendapatan dan pengeluaran
+            foreach ($bulan as $bln_pen_peng) {
+                $namaBulanPendapatan[] = date('F', strtotime($bln_pen_peng['bulan']));
+                // ori
+                // $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga - produk.modal_produk) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
+                //     ->where('transaksi.status_pengiriman', 'DITERIMA')
+                //     ->where('MONTH(transaksi_detail.created_at)', date('m', strtotime($b['bulan'])))
+                //     ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
+                //     ->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK', 'left')
+                //     ->get()->getResultArray();
+
+                // pendapatannya sudah termasuk balik modal
+                $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
+                    ->where('transaksi.status_pengiriman', 'DITERIMA')
+                    ->where('MONTH(transaksi_detail.created_at)', date('m', strtotime($bln_pen_peng['bulan'])))
+                    ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
+                    ->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK', 'left')
+                    ->get()->getResultArray();
+                // $pendapatan = $this->transaksiModel->select('SUM(total_tagihan) as pendapatan')->where('status_pengiriman', 'DITERIMA')->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->get()->getResultArray();
+                $pendapatan_chart[] = $produk[0]['pendapatan'];
+                $pengeluaran_chart[] = $produk[0]['pengeluaran'];
+            }
+
+            // bulan untuk pengemalian
+            foreach ($bulan_pengembalian as $bln_pengembalian) {
+                $namaBulanPengembalian[] = date('F', strtotime($bln_pengembalian['bulan']));
+                $pengembalian_chart[] = $this->pengembalianModel->where('MONTH(created_at)', date('m', strtotime($bln_pengembalian['bulan'])))->countAllResults();
+            }
+
+            if ($filter == 'tanggal') {
+                $tanggal = $this->request->getVar('tanggal');
+                $namaBulanTransaksi[] = date('F', strtotime($tanggal));
+
+                $transaksi_chart[] = $this->transaksiModel
+                    ->where('DATE(created_at)', $tanggal)
+                    ->countAllResults();
+            } else if ($filter == 'bulan') {
+                $bulan = $this->request->getVar('bulan');
+                $namaBulanTransaksi[] = date('F, Y', strtotime($bulan));
+
+                $transaksi_chart[] = $this->transaksiModel
+                    ->where('MONTH(created_at)', date('m', strtotime($bulan)))
+                    ->where('YEAR(created_at)', date('Y', strtotime($bulan)))
+                    ->countAllResults();
+            } else {
+                $tahun = $this->request->getVar('tahun');
+                $namaBulanTransaksi[] = date('Y', strtotime($tahun));
+
+                $transaksi_chart[] = $this->transaksiModel
+                    ->where('YEAR(created_at)', $tahun)
+                    ->countAllResults();
+            }
+        } else {
+            // bulan untuk pendapatan dan pengeluaran
+            foreach ($bulan as $bln_pen_peng) {
+                $namaBulanPendapatan[] = date('F', strtotime($bln_pen_peng['bulan']));
+                // ori
+                // $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga - produk.modal_produk) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
+                //     ->where('transaksi.status_pengiriman', 'DITERIMA')
+                //     ->where('MONTH(transaksi_detail.created_at)', date('m', strtotime($b['bulan'])))
+                //     ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
+                //     ->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK', 'left')
+                //     ->get()->getResultArray();
+
+                // pendapatannya sudah termasuk balik modal
+                $produk = $this->transaksiDetailModel->select('(SUM((transaksi_detail.total_harga) * transaksi_detail.qty)) as pendapatan, (SUM(produk.modal_produk * transaksi_detail.qty)) as pengeluaran')
+                    ->where('transaksi.status_pengiriman', 'DITERIMA')
+                    ->where('MONTH(transaksi_detail.created_at)', date('m', strtotime($bln_pen_peng['bulan'])))
+                    ->join('transaksi', 'transaksi.id_transaksi = transaksi_detail.id_transaksiFK', 'left')
+                    ->join('produk', 'produk.id_produk = transaksi_detail.id_produkFK', 'left')
+                    ->get()->getResultArray();
+                // $pendapatan = $this->transaksiModel->select('SUM(total_tagihan) as pendapatan')->where('status_pengiriman', 'DITERIMA')->where('MONTH(created_at)', date('m', strtotime($b['bulan'])))->get()->getResultArray();
+                $pendapatan_chart[] = $produk[0]['pendapatan'];
+                $pengeluaran_chart[] = $produk[0]['pengeluaran'];
+            }
+
+            // bulan untuk transaksi
+            foreach ($bulan as $bln_trans) {
+                $namaBulanTransaksi[] = date('F', strtotime($bln_trans['bulan']));
+                $transaksi_chart[] = $this->transaksiModel->where('MONTH(created_at)', date('m', strtotime($bln_trans['bulan'])))->countAllResults();
+            }
+
+            if ($filter == 'tanggal') {
+                $tanggal = $this->request->getVar('tanggal');
+                $namaBulanPengembalian[] = date('F', strtotime($tanggal));
+
+                $pengembalian_chart[] = $this->pengembalianModel
+                    ->where('DATE(created_at)', $tanggal)
+                    ->countAllResults();
+            } else if ($filter == 'bulan') {
+                $bulan = $this->request->getVar('bulan');
+                $namaBulanPengembalian[] = date('F, Y', strtotime($bulan));
+
+                $pengembalian_chart[] = $this->pengembalianModel
+                    ->where('MONTH(created_at)', date('m', strtotime($bulan)))
+                    ->where('YEAR(created_at)', date('Y', strtotime($bulan)))
+                    ->countAllResults();
+            } else {
+                $tahun = $this->request->getVar('tahun');
+                $namaBulanPengembalian[] = date('Y', strtotime($tahun));
+
+                $pengembalian_chart[] = $this->pengembalianModel
+                    ->where('YEAR(created_at)', $tahun)
+                    ->countAllResults();
+            }
         }
 
         $data = [
@@ -81,16 +262,15 @@ class Home extends BaseController
             //'countProdukByKat' => $this->produkModel->getCountProdukByKategori()->getResultArray(),
             //'kategori' => $this->kategoriModel->get()->getResultArray(),
             'count' => $this->transaksiModel->countAllResults(),
-            'namaBulan' => $namaBulan,
+            'namaBulanPendapatan' => $namaBulanPendapatan,
+            'namaBulanTransaksi' => $namaBulanTransaksi,
+            'namaBulanPengembalian' => $namaBulanPengembalian,
             'pendapatan' => $pendapatan_chart,
             'pengeluaran' => $pengeluaran_chart,
             'transaksi_chart' => $transaksi_chart,
             'pengembalian_chart' => $pengembalian_chart,
-            'stok_chart' => $stokperkat,
+            'stok_chart' => $total_stok,
             'namaKategori' => $namaKategori,
-            'stoknya' => $stoknya_chart,
-            'namaProduk' => $nama_stokpr,
-
         ];
 
         return view('admin/home/index', $data);
