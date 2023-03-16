@@ -577,7 +577,7 @@
     const pdt = document.getElementById('pendapatanChart');
 
     new Chart(pdt, {
-        type: 'bar',
+        type: '<?= $type_chart_pendapatan ?>',
         data: {
             labels: <?= json_encode($namaBulanPendapatan) ?>,
             datasets: [{
@@ -616,7 +616,7 @@
     const pbl = document.getElementById('pengembalianChart');
 
     new Chart(pbl, {
-        type: 'line',
+        type: '<?= $type_chart_pengembalian ?>',
         data: {
             labels: <?= json_encode($namaBulanPengembalian); ?>,
             datasets: [{
@@ -644,7 +644,7 @@
     const trx = document.getElementById('transaksiChart');
 
     new Chart(trx, {
-        type: 'bar',
+        type: '<?= $type_chart_transaksi ?>',
         data: {
             labels: <?= json_encode($namaBulanTransaksi); ?>,
             datasets: [{

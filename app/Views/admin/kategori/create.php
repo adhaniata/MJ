@@ -4,14 +4,18 @@
 <!--navbar-->
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="/img/Artboard 1.png" alt="Bootstrap" width="40" height="34">MJ Sport</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+        <a class="navbar-brand" href="#"><img src="/img/Artboard 1.png" alt="Bootstrap" width="40" height="34">MJ
+            Sport</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+            aria-controls="offcanvasDarkNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+            aria-labelledby="offcanvasDarkNavbarLabel">
             <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Admin</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
@@ -22,7 +26,8 @@
                         <a class="nav-link" aria-current="page" href="/admin/tampilan-produk">Tampilan Produk</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <i class="fa-solid fa-bars-progress"></i> Manage
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
@@ -35,7 +40,8 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('logout') ?>"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                        <a class="nav-link" href="<?= base_url('logout') ?>"><i
+                                class="fa-solid fa-right-from-bracket"></i> Logout</a>
                     </li>
                 </ul>
                 <!-- <form class="d-flex mt-3" role="search">
@@ -59,7 +65,9 @@
                 <div class="row mb-3">
                     <label for="nama_kategori" class="col-sm-2 col-form-label">Nama Kategori</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= ($validation->hasError('nama_kategori')) ? 'is-invalid' : ''; ?>" id="nama_kategori" name="nama_kategori" autofocus value="<?= old('nama_kategori'); ?>">
+                        <input type="text"
+                            class="form-control <?= ($validation->hasError('nama_kategori')) ? 'is-invalid' : ''; ?>"
+                            id="nama_kategori" name="nama_kategori" autofocus value="<?= old('nama_kategori'); ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('nama_kategori'); ?>
                         </div>

@@ -28,6 +28,9 @@ class Home extends BaseController
         $judulPendapatan = '';
         $judulTransaksi = '';
         $judulPengembalian = '';
+        $type_chart_pendapatan='bar';
+        $type_chart_transaksi='bar';
+        $type_chart_pengembalian='bar';
 
         $bulan = $this->transaksiModel->select('created_at as bulan')->orderBy('created_at ASC')->groupBy('MONTH(created_at)')->get()->getResultArray();
         $bulan_pengembalian = $this->pengembalianModel->select('created_at as bulan')->orderBy('created_at ASC')->groupBy('MONTH(created_at)')->get()->getResultArray();
@@ -100,6 +103,8 @@ class Home extends BaseController
             }
 
             if ($filter == 'tanggal') {
+                // tipe chart untuk ditampilkan (bar/line)
+                $type_chart_pendapatan = 'bar';
                 $tanggal = $this->request->getVar('tanggal');
                 $namaBulanPendapatan[] = date('d F, Y', strtotime($tanggal));
                 $judulPendapatan = 'Pendapatan dan Pengeluaran pada tanggal ' . $tanggal;
@@ -114,6 +119,7 @@ class Home extends BaseController
                 $pendapatan_chart[] = $produk[0]['pendapatan'];
                 $pengeluaran_chart[] = $produk[0]['pengeluaran'];
             } else if ($filter == 'bulan') {
+                $type_chart_pendapatan = 'bar';
                 $bulan = $this->request->getVar('bulan');
                 $namaBulanPendapatan[] = date('F, Y', strtotime($bulan));
                 $judulPendapatan = 'Pendapatan dan Pengeluaran pada Bulan ' . $bulan;
@@ -129,6 +135,7 @@ class Home extends BaseController
                 $pendapatan_chart[] = $produk[0]['pendapatan'];
                 $pengeluaran_chart[] = $produk[0]['pengeluaran'];
             } else if ($filter == 'periode_tanggal') {
+                $type_chart_pendapatan = 'line';
                 // periode tahun
                 $tanggal_p1 = $this->request->getVar('tanggal_periode1');
                 $tanggal_p2 = $this->request->getVar('tanggal_periode2');
@@ -182,6 +189,7 @@ class Home extends BaseController
                 //     $namaBulanPendapatan[] = date('d F, Y', strtotime($value['tanggal']));
                 // }
             } else if ($filter == 'periode_bulan') {
+                $type_chart_pendapatan = 'line';
                 // periode tahun
                 $bulan_p1 = $this->request->getVar('bulan_periode1');
                 $bulan_p2 = $this->request->getVar('bulan_periode2');
@@ -239,6 +247,7 @@ class Home extends BaseController
                 //     $namaBulanPendapatan[] = date('F, Y', strtotime($value['bulans']));
                 // }
             } else if ($filter == 'periode_tahun') {
+                $type_chart_pendapatan = 'line';
                 // periode tahun
                 $tahun_p1 = $this->request->getVar('tahun_periode1');
                 $tahun_p2 = $this->request->getVar('tahun_periode2');
@@ -291,6 +300,7 @@ class Home extends BaseController
                 //     $namaBulanPendapatan[] = $value['tahun'];
                 // }
             } else {
+                $type_chart_pendapatan = 'bar';
                 $tahun = $this->request->getVar('tahun');
                 $namaBulanPendapatan[] = $tahun;
                 $judulPendapatan = 'Pendapatan dan Pengeluaran pada tahun ' . $tahun;
@@ -337,6 +347,7 @@ class Home extends BaseController
 
             // chart transaksi
             if ($filter == 'tanggal') {
+                $type_chart_transaksi = 'bar';
                 $tanggal = $this->request->getVar('tanggal');
                 $namaBulanTransaksi[] = date('F', strtotime($tanggal));
                 $judulTransaksi = 'Transaksi pada tanggal ' . $tanggal;
@@ -346,6 +357,7 @@ class Home extends BaseController
                     ->where('DATE(created_at)', $tanggal)
                     ->countAllResults();
             } else if ($filter == 'bulan') {
+                $type_chart_transaksi = 'bar';
                 $bulan = $this->request->getVar('bulan');
                 $namaBulanTransaksi[] = date('F, Y', strtotime($bulan));
                 $judulTransaksi = 'Transaksi pada bulan ' . $bulan;
@@ -357,6 +369,7 @@ class Home extends BaseController
                     ->countAllResults();
                 // fillter range transaksi
             } else if ($filter == 'periode_tanggal') {
+                $type_chart_transaksi = 'line';
                 // periode tahun
                 $tanggal_p1 = $this->request->getVar('tanggal_periode1');
                 $tanggal_p2 = $this->request->getVar('tanggal_periode2');
@@ -394,6 +407,7 @@ class Home extends BaseController
                 // $this->db->order_by('total', 'desc'); 
                 // $this->db->get('tablename', 10);
             } else if ($filter == 'periode_bulan') {
+                $type_chart_transaksi = 'line';
                 // periode tahun
                 $bulan_p1 = $this->request->getVar('bulan_periode1');
                 $bulan_p2 = $this->request->getVar('bulan_periode2');
@@ -429,6 +443,7 @@ class Home extends BaseController
                     $transaksi_chart = 0;
                 }
             } else if ($filter == 'periode_tahun') {
+                $type_chart_transaksi = 'line';
                 // periode tahun
                 $tahun_p1 = $this->request->getVar('tahun_periode1');
                 $tahun_p2 = $this->request->getVar('tahun_periode2');
@@ -462,6 +477,7 @@ class Home extends BaseController
                     $transaksi_chart = 0;
                 }
             } else {
+                $type_chart_transaksi = 'bar';
                 $tahun = $this->request->getVar('tahun');
                 $namaBulanTransaksi[] = date('Y', strtotime($tahun));
                 $judulTransaksi = 'Transaksi pada tahun ' . $tahun;
@@ -502,6 +518,7 @@ class Home extends BaseController
             }
 
             if ($filter == 'tanggal') {
+                $type_chart_pengembalian = 'bar';
                 $tanggal = $this->request->getVar('tanggal');
                 $namaBulanPengembalian[] = date('F', strtotime($tanggal));
                 $judulPengembalian = 'Pengembalian pada tanggal ' . $tanggal;
@@ -511,6 +528,7 @@ class Home extends BaseController
                     ->where('DATE(created_at)', $tanggal)
                     ->countAllResults();
             } else if ($filter == 'bulan') {
+                $type_chart_pengembalian = 'bar';
                 $bulan = $this->request->getVar('bulan');
                 $namaBulanPengembalian[] = date('F, Y', strtotime($bulan));
                 $judulPengembalian  = 'pengembalian pada bulan ' . $bulan;
@@ -521,6 +539,7 @@ class Home extends BaseController
                     ->where('YEAR(created_at)', date('Y', strtotime($bulan)))
                     ->countAllResults();
             } else if ($filter == 'periode_tanggal') {
+                $type_chart_pengembalian = 'line';
                 // periode tahun
                 $tanggal_p1 = $this->request->getVar('tanggal_periode1');
                 $tanggal_p2 = $this->request->getVar('tanggal_periode2');
@@ -554,6 +573,7 @@ class Home extends BaseController
                 //     $pengembalian_chart[] = $value['jumlah'];
                 // }
             } else if ($filter == 'periode_bulan') {
+                $type_chart_pengembalian = 'line';
                 // periode tahun
                 $bulan_p1 = $this->request->getVar('bulan_periode1');
                 $bulan_p2 = $this->request->getVar('bulan_periode2');
@@ -583,6 +603,7 @@ class Home extends BaseController
                     $pengembalian_chart = 0;
                 }
             } else if ($filter == 'periode_tahun') {
+                $type_chart_pengembalian = 'line';
                 // periode tahun
                 $tahun_p1 = $this->request->getVar('tahun_periode1');
                 $tahun_p2 = $this->request->getVar('tahun_periode2');
@@ -610,6 +631,7 @@ class Home extends BaseController
                     $pengembalian_chart = 0;
                 }
             } else {
+                $type_chart_pengembalian = 'bar';
                 $tahun = $this->request->getVar('tahun');
                 $namaBulanPengembalian[] = date('Y', strtotime($tahun));
                 $judulPengembalian  = 'Pengembalian pada tahun ' . $tahun;
@@ -650,6 +672,9 @@ class Home extends BaseController
             'judulPendapatan' => $judulPendapatan,
             'judulTransaksi' => $judulTransaksi,
             'judulPengembalian' => $judulPengembalian,
+            'type_chart_pendapatan' => $type_chart_pendapatan,
+            'type_chart_transaksi' => $type_chart_transaksi,
+            'type_chart_pengembalian' => $type_chart_pengembalian,
         ];
 
         return view('admin/home/index', $data);

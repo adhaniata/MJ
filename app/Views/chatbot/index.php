@@ -25,12 +25,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <ul class="list-group list-group-flush">
-                                <?php $i = 1 ?>
-                                <?php foreach ($chatbot as $key => $value) : ?>
-                                    <li class="list-group-item"><button type="button" id="tombol-list<?= $i++; ?>" value="<?= $value['pertanyaan']; ?>" class="btn btn-outline-success"><?= $value['pertanyaan']; ?></button></li>
-                                <?php endforeach; ?>
-                            </ul>
                         </div><br>
                     </div><br>
 
