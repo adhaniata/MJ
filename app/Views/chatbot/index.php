@@ -14,8 +14,8 @@
                 </div>
                 <div class="card-body">
                     <div class="form">
-                        <div class="card text-bg-success mb-3" style="min-width: 700px; max-width: 900px; float:left;">
-                            <div class="card-body mb-0">
+                        <div class="card mb-3" style="min-width: 700px; max-width: 900px; float:left;">
+                            <div class="card-header text-bg-success mb-0">
                                 <div class="row">
                                     <div class="col-1">
                                         <img src="/img/rbt2.png" width="40px" class="rounded-circle">
@@ -25,6 +25,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-body mb-0">
+                                <ul class="list-group list-group-flush">
+                                    <?php $i = 1 ?>
+                                    <?php foreach ($chatbot as $key => $value) : ?>
+                                        <li class="list-group-item"><button class="btn btn-outline-success" type="button" id="tombol-list<?= $i++; ?>"><?= $value['pertanyaan']; ?></button></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+
                         </div><br>
                     </div><br>
 
