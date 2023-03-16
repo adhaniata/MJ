@@ -1,0 +1,499 @@
+CRITICAL - 2023-03-13 07:15:56 --> syntax error, unexpected token "}"
+in APPPATH\Controllers\Admin\Home.php on line 471.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH\\Controllers\\Admin\\Home.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Admin\\Home')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Admin\\Home')
+ 4 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\Controllers\\Admin\\Home', true)
+ 5 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:16:39 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Admin\Home.php on line 469.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:18:28 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Admin\Home.php on line 470.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:18:44 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Admin\Home.php on line 470.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:19:02 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Admin\Home.php on line 470.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:19:31 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Admin\Home.php on line 470.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:20:44 --> Undefined variable $pengembalian_chart
+in APPPATH\Controllers\Admin\Home.php on line 575.
+ 1 APPPATH\Controllers\Admin\Home.php(575): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Controllers\\Admin\\Home.php', 575)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:21:51 --> Undefined variable $ambilPengembalian
+in APPPATH\Views\admin\home\index.php on line 364.
+ 1 APPPATH\Views\admin\home\index.php(364): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ambilPengembalian', 'APPPATH\\Views\\admin\\home\\index.php', 364)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\home\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 5 APPPATH\Controllers\Admin\Home.php(580): view('admin/home/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:23:42 --> Undefined variable $ambilPengembalian
+in APPPATH\Controllers\Admin\Home.php on line 578.
+ 1 APPPATH\Controllers\Admin\Home.php(578): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ambilPengembalian', 'APPPATH\\Controllers\\Admin\\Home.php', 578)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:31:15 --> Undefined variable $pengembalian_chart
+in APPPATH\Controllers\Admin\Home.php on line 580.
+ 1 APPPATH\Controllers\Admin\Home.php(580): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Controllers\\Admin\\Home.php', 580)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:31:54 --> Undefined variable $pengembalian_chart
+in APPPATH\Controllers\Admin\Home.php on line 580.
+ 1 APPPATH\Controllers\Admin\Home.php(580): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Controllers\\Admin\\Home.php', 580)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:33:16 --> Undefined variable $pengembalian_chart
+in APPPATH\Controllers\Admin\Home.php on line 580.
+ 1 APPPATH\Controllers\Admin\Home.php(580): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Controllers\\Admin\\Home.php', 580)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:33:46 --> Undefined variable $pengembalian_chart
+in APPPATH\Controllers\Admin\Home.php on line 580.
+ 1 APPPATH\Controllers\Admin\Home.php(580): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Controllers\\Admin\\Home.php', 580)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:35:57 --> Undefined variable $pengembalian_chart
+in APPPATH\Controllers\Admin\Home.php on line 580.
+ 1 APPPATH\Controllers\Admin\Home.php(580): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Controllers\\Admin\\Home.php', 580)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:36:53 --> Undefined variable $pengembalian_chart
+in APPPATH\Views\admin\home\index.php on line 615.
+ 1 APPPATH\Views\admin\home\index.php(615): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Views\\admin\\home\\index.php', 615)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\home\\index.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('admin/home/index', [], true)
+ 5 APPPATH\Controllers\Admin\Home.php(585): view('admin/home/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:37:06 --> Undefined variable $pengembalian_chart
+in APPPATH\Controllers\Admin\Home.php on line 580.
+ 1 APPPATH\Controllers\Admin\Home.php(580): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Controllers\\Admin\\Home.php', 580)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:37:40 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Admin\Home.php on line 470.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:38:02 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Admin\Home.php on line 470.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:39:06 --> Call to undefined method App\Models\PengembalianModel::getResultArray
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Admin\Home.php(466): CodeIgniter\Model->__call('getResultArray', [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:40:02 --> Call to a member function getRowArray() on null
+in APPPATH\Controllers\Admin\Home.php on line 466.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:42:26 --> Undefined variable $pengembalian_chart
+in APPPATH\Controllers\Admin\Home.php on line 580.
+ 1 APPPATH\Controllers\Admin\Home.php(580): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Controllers\\Admin\\Home.php', 580)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:43:04 --> Call to undefined method App\Models\PengembalianModel::getRow
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Admin\Home.php(466): CodeIgniter\Model->__call('getRow', [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:43:43 --> Call to undefined method App\Models\PengembalianModel::getRowArray
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Admin\Home.php(466): CodeIgniter\Model->__call('getRowArray', [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:46:25 --> foreach() argument must be of type array|object, null given
+in APPPATH\Controllers\Admin\Home.php on line 469.
+ 1 APPPATH\Controllers\Admin\Home.php(469): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'APPPATH\\Controllers\\Admin\\Home.php', 469)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:50:12 --> foreach() argument must be of type array|object, null given
+in APPPATH\Controllers\Admin\Home.php on line 469.
+ 1 APPPATH\Controllers\Admin\Home.php(469): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'APPPATH\\Controllers\\Admin\\Home.php', 469)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:55:58 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Admin\Home.php on line 471.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:56:29 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Admin\Home.php on line 471.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 07:56:49 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Admin\Home.php on line 471.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:00:05 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Admin\Home.php on line 471.
+ 1 APPPATH\Controllers\Admin\Home.php(471): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Admin\\Home.php', 471)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:00:23 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Admin\Home.php on line 471.
+ 1 APPPATH\Controllers\Admin\Home.php(471): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Admin\\Home.php', 471)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:02:38 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\Admin\Home.php on line 471.
+ 1 APPPATH\Controllers\Admin\Home.php(471): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Controllers\\Admin\\Home.php', 471)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:07:35 --> foreach() argument must be of type array|object, int given
+in APPPATH\Controllers\Admin\Home.php on line 470.
+ 1 APPPATH\Controllers\Admin\Home.php(470): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, int given', 'APPPATH\\Controllers\\Admin\\Home.php', 470)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:08:02 --> foreach() argument must be of type array|object, null given
+in APPPATH\Controllers\Admin\Home.php on line 470.
+ 1 APPPATH\Controllers\Admin\Home.php(470): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'APPPATH\\Controllers\\Admin\\Home.php', 470)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:08:35 --> Undefined variable $pengembalian_chart
+in APPPATH\Controllers\Admin\Home.php on line 581.
+ 1 APPPATH\Controllers\Admin\Home.php(581): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Controllers\\Admin\\Home.php', 581)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:09:26 --> foreach() argument must be of type array|object, int given
+in APPPATH\Controllers\Admin\Home.php on line 470.
+ 1 APPPATH\Controllers\Admin\Home.php(470): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, int given', 'APPPATH\\Controllers\\Admin\\Home.php', 470)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:16:20 --> CodeIgniter\Database\BaseResult::getRowArray(): Argument #1 ($n) must be of type int, string given, called in C:\xampp\htdocs\skripsi\Tokomjs\MJ\app\Controllers\Admin\Home.php on line 466
+in SYSTEMPATH\Database\BaseResult.php on line 314.
+ 1 APPPATH\Controllers\Admin\Home.php(466): CodeIgniter\Database\BaseResult->getRowArray('jumlah')
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:19:01 --> Undefined variable $pengembalian_chart
+in APPPATH\Controllers\Admin\Home.php on line 581.
+ 1 APPPATH\Controllers\Admin\Home.php(581): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Controllers\\Admin\\Home.php', 581)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:19:56 --> Undefined variable $pengembalian_chart
+in APPPATH\Controllers\Admin\Home.php on line 581.
+ 1 APPPATH\Controllers\Admin\Home.php(581): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Controllers\\Admin\\Home.php', 581)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:20:10 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Admin\Home.php on line 471.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:21:13 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Admin\Home.php on line 471.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:21:26 --> Cannot use object of type mysqli as array
+in APPPATH\Controllers\Admin\Home.php on line 471.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:21:53 --> Undefined variable $pengembalian_chart
+in APPPATH\Controllers\Admin\Home.php on line 581.
+ 1 APPPATH\Controllers\Admin\Home.php(581): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Controllers\\Admin\\Home.php', 581)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:22:18 --> foreach() argument must be of type array|object, int given
+in APPPATH\Controllers\Admin\Home.php on line 470.
+ 1 APPPATH\Controllers\Admin\Home.php(470): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, int given', 'APPPATH\\Controllers\\Admin\\Home.php', 470)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:22:35 --> foreach() argument must be of type array|object, int given
+in APPPATH\Controllers\Admin\Home.php on line 470.
+ 1 APPPATH\Controllers\Admin\Home.php(470): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, int given', 'APPPATH\\Controllers\\Admin\\Home.php', 470)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:23:36 --> Undefined variable $pengembalian_chart
+in APPPATH\Controllers\Admin\Home.php on line 581.
+ 1 APPPATH\Controllers\Admin\Home.php(581): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pengembalian_chart', 'APPPATH\\Controllers\\Admin\\Home.php', 581)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:24:05 --> foreach() argument must be of type array|object, null given
+in APPPATH\Controllers\Admin\Home.php on line 470.
+ 1 APPPATH\Controllers\Admin\Home.php(470): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'APPPATH\\Controllers\\Admin\\Home.php', 470)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:27:13 --> Undefined property: CodeIgniter\Database\MySQLi\Result::$getResultArray
+in APPPATH\Controllers\Admin\Home.php on line 466.
+ 1 APPPATH\Controllers\Admin\Home.php(466): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\Database\\MySQLi\\Result::$getResultArray', 'APPPATH\\Controllers\\Admin\\Home.php', 466)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:27:32 --> Undefined variable $namaBulanPengembalian
+in APPPATH\Controllers\Admin\Home.php on line 578.
+ 1 APPPATH\Controllers\Admin\Home.php(578): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $namaBulanPengembalian', 'APPPATH\\Controllers\\Admin\\Home.php', 578)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2023-03-13 08:31:04 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as bulans
+FROM `pengembalian`
+WHERE `validasi` = 'Valid'
+AND MONTH(created_at...' at line 1 in C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT (DATE(cr...', 0)
+#1 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT (DATE(cr...')
+#2 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT (DATE(cr...')
+#3 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT (DATE(cr...', Array, false)
+#4 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\skripsi\Tokomjs\MJ\app\Controllers\Admin\Home.php(493): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+#7 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+#8 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\skripsi\Tokomjs\MJ\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2023-03-13 08:31:05 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as bulans
+FROM `pengembalian`
+WHERE `validasi` = 'Valid'
+AND MONTH(created_at...' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT (DATE(created_at) as bulans
+FROM `pengembalian`
+WHERE `validasi` = :validasi:
+AND MONTH(created_at) >= :MONTH(created_at):
+AND YEAR(created_at) >= :YEAR(created_at):
+AND MONTH(created_at) <= :MONTH(created_at).2:
+AND YEAR(created_at) <= :YEAR(created_at).2:
+GROUP BY MONTH(created_at)', [...], false)
+ 2 SYSTEMPATH\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Admin\Home.php(493): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2023-03-13 08:31:45 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as bulans
+FROM `pengembalian`
+WHERE `validasi` = 'Valid'
+AND MONTH(created_at...' at line 1 in C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT (DATE(cr...', 0)
+#1 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT (DATE(cr...')
+#2 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT (DATE(cr...')
+#3 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT (DATE(cr...', Array, false)
+#4 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\skripsi\Tokomjs\MJ\app\Controllers\Admin\Home.php(493): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+#7 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+#8 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\skripsi\Tokomjs\MJ\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2023-03-13 08:31:45 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as bulans
+FROM `pengembalian`
+WHERE `validasi` = 'Valid'
+AND MONTH(created_at...' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT (DATE(created_at) as bulans
+FROM `pengembalian`
+WHERE `validasi` = :validasi:
+AND MONTH(created_at) >= :MONTH(created_at):
+AND YEAR(created_at) >= :YEAR(created_at):
+AND MONTH(created_at) <= :MONTH(created_at).2:
+AND YEAR(created_at) <= :YEAR(created_at).2:
+GROUP BY MONTH(created_at)', [...], false)
+ 2 SYSTEMPATH\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Admin\Home.php(493): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2023-03-13 08:32:03 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as bulans
+FROM `pengembalian`
+WHERE `validasi` = 'Valid'
+AND MONTH(created_at...' at line 1 in C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT (DATE(cr...', 0)
+#1 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT (DATE(cr...')
+#2 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT (DATE(cr...')
+#3 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT (DATE(cr...', Array, false)
+#4 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\skripsi\Tokomjs\MJ\app\Controllers\Admin\Home.php(493): CodeIgniter\Model->__call('get', Array)
+#6 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+#7 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+#8 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\skripsi\Tokomjs\MJ\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\skripsi\Tokomjs\MJ\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2023-03-13 08:32:03 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as bulans
+FROM `pengembalian`
+WHERE `validasi` = 'Valid'
+AND MONTH(created_at...' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT (DATE(created_at) as bulans
+FROM `pengembalian`
+WHERE `validasi` = :validasi:
+AND MONTH(created_at) >= :MONTH(created_at):
+AND YEAR(created_at) >= :YEAR(created_at):
+AND MONTH(created_at) <= :MONTH(created_at).2:
+AND YEAR(created_at) <= :YEAR(created_at).2:
+GROUP BY MONTH(created_at)', [...], false)
+ 2 SYSTEMPATH\Model.php(840): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Admin\Home.php(493): CodeIgniter\Model->__call('get', [])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2023-03-13 08:37:12 --> Undefined variable $namaBulanPengembalian
+in APPPATH\Controllers\Admin\Home.php on line 531.
+ 1 APPPATH\Controllers\Admin\Home.php(531): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $namaBulanPengembalian', 'APPPATH\\Controllers\\Admin\\Home.php', 531)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Home->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

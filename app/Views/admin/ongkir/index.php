@@ -55,7 +55,7 @@
             <table class="table table-bordered" id="datatable">
                 <h2 class="mt-3 mb-4">Daftar Biaya Pengiriman</h2>
                 <a href="/admin/ongkir/create" class="btn btn-primary mt-1 mr-1">Tambah Data Ongkir</a>
-                <a href="/admin" class="btn btn-dark ml-1 mt-1">Kembali</a>
+                <!-- <a href="/admin" class="btn btn-dark ml-3 mt-1">Kembali</a> -->
                 <br><br>
                 <!-- <form class="row" action="/admin/ongkir/cari" action="get">
                     csrf_field();
