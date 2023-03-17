@@ -10,6 +10,7 @@ class Chatbot extends BaseController
     public function __construct()
     {
         $this->chatbotModel = new ChatbotModel();
+        $this->db = \Config\Database::connect();
     }
 
     public function index()
@@ -26,21 +27,31 @@ class Chatbot extends BaseController
     {
         $db = \Config\Database::connect();
         $request = \Config\Services::request();
+        $pesan = $this->request->getVar('pesan');
+        $pesan = preg_replace("/[^a-zA-Z- ]/", "", $pesan);
+        $keywords = explode(' ', $pesan);
 
-        $cek_data = $this->chatbotModel->like('pertanyaan', $request->getVar('pesan'))->get();
-
-        $balas = '';
-        //jika pertanyaan/data ditemukan, maka tampilkan jawaban
-        if ($cek_data->getNumRows() > 0) {
-            //hasil query tampung kedalam variable data
-            $data = $cek_data->getRowArray();
-
-            //tampung jawaban kedalam variable untuk dikirim kembali keajax
-            $balas = $data['jawaban'];
-        } else {
-            $balas = "Maaf, tidak menemukan jawaban yang kamu maksud. Kamu bisa Menghubungi Kami Melalui WhatsApp <a href='http://wa.me/6281212740577' target='_blank'> Klik Disini</a>";
+        $query='';
+        foreach ($keywords as $key => $values) {
+            $values = trim($values);
+            $query = $this->chatbotModel->orWhere("`pertanyaan` LIKE '%$values%'");
         }
 
-        echo json_encode(['result' => $balas]);
+        // $cek_data = $this->chatbotModel->like('pertanyaan', $request->getVar('pesan'))->get();
+
+        // $balas = '';
+        //jika pertanyaan/data ditemukan, maka tampilkan jawaban
+        // if ($query->get()->getRowArray() != NULL) {
+        //     //hasil query tampung kedalam variable data
+        //     $data = $query->get()->getRowArray();
+        //     var_dump($data); die;
+
+        //     //tampung jawaban kedalam variable untuk dikirim kembali keajax
+        //     $balas = $data;
+        // } else {
+        //     $balas = "Maaf, tidak menemukan jawaban yang kamu maksud. Kamu bisa Menghubungi Kami Melalui WhatsApp <a href='http://wa.me/6281212740577' target='_blank'> Klik Disini</a>";
+        // }
+
+        echo json_encode(['result' => $query->get()->getRowArray()]);
     }
 }

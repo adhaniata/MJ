@@ -113,7 +113,7 @@
                     //jika sukses ambil data, tampung kedalam variable balasan
                     // $balasan = '<div class="card text-bg-success mb-3" style="max-width: 700px;"><div class="card-header"><i class="fa-brands fa-android"></i> Mr. MJ</div><div class="card-body mb-0"><p>' + res.result + '</p></div></div>'
                     // $balasan = '<br><div class="card text-bg-success mb-3" style="max-width: 700px; float:left;"><div class="card-body mb-0"><p><img src="/img/rbt2.png" width="30px" class="rounded-circle">' + res.result + '</p></div></div></div><br>'
-                    $balasan = '<br><div class="card text-bg-success mb-3" style="min-width: 650px; max-width: 800px; float:left;"><div class="card-body mb-0"><div class="row"><div class="col-1"><img src="/img/rbt2.png" width="40px" class="rounded-circle"></div><div class="col-11"><p>' + res.result + '</p></div></div></div></div><br><br><br>'
+                    $balasan = '<br><div class="card text-bg-success mb-3" style="min-width: 650px; max-width: 800px; float:left;"><div class="card-body mb-0"><div class="row"><div class="col-1"><img src="/img/rbt2.png" width="40px" class="rounded-circle"></div><div class="col-11"><p>' + res.result.jawaban + '</p></div></div></div></div><br><br><br>'
 
                     //masukan kedalam form chat
                     $(".form").append($balasan);
