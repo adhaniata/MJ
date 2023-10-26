@@ -144,7 +144,7 @@
                         </div>
                     </div><br> -->
                     <!-- card Total Pendapatan-->
-                    <div class="card mb-3" style="max-width: 1300px;">
+                    <div class="card mb-3 mx-auto">
                         <div class="card-header text-bg-dark">
                             <h5>Pendapatan dan Pengeluaran</h5>
                             <br>
@@ -229,7 +229,7 @@
                                 <?= $judulPendapatan; ?>
                             </b>
                             <center>
-                                <div class="chart-container" style="position: relative; height:50vh; width:75vw">
+                                <div class="chart-container mx-auto" style="position: relative;">
                                     <canvas id="pendapatanChart"></canvas>
                                 </div>
                             </center>
@@ -248,7 +248,8 @@
                         </div>
                         <div class="card-body text-bg-light">
                             <center>
-                                <div class="chart-container" style="position: relative; height:50vh; width:75vw">
+                                <!-- <div class="chart-container" style="position: relative; height:50vh; width:75vw"> -->
+                                <div class="chart-container mx-auto" style="position: relative;">
                                     <canvas id="stokkategoriChart"></canvas>
                                     <canvas id="stokproduksChart"></canvas>
                                 </div>
@@ -341,7 +342,8 @@
                                 <?= $judulTransaksi; ?>
                             </b>
                             <center>
-                                <div class="chart-container" style="position: relative; height:50vh; width:75vw">
+                                <!-- <div class="chart-container" style="position: relative; height:50vh; width:75vw"> -->
+                                <div class="chart-container mx-auto" style="position: relative;">
                                     <canvas id="transaksiChart"></canvas>
                                 </div>
                             </center>
@@ -433,7 +435,8 @@
                                 <?= $judulPengembalian; ?>
                             </b>
                             <center>
-                                <div class="chart-container" style="position: relative; height:50vh; width:75vw">
+                                <!-- <div class="chart-container" style="position: relative; height:50vh; width:75vw"> -->
+                                <div class="chart-container mx-auto" style="position: relative;">
                                     <canvas id="pengembalianChart"></canvas>
                                 </div>
                             </center>
@@ -516,7 +519,7 @@
         data: {
             labels: <?= json_encode($namaKategori) ?>,
             datasets: [{
-                label: 'Jumlah Stok Produk Perkategori',
+                label: 'Stok',
                 data: <?= json_encode($stok_chart) ?>,
                 borderWidth: 1,
                 backgroundColor: [
@@ -528,6 +531,11 @@
             }]
         },
         options: {
+            plugins: {
+                legend: {
+                    position: 'left'
+                }
+            },
             scales: {
                 y: {
                     beginAtZero: true
@@ -552,7 +560,7 @@
         data: {
             labels: <?= json_encode($label_produks); ?>,
             datasets: [{
-                label: 'Jumlah Produk',
+                label: 'Stok',
                 data: <?= json_encode($stok_produks); ?>,
                 borderWidth: 1,
                 backgroundColor: [
@@ -564,6 +572,11 @@
             }]
         },
         options: {
+            plugins: {
+                legend: {
+                    position: 'left'
+                }
+            },
             scales: {
                 y: {
                     beginAtZero: true

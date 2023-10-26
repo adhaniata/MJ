@@ -8,7 +8,7 @@
             <div class="col col-xl-15">
                 <div class="card" style="border-radius: 1rem;">
                     <div class="row g-0">
-                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                        <div class="col-md-12 col-lg-12 d-flex align-items-center">
                             <div class="card-body p-10 p-lg-5 text-black">
                                 <form action="/transaksi/save" method="post">
                                     <?= csrf_field(); ?>
@@ -19,16 +19,16 @@
                                     <h4 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;"><b>Form Pembelian</b></h4>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="nama">Nama Lengkap</label>
+                                        <label class="form-label" for="nama"><b>Nama Lengkap</b></label>
                                         <input type="text" id="nama" name="nama" value="<?= $user['nama'] ?>" class="form-control" />
                                     </div>
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="telp">No Telepon Aktif</label>
+                                        <label class="form-label" for="telp"><b>No Telepon Aktif</b></label>
                                         <input type="text" id="telp" name="telp" value="<?= $user['telp'] ?>" class="form-control" />
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <label for="ongkos_kirim" class="col-sm-2 col-form-label">Kota</label>
+                                        <label for="ongkos_kirim" class="col-sm-2 col-form-label"><b>Kota</b></label>
                                         <div>
                                             <select class="form-select <?= ($validation->hasError('ongkos_kirim')) ? 'is-invalid' : ''; ?>" name="ongkos_kirim" id="ongkos_kirim" aria-label="Default select example">
                                                 <!--<option selected>Pilih Kota Untuk Ongkir </option>-->
@@ -43,11 +43,11 @@
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="alamat">Alamat Lengkap</label>
+                                        <label class="form-label" for="alamat"><b>Alamat Lengkap</b></label>
                                         <textarea name="alamat" id="alamat" class="form-control"><?= $user['alamat'] ?></textarea>
                                     </div>
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="rincian">Detail Tagihan</label>
+                                        <label class="form-label" for="rincian"><b>Detail Tagihan</b></label>
                                         <table class="table table-bordered table-striped">
                                             <?php $i = 1; ?>
                                             <thead>
@@ -84,20 +84,43 @@
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="total_tagihan">Total Tagihan</label>
+                                        <label class="form-label" for="total_tagihan"><b>Total Tagihan</b></label>
                                         <input type="text" readonly id="total_tagihan" name="total_tagihan" class="form-control" />
                                     </div>
+                                    <label class="form-label"><b>Metode Pembayaran Transfer</b></label>
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No.</th>
+                                                <th scope="col">Bank</th>
+                                                <th scope="col">No. Rekening</th>
+                                                <th scope="col">Atas Nama</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td><img src="/img/bca.jpg" width="100"></td>
+                                                <td>
+                                                    2871451887
+                                                    <input type="hidden" value="2871451887" id="myRek">
+                                                    <button type="button" class=" btn btn-secondary ml-2" onclick="myFunction()">Copy</button>
+                                                </td>
+                                                <td>Muhammad Arif Santoso</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
-                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Pastikan Data Yang Anda Masukan Sudah Benar Dan Sesuai</p>
+                                    <p class="mb-2 pb-lg-2" style="color: #393f81;">Pastikan Data Yang Anda Masukan Sudah Benar Dan Sesuai</p>
 
-                                    <div class="pt-1 mb-4">
+                                    <div class="pt-1 mb-2">
                                         <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
                                         <a href="/keranjang" class="btn btn-dark btn-lg btn-block">Kembali</a>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4 d-none d-md-block">
+                        <!-- <div class="col-md-6 col-lg-4 d-none d-md-block">
                             <br><br><br><br><br><br><br>
                             <label class="form-label"><b>Metode Pembayaran Transfer</b></label>
                             <table class="table table-bordered table-striped">
@@ -117,14 +140,18 @@
                                         <td>Arif Santoso</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">2</th>
+                                        <th scope="row">1</th>
                                         <td><img src="/img/bca.jpg" width="100"></td>
-                                        <td>881928391</td>
-                                        <td>Arif Santoso</td>
+                                        <td>
+                                            2871451887
+                                            <input type="hidden" value="2871451887" id="myRek">
+                                            <button class=" btn btn-dark mt-2" onclick="myFunction()">Copy</button>
+                                        </td>
+                                        <td>Muhammad Arif Santoso</td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -148,5 +175,22 @@
             $('#total_tagihan').val(hitung);
         })
     })
+</script>
+
+<script>
+    function myFunction() {
+        // Get the text field
+        var copyText = document.getElementById("myRek");
+
+        // Select the text field
+        copyText.select();
+        // copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+
+        // Alert the copied text
+        alert("Copied Rek: " + copyText.value);
+    }
 </script>
 <?= $this->endSection(); ?>

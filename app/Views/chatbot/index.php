@@ -8,19 +8,19 @@
     <div class="row">
         <!-- <div class="col-md-4"></div> -->
         <div class="col">
-            <div class="card text-center">
+            <div class="card text-center mx-auto" style="max-width: 900px">
                 <div class="card-header text-bg-dark">
                     Chatbot
                 </div>
                 <div class="card-body">
                     <div class="form">
-                        <div class="card mb-3" style="min-width: 700px; max-width: 900px; float:left;">
+                        <div class="card mb-3" style="min-width: 450px; max-width: 500px; float:left;">
                             <div class="card-header text-bg-success mb-0">
                                 <div class="row">
                                     <div class="col-1">
                                         <img src="/img/rbt2.png" width="40px" class="rounded-circle">
                                     </div>
-                                    <div class="col-11">
+                                    <div class="col-11 mt-1">
                                         <p>Hai Ada Yang Bisa Saya Bantu?</p>
                                     </div>
                                 </div>
@@ -102,14 +102,13 @@
             $pesan = $("#text-pesan").val();
             //tampung pesan ke variabel msg
             // $msg = '<div class="card text-bg-success mb-3" style="max-width: 700px;"><div class="card-header"><i class="fa-brands fa-android"></i> Mr. MJ</div><div class="card-body mb-0"><p>' + $pesan + '</p></div></div>'
-            $msg = '<br><br><div class="card text-bg-dark mb-3 mt-12" style="min-width: 600px; max-width: 800px; float:right;"><div class="card-body mb-0"><div class="row"><div class="col-9"><p>' + $pesan + '</p></div><div class="col-3"><img src="/img/user2.png" width="40px" class="rounded-circle"></div></div></div></div><br><br>'
+            $msg = '<br><br><div class="card text-bg-dark mb-3 mt-12" style="min-width: 425px; max-width: 500px; float:right;"><div class="card-body mb-0"><div class="row"><div class="col-9"><p>' + $pesan + '</p></div><div class="col-3"><img src="/img/user2.png" width="40px" class="rounded-circle"></div></div></div></div><br><br>'
             // $msg = '<div class="card text-bg-secondary mb-3" style="max-width: 650px; float:right;"><div class="card-body mb-0"><p>' + $pesan + '<img src="/img/user.png" width="30px" class="rounded-circle"></p></div></div></div><br><br><br>'
             //memasukan ke form chat
             $(".form").append($msg);
             //kosongkan inputan pesan
             $("#text-pesan").val('')
 
-            //belum bisa masih error
             //persiapan ajax
             $.ajax({
                 url: '/chatbot/kirim',
@@ -118,15 +117,27 @@
                     pesan: $pesan
                 },
                 dataType: 'json',
+                // success: function(res) {
+                //     //jika sukses ambil data, tampung kedalam variable balasan
+                //     // $balasan = '<div class="card text-bg-success mb-3" style="max-width: 700px;"><div class="card-header"><i class="fa-brands fa-android"></i> Mr. MJ</div><div class="card-body mb-0"><p>' + res.result + '</p></div></div>'
+                //     // $balasan = '<br><div class="card text-bg-success mb-3" style="max-width: 700px; float:left;"><div class="card-body mb-0"><p><img src="/img/rbt2.png" width="30px" class="rounded-circle">' + res.result + '</p></div></div></div><br>'
+                //     $balasan = '<br><div class="card text-bg-success mb-3" style="min-width: 650px; max-width: 800px; float:left;"><div class="card-body mb-0"><div class="row"><div class="col-1"><img src="/img/rbt2.png" width="40px" class="rounded-circle"></div><div class="col-11"><p>' + res.result.jawaban + '</p></div></div></div></div><br><br><br>'
+
+                // //masukan kedalam form chat
+                // $(".form").append($balasan);
+
+                // }
                 success: function(res) {
-                    //jika sukses ambil data, tampung kedalam variable balasan
-                    // $balasan = '<div class="card text-bg-success mb-3" style="max-width: 700px;"><div class="card-header"><i class="fa-brands fa-android"></i> Mr. MJ</div><div class="card-body mb-0"><p>' + res.result + '</p></div></div>'
-                    // $balasan = '<br><div class="card text-bg-success mb-3" style="max-width: 700px; float:left;"><div class="card-body mb-0"><p><img src="/img/rbt2.png" width="30px" class="rounded-circle">' + res.result + '</p></div></div></div><br>'
-                    $balasan = '<br><div class="card text-bg-success mb-3" style="min-width: 650px; max-width: 800px; float:left;"><div class="card-body mb-0"><div class="row"><div class="col-1"><img src="/img/rbt2.png" width="40px" class="rounded-circle"></div><div class="col-11"><p>' + res.result.jawaban + '</p></div></div></div></div><br><br><br>'
+                    if (res.result != null) {
+                        var data = res.result.jawaban;
+                    } else {
+                        var data = "Maaf, tidak menemukan jawaban yang kamu maksud. Kamu bisa Menghubungi Kami Melalui WhatsApp <a href='http://wa.me/6281212740577' target='_blank'> Klik Disini</a>";
+                    }
+
+                    $balasan = '<br><div class="card text-bg-success mb-3" style="min-width: 425px; max-width: 500px; float:left;"><div class="card-body mb-0"><div class="row"><div class="col-1"><img src="/img/rbt2.png" width="40px" class="rounded-circle"></div><div class="col-11"><p>' + data + '</p></div></div></div></div><br><br><br>';
 
                     //masukan kedalam form chat
                     $(".form").append($balasan);
-
                 }
             })
         });

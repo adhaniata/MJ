@@ -156,7 +156,7 @@
                         Saturday 09.00 - 15.00<br>
                         (Except public holiday)<br>
                     </p>
-                    <a href="https://wa.me/6281285173625" target="_black" style="color:black"><i class="fa-brands fa-whatsapp"></i> Whatsapp: 081285173625</a> <br>
+                    <a href="https://wa.me/6281212740577" target="_black" style="color:black"><i class="fa-brands fa-whatsapp"></i> Whatsapp: 081212740577</a> <br>
                     <a href="#" target="_black" style="color:black"><i class="fa-solid fa-envelope"></i></a>
                     Arifsantoso@gmail.com <br>
                     <a href="#" target="_black" style="color:black"><i class="fa-solid fa-store"></i></a> Shopee
@@ -181,7 +181,7 @@
 
         <!-- Copyright -->
         <div class="text-center text-light p-3" style="background-color: #29292A ;">
-            2022 MJ Sport
+            2023 MJ Sport
             <a class="text-light" href=""></a>
         </div>
         <!-- Copyright -->

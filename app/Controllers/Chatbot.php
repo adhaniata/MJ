@@ -28,23 +28,27 @@ class Chatbot extends BaseController
         $db = \Config\Database::connect();
         $request = \Config\Services::request();
         $pesan = $this->request->getVar('pesan');
+        // untuk membatasi karakter yang diinputkan
         $pesan = preg_replace("/[^a-zA-Z- ]/", "", $pesan);
+        // untuk kalimat yang diinputkan menjadi array
         $keywords = explode(' ', $pesan);
 
-        $query='';
+        $query = '';
         foreach ($keywords as $key => $values) {
+            // untuk menghapus spasi
             $values = trim($values);
+            // untuk mencari yang sama
             $query = $this->chatbotModel->orWhere("`pertanyaan` LIKE '%$values%'");
         }
 
         // $cek_data = $this->chatbotModel->like('pertanyaan', $request->getVar('pesan'))->get();
 
         // $balas = '';
-        //jika pertanyaan/data ditemukan, maka tampilkan jawaban
+        // // jika pertanyaan/data ditemukan, maka tampilkan jawaban
         // if ($query->get()->getRowArray() != NULL) {
         //     //hasil query tampung kedalam variable data
         //     $data = $query->get()->getRowArray();
-        //     var_dump($data); die;
+        //     // var_dump($data); die;
 
         //     //tampung jawaban kedalam variable untuk dikirim kembali keajax
         //     $balas = $data;
@@ -53,5 +57,6 @@ class Chatbot extends BaseController
         // }
 
         echo json_encode(['result' => $query->get()->getRowArray()]);
+        // echo json_encode($balas);
     }
 }

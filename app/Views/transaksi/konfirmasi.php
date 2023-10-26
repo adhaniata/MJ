@@ -97,12 +97,6 @@
                                     <td>7778192034</td>
                                     <td>Arif Santoso</td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td><img src="/img/bca.jpg" width="100"></td>
-                                    <td>881928391</td>
-                                    <td>Arif Santoso</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
